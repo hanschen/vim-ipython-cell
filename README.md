@@ -115,7 +115,7 @@ Run the whole script in IPython.
 
     :IPythonCellExecuteRunTime
 
-Run and time the whole script in IPython.
+Run the whole script in IPython and time the execution.
 
     :IPythonCellExecuteClear
 
