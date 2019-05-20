@@ -357,6 +357,15 @@ You can easily send arbitary commands to IPython using the `:SlimeSend1`
 command provided by vim-slime, e.g. `:SlimeSend1 %who`, and map these commands
 to key combinations.
 
+> Why isn't this plugin specific to Python by default? In other words, why do
+> I have to add all this extra stuff to make this plugin Python-specific?
+
+This plugin was created with Python and IPython in mind, but I don't want to
+restrict the plugin to Python by design. Instead, I have included examples of
+how to use plugin managers to specify that the plugin should be loaded only
+for Python files and how to create Python-specific mappings. If someone wants
+to use this plugin for other filetypes, they can easily do so.
+
 > Why is this plugin written in Python instead of pure Vimscript?
 
 Because I feel more comfortable with Python and don't have the motivation to
