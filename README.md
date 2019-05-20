@@ -346,9 +346,10 @@ version, I would be happy to merge it.
 Related plugins
 ---------------
 
-* [tslime\_ipython] - Similar to ipython-cell but with some slight differences.
-  For example, tslime\_ipython sends the whole code cell to IPython's input
-  line instead of using `%paste`.
+* [tslime\_ipython] - Similar to ipython-cell but with some small differences.
+  For example, tslime\_ipython pastes the whole code that's sent to IPython
+  to the input line, while ipython-cell uses IPython's `%paste -q` command to
+  make the execution less verbose.
 * [vim-ipython] - Advanced two-way integration between Vim and IPython.
 * [vim-tmux-navigator] - Seamless navigation between Vim splits and tmux panes.
 * [vim-signature] - Display marks in the left-hand column.
