@@ -71,7 +71,6 @@ cde ~/.vim/bundle
 git clone https://github.com/hanschen/vim-ipythoncell.git
 ~~~
 
-
 [vim-plug]: https://github.com/junegunn/vim-plug
 [Vundle]: https://github.com/VundleVim/Vundle.vim
 [NeoBundle]: https://github.com/Shougo/neobundle.vim
