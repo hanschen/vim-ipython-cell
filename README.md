@@ -358,7 +358,7 @@ Related plugins
   make the execution less verbose.
 * [vim-ipython] - Advanced two-way integration between Vim and IPython. I never
   got it to work as I want, i.e., don't show the code that's executed but show
-* the output from the code, which is why I created this simpler plugin.
+  the output from the code, which is why I created this simpler plugin.
 * [vim-tmux-navigator] - Seamless navigation between Vim splits and tmux panes.
 * [vim-signature] - Display marks in the left-hand column.
 
