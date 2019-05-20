@@ -121,6 +121,103 @@ These commands can be bound to key mappings, see Example configuration below.
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
 
+Defining code cells
+-------------------
+
+Code cells are defined by either Vim marks or special text in the code,
+depending on if `g:ipython_cell_delimit_cells_by` is set to `'marks'` or
+`'tags'`, respectively. The default is to use Vim marks (see `:help mark` in
+Vim).
+
+The examples below show how code cell boundaries work.
+
+
+### Code cells defined using marks
+
+Marks are depicted as letters in the left-most column.
+
+~~~
+                                   _
+  | import numpy as np              | cell 1
+  |                                _| 
+a | numbers = np.arange(10)         | cell 2
+  |                                 |
+  |                                _|
+b | for n in numbers:               | cell 3
+  |     print(n)                   _|
+c |     if n % 2 == 0:              | cell 4
+  |         print("Even")           |
+  |     else:                       |
+  |         print("Odd")            |
+  |                                _|
+d | total = numbers.sum()           | cell 5
+  | print("Sum: {}".format(total)) _|
+
+~~~
+
+Note that code cells can contain indentations. IPython's `%paste` will
+automatically dedent the code before execution. However, if the code cell is
+defined within e.g. a `for` loop, the code cell *will not* iterate over the 
+loop. In the example above, executing cell 4 after cell 3 will print only `Odd`
+once, because IPython will execute the following code:
+
+~~~python
+for n in numbers:
+    print(n)
+
+~~~
+
+for cell 3, followed by
+
+~~~python
+if n % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+
+~~~
+
+for cell 4.
+
+You must therefore be careful when defining code cells within statements.
+
+
+### Code cells defined using tags
+
+Using `##` to define cell boundaries.
+
+~~~
+                                   _
+import numpy as np                  | cell 1
+                                   _|
+## Setup                            | cell 2
+                                    |
+numbers = np.arange(10)             |
+                                   _|
+## Print numbers                    | cell 3
+                                    |
+for n in numbers:                   |
+    print(n)                        |
+                                   _|
+    ## Odd or even                  | cell 4
+                                    |
+    if n % 2 == 0:                  |
+        print("Even")               |
+    else:                           |
+        print("Odd")                |
+                                   _|
+## Print sum                        | cell 5
+                                    |
+sum = numbers.sum()                 |
+print("Sum: {}".format(sum))        |
+print("Done.")                     _|
+
+~~~
+
+See note in the previous section about defining code cells within statements
+such as cell 4 inside the `for` loop in the example above.
+
+
 Configuration
 -------------
 
