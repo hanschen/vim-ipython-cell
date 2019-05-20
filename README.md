@@ -67,7 +67,7 @@ git clone https://github.com/hanschen/vim-ipythoncell.git
 ~~~
 
 
-[vim-plug]: https://github.com/VundleVim/Vundle.vim
+[vim-plug]: https://github.com/junegunn/vim-plug
 [Vundle]: https://github.com/VundleVim/Vundle.vim
 [NeoBundle]: https://github.com/Shougo/neobundle.vim
 [Dein]: https://github.com/Shougo/dein.vim
