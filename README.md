@@ -68,7 +68,7 @@ call dein#add('hanschen/vim-ipython-cell', { 'on_ft': 'python' })
 
 ~~~sh
 cd ~/.vim/bundle
-git clone https://github.com/hanschen/vim-ipythoncell.git
+git clone https://github.com/hanschen/vim-ipython-cell.git
 ~~~
 
 [vim-plug]: https://github.com/junegunn/vim-plug
