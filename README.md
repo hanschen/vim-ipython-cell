@@ -235,7 +235,7 @@ If cells are delimited by marks, specify which marks to use.
 Default: `abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`
 
 
-Example vim configuration
+Example Vim configuration
 -------------------------
 
 Here's an example of how to configure your `.vimrc` to use this plugin. Adapt
