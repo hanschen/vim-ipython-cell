@@ -215,7 +215,7 @@ print("Done.")                     _|
 ~~~
 
 See note in the previous section about defining code cells within statements
-such as cell 4 inside the `for` loop in the example above.
+(such as cell 4 inside the `for` loop in the example above).
 
 
 Configuration
