@@ -292,6 +292,9 @@ g:ipython_cell_tag = '# <cell>'
 " map ,r to run script
 autocmd FileType python nmap <buffer> ,r :IPythonCellRun<CR>
 
+" map ,R to run script and time the execution
+autocmd FileType python nmap <buffer> ,R :IPythonCellRunTime<CR>
+
 " map ,c to execute the current cell
 autocmd FileType python nmap <buffer> ,c :IPythonCellExecuteCell<CR>
 
@@ -303,6 +306,10 @@ autocmd FileType python nmap <buffer> ,l :IPythonCellClear<CR>
 
 " map ,x to close all Matplotlib figure windows
 autocmd FileType python nmap <buffer> ,x :IPythonCellClose<CR>
+
+" map [c and ]c to jump to the previous and next cell header
+autocmd FileType python nmap <buffer> [c :IPythonCellPrevCell<CR>
+autocmd FileType python nmap <buffer> ]c :IPythonCellNextCell<CR>
 
 ~~~
 
