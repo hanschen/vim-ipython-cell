@@ -33,7 +33,7 @@ In that case, any lines containing `##` are interpreted as cell boundaries.
 COMMANDS                                               *ipython-cell-commands*
 
                                                              *:IPythonCellRun*
-:IPythonCellRun                kRun whole script in IPython.
+:IPythonCellRun                 Run whole script in IPython.
 
                                                      *:IPythonCellExecuteCell*
 :IPythonCellExecuteCell         Execute a single code cell in IPython.
