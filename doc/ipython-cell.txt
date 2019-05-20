@@ -1,0 +1,116 @@
+*ipython-cell.txt*  run code cells in IPython
+
+This plugin allows you to easily run Python code from Vim in IPython,
+including individual code cells similar to Jupyter notebooks and MATLAB.
+
+==============================================================================
+USAGE                                                     *ipython-cell-usage*
+
+ipython-cell does not add any custom mappings. Instead, it is up to the user
+to define custom mappings for the commands below. For example, you can add the
+following to your .vimrc: >
+
+    autocmd FileType python nmap <buffer> ,r :IPythonCellRun<CR>
+    autocmd FileType python nmap <buffer> ,c :IPythonCellExecuteCell<CR>
+    autocmd FileType python nmap <buffer> ,C :IPythonCellExecuteCellJump<CR>
+    autocmd FileType python nmap <buffer> ,l :IPythonCellClear<CR>
+    autocmd FileType python nmap <buffer> ,x :IPythonCellClose<CR>
+
+This maps `,r` (comma, r) to run the current script in IPython, `,c` to
+execute only the current code cell, `,C` to execute the code cell and jump to
+the next cell, `,l` to clear the IPython screen, and `,x` to close all
+Matplotlib figure windows.
+
+Code cells are by default defined by Vim marks (see `:help mark`). It is also
+possible to use special comments (referred to as tags) to mark the start of
+code cells by adding the following to your vimrc: >
+
+    let g:ipython_cell_delimit_cells_by = 'tags'
+
+In that case, any lines containing `##` are interpreted as cell boundaries.
+
+==============================================================================
+COMMANDS                                               *ipython-cell-commands*
+
+                                                             *:IPythonCellRun*
+:IPythonCellRun                kRun whole script in IPython.
+
+                                                     *:IPythonCellExecuteCell*
+:IPythonCellExecuteCell         Execute a single code cell in IPython.
+
+                                                 *:IPythonCellExecuteCellJump*
+:IPythonCellExecuteCellJump     Execute a single code cell in IPython and move
+                                cursor to the next cell.
+
+                                                           *:IPythonCellClear*
+:IPythonCellClear               Clear IPython screen.
+
+                                                           *:IPythonCellClose*
+:IPythonCellClose               Close all Matplotlib figure windows. This
+                                command assumes that the `matplotlib.pyplot`
+                                module is imported as `plt` in IPython.
+
+
+==============================================================================
+CONFIGURATION                                     *ipython-cell-configuration*
+
+The following configuration options allow you to specify how cells are
+defined.
+
+                                               *ipython_cell_delimit_cells_by*
+g:ipython_cell_delimit_cells_by     Delimit cells by Vim marks (`'marks'`,
+                                    default) or a special tag in the code
+                                    (`'tags'`).
+
+                                                    *ipython-cell-valid-marks*
+g:ipython_cell_valid_marks          Which marks to use to mark the boundary
+                                    between cells.
+                                    Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`
+
+                                                            *ipython-cell-tag*
+g:ipython_cell_tag                  What kind of comment tag to use to mark
+                                    the boundary between cells
+                                    (default `'##'`). This option is used only
+                                    if `g:ipython_cell_delimit_cells_by` is
+                                    set to  `'tags'`.
+
+==============================================================================
+FAQ                                                         *ipython-cell-faq*
+
+Q: How do I show the marks in the left-most column? ~
+A: Use the vim-signature plugin:
+    https://github.com/kshenoy/vim-signature
+
+Q: How to send only the current line or selected lines to IPython? ~
+A: Use the features provided by vim-slime. The default mapping `C-c C-c` (hold
+down Ctrl and tap the C key twice) will send the current paragraph or the
+selected lines to IPython. See `:help slime` for more information.
+
+Q: Why do I get "name 'plt' is not defined" when I try to close figures? ~
+A: ipython-cell assumes that you have imported `matplotlib.pyplot` as `plt` in
+IPython. If you prefer to import `matplotlib.pyplot` differently, you can
+achieve the same thing using vim-slime, for example by adding the following to
+your .vimrc: >
+
+    autocmd FileType python nmap <buffer> ,x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
+
+Q: How can I send other commands to IPython, e.g. '%who'? ~
+A: You can easily send arbitary commands to IPython using the `:SlimeSend1`
+provided by vim-slime, e.g. `:SlimeSend1 %who`, and map these commands to
+key combinations.
+
+Q: Why is this plugin written in Python instead of pure Vimscript? ~
+A: Because I feel more comfortable with Python and don't have the motivation
+to learn Vimscript for this plugin. If someone implements a pure Vimscript
+version, I would be happy to merge it.
+
+==============================================================================
+ABOUT                                                     *ipython-cell-about*
+
+Author: Hans Chen (contact@hanschen.org)
+
+The latest versions can be found at
+    http://github.com/hanschen/vim-ipython-cell
+
+This plugin was originally inspired by
+    https://github.com/eldridgejm/tslime_ipython
