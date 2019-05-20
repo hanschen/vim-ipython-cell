@@ -90,7 +90,10 @@ will be a breeze.
 (I personally prefer tmux, but you will find screen installed on most *nix
 systems.)
 
-The plugin includes the following commands:
+The plugin does not define any key mappings by default, but comes with the
+following commands, which I recommend that you bind to key combinations that
+you like (see e.g.  [Example Vim Configuration](#example-vim-configuration)
+below).
 
     :IPythonCellExecuteCell
 
@@ -115,8 +118,6 @@ Clear IPython screen.
     :IPythonCellExecuteClose
 
 Close all figure windows.
-
-These commands can be bound to key mappings, see Example configuration below.
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
