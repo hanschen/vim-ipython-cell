@@ -64,12 +64,8 @@ function! IPythonCellPrevCell()
     exec s:python_command "ipython_cell.jump_prev_cell()"
 endfunction
 
-function! IPythonCellRun()
-    exec s:python_command "ipython_cell.run()"
-endfunction
-
-function! IPythonCellRunTime()
-    exec s:python_command "ipython_cell.run('-t')"
+function! IPythonCellRun(...)
+    exec s:python_command "ipython_cell.run('" . join(a:000, ',') . "')"
 endfunction
 
 command! -nargs=0 IPythonCellClear call IPythonCellClear()
@@ -79,4 +75,4 @@ command! -nargs=0 IPythonCellExecuteCellJump call IPythonCellExecuteCellJump()
 command! -nargs=0 IPythonCellNextCell call IPythonCellNextCell()
 command! -nargs=0 IPythonCellPrevCell call IPythonCellPrevCell()
 command! -nargs=0 IPythonCellRun call IPythonCellRun()
-command! -nargs=0 IPythonCellRunTime call IPythonCellRunTime()
+command! -nargs=0 IPythonCellRunTime call IPythonCellRun('-t')
