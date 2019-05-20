@@ -230,7 +230,7 @@ Configuration
 
     g:ipython_cell_delimit_cells_by
 
-If cells should be delimited by `marks` or `tags`. Default: `marks`
+Specify if cells should be delimited by `marks` or `tags`. Default: `marks`
 
     g:ipython_cell_tag
 
