@@ -350,7 +350,9 @@ Related plugins
   For example, tslime\_ipython pastes the whole code that's sent to IPython
   to the input line, while ipython-cell uses IPython's `%paste -q` command to
   make the execution less verbose.
-* [vim-ipython] - Advanced two-way integration between Vim and IPython.
+* [vim-ipython] - Advanced two-way integration between Vim and IPython. I never
+  got it to work as I want, i.e., don't show the code that's executed but show
+* the output from the code, which is why I created this simpler plugin.
 * [vim-tmux-navigator] - Seamless navigation between Vim splits and tmux panes.
 * [vim-signature] - Display marks in the left-hand column.
 
