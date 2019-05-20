@@ -36,31 +36,36 @@ It is easiest to install ipython-cell using a plugin manager. I personally
 recommend [vim-plug]. See respective plugin manager's documentation for more
 information about how to install plugins.
 
-[vim-plug]:
+### [vim-plug]
+
 ~~~vim
 Plug 'jpalardy/vim-slime' { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell' { 'for': 'python' }
 ~~~
 
-[Vundle]:
+### [Vundle]
+
 ~~~vim
 Plugin 'jpalardy/vim-slime'
 Plugin 'hanschen/vim-ipython-cell'
 ~~~
 
-[NeoBundle]:
+### [NeoBundle]
+
 ~~~vim
 NeoBundle 'jpalardy/vim-slime' { 'on_ft': 'python' }
 NeoBundle 'hanschen/vim-ipython-cell' { 'on_ft': 'python' }
 ~~~
 
-[Dein]:
+### [Dein]
+
 ~~~vim
 call dein#add('jpalardy/vim-slime', { 'on_ft': 'python' })
 call dein#add('hanschen/vim-ipython-cell', { 'on_ft': 'python' })
 ~~~
 
-[Pathogen]:
+### [Pathogen]
+
 ~~~sh
 cde ~/.vim/bundle
 git clone https://github.com/hanschen/vim-ipythoncell.git
