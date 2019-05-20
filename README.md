@@ -272,6 +272,10 @@ let g:slime_dont_ask_default = 1
 "------------------------------------------------------------------------------
 " ipython-cell configuration
 "------------------------------------------------------------------------------
+" Use '# <cell>' to define cells instead of using marks
+g:ipython_cell_delimit_cells_by = 'tags'
+g:ipython_cell_tag = '# <cell>'
+
 " map ,r to run script
 autocmd FileType python nmap <buffer> ,r :IPythonCellRun<CR>
 
