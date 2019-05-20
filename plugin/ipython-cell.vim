@@ -42,40 +42,41 @@ EOF
 function! IPythonCellClear()
     exec s:python_command "ipython_cell.clear()"
 endfunction
-command! -nargs=0 IPythonCellClear call IPythonCellClear()
 
 function! IPythonCellClose()
     exec s:python_command "ipython_cell.close_all()"
 endfunction
-command! -nargs=0 IPythonCellClose call IPythonCellClose()
 
 function! IPythonCellExecuteCell()
     exec s:python_command "ipython_cell.execute_cell()"
 endfunction
-command! -nargs=0 IPythonCellExecuteCell call IPythonCellExecuteCell()
 
 function! IPythonCellExecuteCellJump()
     exec s:python_command "ipython_cell.execute_cell()"
     exec s:python_command "ipython_cell.jump_next_cell()"
 endfunction
-command! -nargs=0 IPythonCellExecuteCellJump call IPythonCellExecuteCellJump()
 
 function! IPythonCellNextCell()
     exec s:python_command "ipython_cell.jump_next_cell()"
 endfunction
-command! -nargs=0 IPythonCellNextCell call IPythonCellNextCell()
 
 function! IPythonCellPrevCell()
     exec s:python_command "ipython_cell.jump_prev_cell()"
 endfunction
-command! -nargs=0 IPythonCellPrevCell call IPythonCellPrevCell()
 
 function! IPythonCellRun()
     exec s:python_command "ipython_cell.run()"
 endfunction
-command! -nargs=0 IPythonCellRun call IPythonCellRun()
 
 function! IPythonCellRunTime()
     exec s:python_command "ipython_cell.run('-t')"
 endfunction
+
+command! -nargs=0 IPythonCellClear call IPythonCellClear()
+command! -nargs=0 IPythonCellClose call IPythonCellClose()
+command! -nargs=0 IPythonCellExecuteCell call IPythonCellExecuteCell()
+command! -nargs=0 IPythonCellExecuteCellJump call IPythonCellExecuteCellJump()
+command! -nargs=0 IPythonCellNextCell call IPythonCellNextCell()
+command! -nargs=0 IPythonCellPrevCell call IPythonCellPrevCell()
+command! -nargs=0 IPythonCellRun call IPythonCellRun()
 command! -nargs=0 IPythonCellRunTime call IPythonCellRunTime()
