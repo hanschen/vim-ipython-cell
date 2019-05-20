@@ -332,7 +332,7 @@ selected lines to IPython. See `:help slime` for more information.
 ipython-cell assumes that you have imported `matplotlib.pyplot` as `plt` in
 IPython. If you prefer to import `matplotlib.pyplot` differently, you can
 achieve the same thing using vim-slime, for example by adding the following to
-your .vimrc: >
+your .vimrc:
 
     autocmd FileType python nmap <buffer> ,x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
 
