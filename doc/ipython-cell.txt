@@ -35,6 +35,10 @@ COMMANDS                                               *ipython-cell-commands*
                                                              *:IPythonCellRun*
 :IPythonCellRun                 Run whole script in IPython.
 
+                                                         *:IPythonCellRunTime*
+:IPythonCellRunTime             Run whole script in IPython and time the
+                                execution.
+
                                                      *:IPythonCellExecuteCell*
 :IPythonCellExecuteCell         Execute a single code cell in IPython.
 
