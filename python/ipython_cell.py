@@ -6,41 +6,34 @@ import sys
 import vim
 
 
-def execute_cell(jump_to_next_cell=False):
-    """Execute code within cell.
-
-    Parameters
-    ----------
-    jump_to_next_cell : bool
-        If True, jump to the beginning of the next cell after executing the
-        current cell.
-
-    """
+def execute_cell():
+    """Execute code within cell."""
     current_row, _ = vim.current.window.cursor
-    buffer = vim.current.buffer
+    cell_boundaries = _get_cell_boundaries()
+    cell_start, cell_end = _get_current_cell_boundaries(current_row,
+                                                        cell_boundaries)
 
-    delimiter = vim.eval('g:ipython_cell_delimit_cells_by').strip()
-
-    if delimiter == 'marks':
-        valid_marks = vim.eval('g:ipython_cell_valid_marks').strip()
-        cell_boundaries = _get_rows_with_marks(buffer, valid_marks)
-    elif delimiter == 'tags':
-        tag = vim.eval('g:ipython_cell_tag')
-        cell_boundaries = _get_rows_with_tag(buffer, tag)
-    else:
-        _error("Invalid option value for g:ipython_cell_valid_marks: {}"
-               .format(delimiter))
-        return
-
-    cell_indices = _get_current_cell_boundary(current_row, cell_boundaries)
-    cell_start, cell_end, next_cell_start = cell_indices
-
-    cell = "\n".join(buffer[cell_start-1:cell_end])
+    cell = "\n".join(vim.current.buffer[cell_start-1:cell_end])
     _copy_to_clipboard(cell)
     _slimesend("%paste -q")
 
-    if jump_to_next_cell:
+
+def jump_next_cell():
+    """Move cursor to the start of the next cell."""
+    current_row, _ = vim.current.window.cursor
+    cell_boundaries = _get_cell_boundaries()
+    next_cell_start = _get_next_cell(current_row, cell_boundaries)
+    if next_cell_start != current_row:
         vim.current.window.cursor = (next_cell_start, 0)
+
+
+def jump_prev_cell():
+    """Move cursor to the start of the previous cell."""
+    current_row, _ = vim.current.window.cursor
+    cell_boundaries = _get_cell_boundaries()
+    prev_cell_start = _get_prev_cell(current_row, cell_boundaries)
+    if prev_cell_start != current_row:
+        vim.current.window.cursor = (prev_cell_start, 0)
 
 
 def run(*args):
@@ -100,7 +93,26 @@ def _error(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def _get_current_cell_boundary(current_row, cell_boundaries):
+def _get_cell_boundaries():
+    """Return a list of row indices for all cell boundaries."""
+    buffer = vim.current.buffer
+    delimiter = vim.eval('g:ipython_cell_delimit_cells_by').strip()
+
+    if delimiter == 'marks':
+        valid_marks = vim.eval('g:ipython_cell_valid_marks').strip()
+        cell_boundaries = _get_rows_with_marks(buffer, valid_marks)
+    elif delimiter == 'tags':
+        tag = vim.eval('g:ipython_cell_tag')
+        cell_boundaries = _get_rows_with_tag(buffer, tag)
+    else:
+        _error("Invalid option value for g:ipython_cell_valid_marks: {}"
+               .format(delimiter))
+        return
+
+    return cell_boundaries
+
+
+def _get_current_cell_boundaries(current_row, cell_boundaries):
     """Return the start and end indices for the current cell and the start
     index for the next cell.
 
@@ -117,31 +129,89 @@ def _get_current_cell_boundary(current_row, cell_boundaries):
         Start index for the current cell.
     int:
         End index for the current cell.
+
+    """
+    cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
+
+    next_cell_start = None
+    for boundary in cell_boundaries:
+        if boundary <= current_row:
+            cell_start = boundary
+        else:
+            next_cell_start = boundary
+            break
+
+    if next_cell_start is None:
+        cell_end = None  # end of file
+    else:
+        cell_end = next_cell_start - 1
+
+    return cell_start, cell_end
+
+
+def _get_next_cell(current_row, cell_boundaries):
+    """Return start index of the next cell.
+
+    If there is no next cell, the current row is returned.
+
+    Parameters
+    ----------
+    current_row : int
+        Index of the current row.
+    cell_boundaries : list
+        A list of indices for the cell boundaries.
+
+    Returns
+    -------
     int:
         Start index for the next cell.
 
     """
-    cell_boundaries = list(cell_boundaries)
+    cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
 
-    # Include beginning of file as a cell boundary
-    cell_boundaries.append(1)
+    next_cell_start = None
+    for boundary in cell_boundaries:
+        if boundary > current_row:
+            next_cell_start = boundary
+            break
 
-    cell_boundaries = sorted(set(cell_boundaries))
-
-    cell_start = [boundary for boundary in cell_boundaries
-                  if boundary <= current_row][-1]
-
-    next_cell_start = [boundary for boundary in cell_boundaries
-                       if boundary > current_row]
-
-    if next_cell_start:
-        next_cell_start = next_cell_start[0]
-        cell_end = next_cell_start - 1
+    if next_cell_start is None:
+        return current_row
     else:
-        next_cell_start = current_row
-        cell_end = None  # end of file
+        return next_cell_start
 
-    return cell_start, cell_end, next_cell_start
+
+def _get_prev_cell(current_row, cell_boundaries):
+    """Return start index of the previous cell.
+
+    If there is no previous cell, the current row is returned.
+
+    Parameters
+    ----------
+    current_row : int
+        Index of the current row.
+    cell_boundaries : list
+        A list of indices for the cell boundaries.
+
+    Returns
+    -------
+    int:
+        Start index for the previous cell.
+
+    """
+    cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
+
+    prev_cell_start = None
+    for boundary in cell_boundaries:
+        if boundary < current_row:
+            prev_cell_start = boundary
+        else:
+            break
+
+    if prev_cell_start is None:
+        return current_row
+    else:
+        return prev_cell_start
 
 
 def _get_rows_with_tag(buffer, tag):
@@ -191,6 +261,29 @@ def _get_rows_with_marks(buffer, valid_marks):
             rows_containing_marks.append(mark_loc[0])
 
     return rows_containing_marks
+
+
+def _get_sorted_unique_cell_boundaries(cell_boundaries):
+    """Return a list of unique and sorted cell boundaries, including the first
+    line of the file as a boundary.
+
+    Parameters
+    ----------
+    cell_boundaries : list
+        A list of indices for the cell boundaries.
+
+    Returns
+    -------
+    list:
+        A list of unique and sorted indices for the cell boundaries.
+
+    """
+    cell_boundaries = list(cell_boundaries)
+
+    # Include beginning of file as a cell boundary
+    cell_boundaries.append(1)
+
+    return sorted(set(cell_boundaries))
 
 
 def _slimesend(string):

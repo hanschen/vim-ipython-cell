@@ -55,9 +55,20 @@ endfunction
 command! -nargs=0 IPythonCellExecuteCell call IPythonCellExecuteCell()
 
 function! IPythonCellExecuteCellJump()
-    exec s:python_command "ipython_cell.execute_cell(jump_to_next_cell=True)"
+    exec s:python_command "ipython_cell.execute_cell()"
+    exec s:python_command "ipython_cell.jump_next_cell()"
 endfunction
 command! -nargs=0 IPythonCellExecuteCellJump call IPythonCellExecuteCellJump()
+
+function! IPythonCellNextCell()
+    exec s:python_command "ipython_cell.jump_next_cell()"
+endfunction
+command! -nargs=0 IPythonCellNextCell call IPythonCellNextCell()
+
+function! IPythonCellPrevCell()
+    exec s:python_command "ipython_cell.jump_prev_cell()"
+endfunction
+command! -nargs=0 IPythonCellPrevCell call IPythonCellPrevCell()
 
 function! IPythonCellRun()
     exec s:python_command "ipython_cell.run()"
