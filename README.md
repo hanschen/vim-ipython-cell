@@ -28,7 +28,7 @@ Additionally, the cell execution feature requires [xclip] or [xsel] to be
 installed (preferring the former).
 
 ipython-cell depends on [vim-slime] to send the code to IPython (see
-Installation instructions below).
+[Installation](#installation) instructions below).
 
 [xclip]: https://github.com/astrand/xclip
 [xsel]: https://github.com/kfish/xsel
