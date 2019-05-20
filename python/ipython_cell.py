@@ -60,7 +60,7 @@ def close_all():
 
 
 def _copy_to_clipboard(string, prefer_program=None):
-    """Copy ``string`` to primary clipboard using xsel or xclip.
+    """Copy ``string`` to primary clipboard using xclip or xsel.
 
     Parameters
     ----------
@@ -71,8 +71,8 @@ def _copy_to_clipboard(string, prefer_program=None):
 
     """
     PROGRAMS = [
-        ["xsel", "-i", "--clipboard"],
         ["xclip", "-i", "-selection", "clipboard"],
+        ["xsel", "-i", "--clipboard"],
     ]
 
     for program in PROGRAMS:
@@ -88,7 +88,7 @@ def _copy_to_clipboard(string, prefer_program=None):
             break
 
     if not program_found:
-        _error("Could not find xsel or xclip executable")
+        _error("Could not find xclip or xsel executable")
         return
 
     byte = string.encode()
