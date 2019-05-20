@@ -298,11 +298,11 @@ autocmd FileType python nmap <buffer> ,x :IPythonCellClose<CR>
 
 ~~~
 
-Note that the mappings work only in normal mode. The extra
+Note that the mappings as defined here work only in normal mode (see
+`:help mapping` in Vim for more information). The extra
 `autocmd FileType python` and `<buffer>` parts are there just to ensure that
 the mapping are defined only for Python files. You can also move these
-mappings to `~/.vim/ftplugin/python.vim` and then drop all
-`autocmd FileType python`.
+mappings to `~/.vim/ftplugin/python.vim` and drop `autocmd FileType python`.
 
 If you come from the MATLAB world, you may want e.g. F5 to save and run the
 script regardless if you are in insert or normal mode:
