@@ -370,7 +370,7 @@ to use this plugin for other filetypes, they can easily do so.
 
 Because I feel more comfortable with Python and don't have the motivation to
 learn Vimscript for this plugin. If someone implements a pure Vimscript
-version, I would be happy to merge it.
+version, I would be happy to consider to merge it.
 
 
 Related plugins
