@@ -14,7 +14,7 @@ the data each time.
 Demo
 ----
 
-TODO
+![Demo animation](../assets/ipython-cell-demo.gif?raw=true)
 
 
 Requirements
