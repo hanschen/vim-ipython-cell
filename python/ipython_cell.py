@@ -28,7 +28,7 @@ def jump_next_cell():
 
 
 def jump_prev_cell():
-    """Move cursor to the start of the previous cell."""
+    """Move cursor to the start of the current or previous cell."""
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
     prev_cell_start = _get_prev_cell(current_row, cell_boundaries)
@@ -182,7 +182,7 @@ def _get_next_cell(current_row, cell_boundaries):
 
 
 def _get_prev_cell(current_row, cell_boundaries):
-    """Return start index of the previous cell.
+    """Return start index of the current or previous cell.
 
     If there is no previous cell, the current row is returned.
 
