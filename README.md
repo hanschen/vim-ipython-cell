@@ -39,8 +39,8 @@ information about how to install plugins.
 ### [vim-plug]
 
 ~~~vim
-Plug 'jpalardy/vim-slime' { 'for': 'python' }
-Plug 'hanschen/vim-ipython-cell' { 'for': 'python' }
+Plug 'jpalardy/vim-slime', { 'for': 'python' }
+Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 ~~~
 
 ### [Vundle]
@@ -53,8 +53,8 @@ Plugin 'hanschen/vim-ipython-cell'
 ### [NeoBundle]
 
 ~~~vim
-NeoBundle 'jpalardy/vim-slime' { 'on_ft': 'python' }
-NeoBundle 'hanschen/vim-ipython-cell' { 'on_ft': 'python' }
+NeoBundle 'jpalardy/vim-slime', { 'on_ft': 'python' }
+NeoBundle 'hanschen/vim-ipython-cell', { 'on_ft': 'python' }
 ~~~
 
 ### [Dein]
@@ -67,7 +67,7 @@ call dein#add('hanschen/vim-ipython-cell', { 'on_ft': 'python' })
 ### [Pathogen]
 
 ~~~sh
-cde ~/.vim/bundle
+cd ~/.vim/bundle
 git clone https://github.com/hanschen/vim-ipythoncell.git
 ~~~
 
