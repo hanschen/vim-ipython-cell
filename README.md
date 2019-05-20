@@ -309,7 +309,7 @@ script regardless if you are in insert or normal mode:
 
 ~~~vim
 " map <F5> to save and run script
-autocmd FileType python map <buffer> <F5> :w<CR>:IPythonCellRun<CR>
+autocmd FileType python nmap <buffer> <F5> :w<CR>:IPythonCellRun<CR>
 autocmd FileType python imap <buffer> <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
 ~~~
 
