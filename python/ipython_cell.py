@@ -184,6 +184,9 @@ def _get_next_cell(current_row, cell_boundaries):
 def _get_prev_cell(current_row, cell_boundaries):
     """Return start index of the current or previous cell.
 
+    If ``current_row`` is on the same line as the cell header, the previous
+    cell header is returned, otherwise the current cell header is returned.
+
     If there is no previous cell, the current row is returned.
 
     Parameters
