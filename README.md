@@ -8,7 +8,7 @@ code cells similar to Jupyter notebooks and MATLAB.
 Demo
 ----
 
-TODO
+![Demo animation](../assets/ipython-cell-demo.gif?raw=true)
 
 
 Requirements
