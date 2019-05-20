@@ -125,6 +125,14 @@ Clear IPython screen.
 
 Close all figure windows.
 
+    :IPythonCellPrevCell
+
+Jump to the previous cell header.
+
+    :IPythonCellNextCell
+
+Jump to the next cell header.
+
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
 

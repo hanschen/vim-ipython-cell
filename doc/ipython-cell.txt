@@ -50,6 +50,11 @@ COMMANDS                                               *ipython-cell-commands*
                                 command assumes that the `matplotlib.pyplot`
                                 module is imported as `plt` in IPython.
 
+:IPythonCellPrevCell                                    *:IPythonCellPrevCell*
+                                Jump to the previous cell header.
+
+:IPythonCellNextCell                                    *:IPythonCellNextCell*
+                                Jump to the next cell header.
 
 ==============================================================================
 CONFIGURATION                                     *ipython-cell-configuration*
