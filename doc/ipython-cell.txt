@@ -30,12 +30,13 @@ between code cells: >
     autocmd FileType python nmap <buffer> ]c :IPythonCellNextCell<CR>
 
 Code cells are by default defined by Vim marks (see `:help mark`). It is also
-possible to use special comments (referred to as tags) to mark the start of
-code cells by adding the following to your vimrc: >
+possible to use special text in the code (referred to as tags) to mark the
+start of code cells by adding the following to your vimrc: >
 
     let g:ipython_cell_delimit_cells_by = 'tags'
 
-In that case, any lines containing `##` are interpreted as cell boundaries.
+In that case, ipython-cell will by default interpret any lines containing `##`
+as cell headers.
 
 ==============================================================================
 COMMANDS                                               *ipython-cell-commands*
