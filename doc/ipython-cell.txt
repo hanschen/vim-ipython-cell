@@ -18,8 +18,8 @@ following to your .vimrc: >
 
 `<Leader>` is `\` (backspace) by default. The mappings above map `\r` to run
 the current script in IPython, `\c` to execute only the current code cell,
-`,C` to execute the code cell and jump to the next cell, `,l` to clear the
-IPython screen, and `,x` to close all Matplotlib figure windows.
+`\C` to execute the code cell and jump to the next cell, `\l` to clear the
+IPython screen, and `\x` to close all Matplotlib figure windows.
 
 Code cells are by default defined by Vim marks (see `:help mark`). It is also
 possible to use special comments (referred to as tags) to mark the start of
