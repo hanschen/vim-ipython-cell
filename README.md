@@ -101,6 +101,9 @@ following commands, which I recommend that you bind to key combinations that
 you like (see e.g.  [Example Vim Configuration](#example-vim-configuration)
 below).
 
+
+### Commands
+
     :IPythonCellExecuteCell
 
 Execute the current code cell in IPython.
