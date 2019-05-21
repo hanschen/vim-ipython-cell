@@ -178,11 +178,13 @@ d | total = numbers.sum()           | cell 5
 
 ~~~
 
-Note that code cells can contain indentations. IPython's `%paste` will
-automatically dedent the code before execution. However, if the code cell is
-defined within e.g. a `for` loop, the code cell *will not* iterate over the 
-loop. In the example above, executing cell 4 after cell 3 will print only `Odd`
-once, because IPython will execute the following code:
+Note that code cells can be defined inside statements such as `for` loops.
+IPython's `%paste` will automatically dedent the code before execution.
+However, if the code cell is defined inside e.g. a `for` loop, the code cell
+*will not* iterate over the loop.
+
+In the example above, executing cell 4 after cell 3 will print `Odd` only once
+because IPython will execute the following code:
 
 ~~~python
 for n in numbers:
@@ -200,9 +202,9 @@ else:
 
 ~~~
 
-for cell 4.
+for cell 4. The `for` statement is no longer included for cell 4.
 
-You must therefore be careful when defining code cells within statements.
+You must therefore be careful when defining code cells inside statements.
 
 
 ### Code cells defined using tags
