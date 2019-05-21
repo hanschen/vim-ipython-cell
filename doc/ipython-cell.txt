@@ -10,16 +10,16 @@ ipython-cell does not add any custom mappings. Instead, it is up to the user
 to define custom mappings for the commands below. For example, you can add the
 following to your .vimrc: >
 
-    autocmd FileType python nmap <buffer> ,r :IPythonCellRun<CR>
-    autocmd FileType python nmap <buffer> ,c :IPythonCellExecuteCell<CR>
-    autocmd FileType python nmap <buffer> ,C :IPythonCellExecuteCellJump<CR>
-    autocmd FileType python nmap <buffer> ,l :IPythonCellClear<CR>
-    autocmd FileType python nmap <buffer> ,x :IPythonCellClose<CR>
+    autocmd FileType python nmap <buffer> <Leader>r :IPythonCellRun<CR>
+    autocmd FileType python nmap <buffer> <Leader>c :IPythonCellExecuteCell<CR>
+    autocmd FileType python nmap <buffer> <Leader>C :IPythonCellExecuteCellJump<CR>
+    autocmd FileType python nmap <buffer> <Leader>l :IPythonCellClear<CR>
+    autocmd FileType python nmap <buffer> <Leader>x :IPythonCellClose<CR>
 
-This maps `,r` (comma, r) to run the current script in IPython, `,c` to
-execute only the current code cell, `,C` to execute the code cell and jump to
-the next cell, `,l` to clear the IPython screen, and `,x` to close all
-Matplotlib figure windows.
+`<Leader>` is `\` (backspace) by default. The mappings above map `\r` to run
+the current script in IPython, `\c` to execute only the current code cell,
+`,C` to execute the code cell and jump to the next cell, `,l` to clear the
+IPython screen, and `,x` to close all Matplotlib figure windows.
 
 Code cells are by default defined by Vim marks (see `:help mark`). It is also
 possible to use special comments (referred to as tags) to mark the start of

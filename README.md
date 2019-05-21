@@ -289,23 +289,25 @@ let g:slime_dont_ask_default = 1
 g:ipython_cell_delimit_cells_by = 'tags'
 g:ipython_cell_tag = '# <cell>'
 
-" map ,r to run script
-autocmd FileType python nmap <buffer> ,r :IPythonCellRun<CR>
+" Keyboard mappings. <Leader> is \ (backslash) by default
 
-" map ,R to run script and time the execution
-autocmd FileType python nmap <buffer> ,R :IPythonCellRunTime<CR>
+" map <Leader>r to run script
+autocmd FileType python nmap <buffer> <Leader>r :IPythonCellRun<CR>
 
-" map ,c to execute the current cell
-autocmd FileType python nmap <buffer> ,c :IPythonCellExecuteCell<CR>
+" map <Leader>R to run script and time the execution
+autocmd FileType python nmap <buffer> <Leader>R :IPythonCellRunTime<CR>
 
-" map ,C to execute the current cell and jump to the next cell
-autocmd FileType python nmap <buffer> ,C :IPythonCellExecuteCellJump<CR>
+" map <Leader>c to execute the current cell
+autocmd FileType python nmap <buffer> <Leader>c :IPythonCellExecuteCell<CR>
 
-" map ,l to clear IPython screen
-autocmd FileType python nmap <buffer> ,l :IPythonCellClear<CR>
+" map <Leader>C to execute the current cell and jump to the next cell
+autocmd FileType python nmap <buffer> <Leader>C :IPythonCellExecuteCellJump<CR>
 
-" map ,x to close all Matplotlib figure windows
-autocmd FileType python nmap <buffer> ,x :IPythonCellClose<CR>
+" map <Leader>l to clear IPython screen
+autocmd FileType python nmap <buffer> <Leader>l :IPythonCellClear<CR>
+
+" map <Leader>x to close all Matplotlib figure windows
+autocmd FileType python nmap <buffer> <Leader>x :IPythonCellClose<CR>
 
 " map [c and ]c to jump to the previous and next cell header
 autocmd FileType python nmap <buffer> [c :IPythonCellPrevCell<CR>
