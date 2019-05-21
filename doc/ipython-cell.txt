@@ -19,8 +19,8 @@ following to your .vimrc: >
 
 `<Leader>` is `\` (backslash) by default. The mappings above map `\r` to run
 the current script in IPython, `\R` to run and time the script, `\c` to
-execute only the current code cell, `\C` to execute the code cell and jump to
-the next cell, `\l` to clear the IPython screen, and `\x` to close all
+execute only the current code cell, `\C` to execute the current code cell and
+jump to the next cell, `\l` to clear the IPython screen, and `\x` to close all
 Matplotlib figure windows.
 
 You may also want to add something like the following to easily navigate
