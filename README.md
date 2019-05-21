@@ -239,7 +239,7 @@ print("Done.")                     _|
 
 ~~~
 
-See note in the previous section about defining code cells within statements
+See note in the previous section about defining code cells inside statements
 (such as cell 4 inside the `for` loop in the example above).
 
 
