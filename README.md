@@ -117,19 +117,19 @@ Execute the current code cell in IPython.
 
 Execute the current code cell in IPython and jump to the next cell.
 
-    :IPythonCellExecuteRun
+    :IPythonCellRun
 
 Run the whole script in IPython.
 
-    :IPythonCellExecuteRunTime
+    :IPythonCellRunTime
 
 Run the whole script in IPython and time the execution.
 
-    :IPythonCellExecuteClear
+    :IPythonCellClear
 
 Clear IPython screen.
 
-    :IPythonCellExecuteClose
+    :IPythonCellClose
 
 Close all figure windows.
 
