@@ -32,7 +32,7 @@ between code cells: >
     autocmd FileType python nmap <buffer> [c :IPythonCellPrevCell<CR>
     autocmd FileType python nmap <buffer> ]c :IPythonCellNextCell<CR>
 
-Code cells are by default defined by Vim marks (see `:help mark`). It is also
+Code cells are by default defined by Vim marks (see |mark|). It is also
 possible to use special text in the code (referred to as tags) to mark the
 start of code cells by adding the following to your vimrc: >
 
@@ -114,7 +114,7 @@ A: Use the vim-signature plugin:
 Q: How to send only the current line or selected lines to IPython? ~
 A: Use the features provided by vim-slime. The default mapping `C-c C-c` (hold
 down Ctrl and tap the C key twice) will send the current paragraph or the
-selected lines to IPython. See `:help slime` for more information.
+selected lines to IPython. See |slime| for more information.
 
 Q: Why do I get "name 'plt' is not defined" when I try to close figures? ~
 A: ipython-cell assumes that you have imported `matplotlib.pyplot` as `plt` in
