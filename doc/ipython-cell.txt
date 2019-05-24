@@ -95,7 +95,7 @@ g:ipython_cell_tag                  What kind of comment tag to use to mark
 ==============================================================================
 FAQ                                                         *ipython-cell-faq*
 
-Q: Should I use `'marks'` or `'tags'` to define cells? ~
+Q: Should I use 'marks' or 'tags' to define cells? ~
 A: This depends on personal preference. I used to use `'tags'` because they
 are similar to MATLAB's `%%` to define cells. `'tags'` are nice if you want
 the cells to be saved together with your files, and may be easier to start
