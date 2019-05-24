@@ -183,7 +183,7 @@ IPython's `%paste` will automatically dedent the code before execution.
 However, if the code cell is defined inside e.g. a `for` loop, the code cell
 *will not* iterate over the loop.
 
-In the example above, executing cell 4 after cell 3 will print `Odd` only once
+In the example above, executing cell 4 after cell 3 will only print `Odd` once
 because IPython will execute the following code:
 
 ~~~python
