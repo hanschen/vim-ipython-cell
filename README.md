@@ -4,7 +4,7 @@ ipython-cell
 Seamlessly run Python code from Vim in IPython, including executing individual
 code cells similar to Jupyter notebooks and MATLAB.
 
-This plugin is especially suited for data exploration and visualization using
+ipython-cell is especially suited for data exploration and visualization using
 Python. You could for example define a code cell that loads your input data,
 and another code cell to visualize the data. This plugin then allows you to
 change and re-run the visualization part of your code without having to reload
