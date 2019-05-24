@@ -348,6 +348,16 @@ autocmd FileType python imap <buffer> <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
 FAQ
 ---
 
+> Should I use `'marks'` or `'tags'` to define cells?
+
+This depends on personal preference. I used to use `'tags'` because they are
+similar to MATLAB's `%%` to define cells. `'tags'` are nice if you want the
+cells to be saved together with your files, and may be easier to start with.
+I switched to `'marks'` after discovering that I can show the marks in the
+left-most column. I find `'marks'` to be more flexible because you add and
+change cells without changing the code, which is nice when your code is under
+version control.
+
 > How do I show the marks in the left-most column?
 
 Use the vim-signature plugin: https://github.com/kshenoy/vim-signature

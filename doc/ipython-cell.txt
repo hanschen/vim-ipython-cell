@@ -95,6 +95,15 @@ g:ipython_cell_tag                  What kind of comment tag to use to mark
 ==============================================================================
 FAQ                                                         *ipython-cell-faq*
 
+Q: Should I use `'marks'` or `'tags'` to define cells? ~
+A: This depends on personal preference. I used to use `'tags'` because they
+are similar to MATLAB's `%%` to define cells. `'tags'` are nice if you want
+the cells to be saved together with your files, and may be easier to start
+with. I switched to `'marks'` after discovering that I can show the marks in
+the left-most column. I find `'marks'` to be more flexible because you add and
+change cells without changing the code, which is nice when your code is under
+version control.
+
 Q: How do I show the marks in the left-most column? ~
 A: Use the vim-signature plugin:
     https://github.com/kshenoy/vim-signature
