@@ -323,6 +323,10 @@ autocmd FileType python nmap <buffer> <Leader>x :IPythonCellClose<CR>
 autocmd FileType python nmap <buffer> [c :IPythonCellPrevCell<CR>
 autocmd FileType python nmap <buffer> ]c :IPythonCellNextCell<CR>
 
+" map <Leader>h to send the current line or current selection to IPython
+autocmd FileType python nmap <buffer> <Leader>h <Plug>SlimeLineSend
+autocmd FileType python xmap <buffer> <Leader>h <Plug>SlimeRegionSend
+
 ~~~
 
 Note that the mappings as defined here work only in normal mode (see
