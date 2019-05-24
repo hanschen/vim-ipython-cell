@@ -354,9 +354,12 @@ Use the vim-signature plugin: https://github.com/kshenoy/vim-signature
 
 > How to send only the current line or selected lines to IPython?
 
-Use the features provided by vim-slime. The default mapping `C-c C-c` (hold
-down Ctrl and tap the C key twice) will send the current paragraph or the
-selected lines to IPython. See `:help slime` for more information.
+Use the features provided by vim-slime, see the
+[Example Vim Configuration](#example-vim-configuration) for an example.
+The default mapping `C-c C-c` (hold down Ctrl and tap the C key twice) will
+send the current paragraph or the selected lines to IPython. See `:help slime`
+for more information, in particular the documentation about
+`<Plug>SlimeRegionSend` and `<Plug>SlimeLineSend`.
 
 > Why do I get "name 'plt' is not defined" when I try to close figures?
 
