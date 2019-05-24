@@ -248,16 +248,18 @@ Configuration
 
     g:ipython_cell_delimit_cells_by
 
-Specify if cells should be delimited by `marks` or `tags`. Default: `marks`
+Specify if cells should be delimited by `'marks'` or `'tags'`.
+Default: `'marks'`
 
     g:ipython_cell_tag
 
-If cells are delimited by tags, specify the format of the tags. Default: `##`
+If cells are delimited by tags, specify the format of the tags.
+Default: `'##'`
 
     g:ipython_cell_valid_marks
 
 If cells are delimited by marks, specify which marks to use.
-Default: `abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`
+Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`
 
 
 Example Vim configuration
