@@ -92,19 +92,19 @@ git clone https://github.com/hanschen/vim-ipython-cell.git
 Usage
 -----
 
-ipython-cell sends code from Vim to IPython running in a GNU screen / tmux /
-whimrepl / ConEmu session / NeoVim Terminal / Vim Terminal using [vim-slime].
+ipython-cell sends code from Vim to IPython using [vim-slime]. For this to
+work, IPython must be running in a terminal multiplexer like GNU Screen or tmux
+or in a Vim or Neovim terminal. I personally use tmux, but you will find
+`screen` installed on most *nix systems.
+
 It is recommended that you familiarize yourself with [vim-slime] first before
-using ipython-cell. Once you grasp the basics of vim-slime, using ipython-cell
-will be a breeze.
+using ipython-cell. Once you understand vim-slime, using ipython-cell will be a
+breeze.
 
-(I personally prefer tmux, but you will find screen installed on most *nix
-systems.)
-
-The plugin does not define any key mappings by default, but comes with the
-following commands, which I recommend that you bind to key combinations that
-you like (see e.g.  [Example Vim Configuration](#example-vim-configuration)
-below).
+ipython-cell does not define any key mappings by default, but comes with the
+commands listed below, which I recommend that you bind to key combinations of
+your likings. The [Example Vim Configuration](#example-vim-configuration) shows
+some examples of how this can be done.
 
 
 ### Commands
