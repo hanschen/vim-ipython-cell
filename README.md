@@ -233,8 +233,8 @@ for n in numbers:                   |
                                    _|
 ## Print sum                        | cell 5
                                     |
-sum = numbers.sum()                 |
-print("Sum: {}".format(sum))        |
+total = numbers.sum()               |
+print("Sum: {}".format(total))      |
 print("Done.")                     _|
 
 ~~~
