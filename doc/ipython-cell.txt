@@ -6,6 +6,8 @@ including individual code cells similar to Jupyter notebooks and MATLAB.
 ==============================================================================
 USAGE                                                     *ipython-cell-usage*
 
+Before using ipython-cell, familiarize yourself with the |slime| plugin.
+
 ipython-cell does not add any custom mappings. Instead, it is up to the user
 to define custom mappings for the commands below. For example, you can add the
 following to your .vimrc: >
