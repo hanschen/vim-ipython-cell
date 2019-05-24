@@ -1,4 +1,5 @@
 *ipython-cell.txt*  run code cells in IPython
+*ipython-cell*
 
 This plugin allows you to easily run Python code from Vim in IPython,
 including individual code cells similar to Jupyter notebooks and MATLAB.
