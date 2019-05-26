@@ -301,4 +301,8 @@ def _get_sorted_unique_cell_boundaries(cell_boundaries):
 
 def _slimesend(string):
     """Send ``string`` using vim-slime."""
-    vim.command('SlimeSend1 {}'.format(string))
+    try:
+        vim.command('SlimeSend1 {}'.format(string))
+    except vim.error:
+        _error("SlimeSend1 command not found, make sure vim-slime is "
+               "installed")
