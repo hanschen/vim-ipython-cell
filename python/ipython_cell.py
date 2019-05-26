@@ -13,6 +13,10 @@ def execute_cell():
     cell_start, cell_end = _get_current_cell_boundaries(current_row,
                                                         cell_boundaries)
 
+    # Required for Python 2
+    if cell_end is None:
+        cell_end = len(vim.current.buffer)
+
     cell = "\n".join(vim.current.buffer[cell_start-1:cell_end])
     _copy_to_clipboard(cell)
     _slimesend("%paste -q")
@@ -67,6 +71,12 @@ def _copy_to_clipboard(string, prefer_program=None):
         ["xclip", "-i", "-selection", "clipboard"],
         ["xsel", "-i", "--clipboard"],
     ]
+
+    # Python 2 compatibility
+    try:
+        FileNotFoundError
+    except NameError:
+        FileNotFoundError = OSError
 
     for program in PROGRAMS:
         if prefer_program is not None and program[0] != prefer_program:
