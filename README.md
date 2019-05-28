@@ -106,6 +106,9 @@ commands listed below, which I recommend that you bind to key combinations of
 your likings. The [Example Vim Configuration](#example-vim-configuration) shows
 some examples of how this can be done.
 
+Note that the cell execution feature copies your code to the system clipboard.
+You may want to avoid using this feature if your code contains sensitive data.
+
 
 ### Commands
 

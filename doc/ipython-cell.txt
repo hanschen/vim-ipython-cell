@@ -41,6 +41,9 @@ start of code cells by adding the following to your vimrc: >
 In that case, ipython-cell will by default interpret any lines containing `##`
 as cell headers.
 
+Note that the cell execution feature copies your code to the system clipboard.
+You may want to avoid using this feature if your code contains sensitive data.
+
 ==============================================================================
 COMMANDS                                               *ipython-cell-commands*
 
