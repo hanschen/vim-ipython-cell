@@ -93,8 +93,8 @@ Usage
 -----
 
 ipython-cell sends code from Vim to IPython using [vim-slime]. For this to
-work, IPython must be running in a terminal multiplexer like GNU Screen or tmux
-or in a Vim or Neovim terminal. I personally use tmux, but you will find
+work, IPython must be running in a terminal multiplexer like GNU Screen or
+tmux, or in a Vim or Neovim terminal. I personally use tmux, but you will find
 `screen` installed on most *nix systems.
 
 It is recommended that you familiarize yourself with [vim-slime] first before
