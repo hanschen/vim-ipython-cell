@@ -6,8 +6,8 @@ code cells similar to Jupyter notebooks and MATLAB.
 
 ipython-cell is especially suited for data exploration and visualization using
 Python. You could for example define a code cell that loads your input data,
-and another code cell to visualize the data. This plugin then allows you to
-change and re-run the visualization part of your code without having to reload
+and another code cell to visualize the data. This plugin allows you to change
+and re-run the visualization part of your code without having to reload
 the data each time.
 
 
