@@ -300,9 +300,8 @@ let g:slime_dont_ask_default = 1
 "------------------------------------------------------------------------------
 " ipython-cell configuration
 "------------------------------------------------------------------------------
-" Use '# <cell>' to define cells instead of using marks
+" Use '##' to define cells instead of using marks
 let g:ipython_cell_delimit_cells_by = 'tags'
-let g:ipython_cell_tag = '# <cell>'
 
 " Keyboard mappings. <Leader> is \ (backslash) by default
 
