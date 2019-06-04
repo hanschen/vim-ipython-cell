@@ -306,30 +306,30 @@ let g:ipython_cell_delimit_cells_by = 'tags'
 " Keyboard mappings. <Leader> is \ (backslash) by default
 
 " map <Leader>r to run script
-autocmd FileType python nmap <buffer> <Leader>r :IPythonCellRun<CR>
+autocmd FileType python nnoremap <buffer> <Leader>r :IPythonCellRun<CR>
 
 " map <Leader>R to run script and time the execution
-autocmd FileType python nmap <buffer> <Leader>R :IPythonCellRunTime<CR>
+autocmd FileType python nnoremap <buffer> <Leader>R :IPythonCellRunTime<CR>
 
 " map <Leader>c to execute the current cell
-autocmd FileType python nmap <buffer> <Leader>c :IPythonCellExecuteCell<CR>
+autocmd FileType python nnoremap <buffer> <Leader>c :IPythonCellExecuteCell<CR>
 
 " map <Leader>C to execute the current cell and jump to the next cell
-autocmd FileType python nmap <buffer> <Leader>C :IPythonCellExecuteCellJump<CR>
+autocmd FileType python nnoremap <buffer> <Leader>C :IPythonCellExecuteCellJump<CR>
 
 " map <Leader>l to clear IPython screen
-autocmd FileType python nmap <buffer> <Leader>l :IPythonCellClear<CR>
+autocmd FileType python nnoremap <buffer> <Leader>l :IPythonCellClear<CR>
 
 " map <Leader>x to close all Matplotlib figure windows
-autocmd FileType python nmap <buffer> <Leader>x :IPythonCellClose<CR>
+autocmd FileType python nnoremap <buffer> <Leader>x :IPythonCellClose<CR>
 
 " map [c and ]c to jump to the previous and next cell header
-autocmd FileType python nmap <buffer> [c :IPythonCellPrevCell<CR>
-autocmd FileType python nmap <buffer> ]c :IPythonCellNextCell<CR>
+autocmd FileType python nnoremap <buffer> [c :IPythonCellPrevCell<CR>
+autocmd FileType python nnoremap <buffer> ]c :IPythonCellNextCell<CR>
 
 " map <Leader>h to send the current line or current selection to IPython
-autocmd FileType python nmap <buffer> <Leader>h <Plug>SlimeLineSend
-autocmd FileType python xmap <buffer> <Leader>h <Plug>SlimeRegionSend
+autocmd FileType python nnoremap <buffer> <Leader>h <Plug>SlimeLineSend
+autocmd FileType python xnoremap <buffer> <Leader>h <Plug>SlimeRegionSend
 
 ~~~
 
@@ -345,14 +345,14 @@ current cell, and F7 to execute the current cell and jump to the next cell:
 
 ~~~vim
 " map <F5> to save and run script
-autocmd FileType python nmap <buffer> <F5> :w<CR>:IPythonCellRun<CR>
-autocmd FileType python imap <buffer> <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
+autocmd FileType python nnoremap <buffer> <F5> :w<CR>:IPythonCellRun<CR>
+autocmd FileType python inoremap <buffer> <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
 
-autocmd FileType python nmap <buffer> <F6> :IPythonCellExecuteCell<CR>
-autocmd FileType python imap <buffer> <F6> <C-o>:IPythonCellExecuteCell<CR>
+autocmd FileType python nnoremap <buffer> <F6> :IPythonCellExecuteCell<CR>
+autocmd FileType python inoremap <buffer> <F6> <C-o>:IPythonCellExecuteCell<CR>
 
-autocmd FileType python nmap <buffer> <F7> :IPythonCellExecuteCellJump<CR>
-autocmd FileType python imap <buffer> <F7> <C-o>:IPythonCellExecuteCellJump<CR>
+autocmd FileType python nnoremap <buffer> <F7> :IPythonCellExecuteCellJump<CR>
+autocmd FileType python inoremap <buffer> <F7> <C-o>:IPythonCellExecuteCellJump<CR>
 ~~~
 
 
@@ -389,7 +389,7 @@ IPython. If you prefer to import `matplotlib.pyplot` differently, you can
 achieve the same thing using vim-slime, for example by adding the following to
 your .vimrc:
 
-    autocmd FileType python nmap <buffer> <Leader>x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
+    autocmd FileType python nnoremap <buffer> <Leader>x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
 
 > How can I send other commands to IPython, e.g. '%who'?
 
