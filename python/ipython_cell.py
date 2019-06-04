@@ -104,7 +104,7 @@ def _error(*args, **kwargs):
 
 
 def _get_cell_boundaries():
-    """Return a list of row indices for all cell boundaries."""
+    """Return a list of rows (1-indexed) for all cell boundaries."""
     buffer = vim.current.buffer
     delimiter = vim.eval('g:ipython_cell_delimit_cells_by').strip()
 
@@ -123,22 +123,21 @@ def _get_cell_boundaries():
 
 
 def _get_current_cell_boundaries(current_row, cell_boundaries):
-    """Return the start and end indices for the current cell and the start
-    index for the next cell.
+    """Return the start and end row numbers (1-indexed) for the current cell.
 
     Parameters
     ----------
     current_row : int
-        Index of the current row.
+        Current row number.
     cell_boundaries : list
-        A list of indices for the cell boundaries.
+        A list of row numbers for the cell boundaries.
 
     Returns
     -------
     int:
-        Start index for the current cell.
+        Start row number for the current cell.
     int:
-        End index for the current cell.
+        End row number for the current cell.
 
     """
     cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
@@ -160,21 +159,21 @@ def _get_current_cell_boundaries(current_row, cell_boundaries):
 
 
 def _get_next_cell(current_row, cell_boundaries):
-    """Return start index of the next cell.
+    """Return start row number of the next cell.
 
-    If there is no next cell, the current row is returned.
+    If there is no next cell, the current row number is returned.
 
     Parameters
     ----------
     current_row : int
-        Index of the current row.
+        Current row number.
     cell_boundaries : list
-        A list of indices for the cell boundaries.
+        A list of row numbers for the cell boundaries.
 
     Returns
     -------
     int:
-        Start index for the next cell.
+        Start row number for the next cell.
 
     """
     cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
@@ -192,24 +191,24 @@ def _get_next_cell(current_row, cell_boundaries):
 
 
 def _get_prev_cell(current_row, cell_boundaries):
-    """Return start index of the current or previous cell.
+    """Return start row number of the current or previous cell.
 
-    If ``current_row`` is on the same line as the cell header, the previous
-    cell header is returned, otherwise the current cell header is returned.
+    If ``current_row`` is a cell header, the previous cell header is returned,
+    otherwise the current cell header is returned.
 
-    If there is no previous cell, the current row is returned.
+    If there is no previous cell, the current row number is returned.
 
     Parameters
     ----------
     current_row : int
-        Index of the current row.
+        Current row number.
     cell_boundaries : list
-        A list of indices for the cell boundaries.
+        A list of row numbers for the cell boundaries.
 
     Returns
     -------
     int:
-        Start index for the previous cell.
+        Start row number for the current or previous cell.
 
     """
     cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
@@ -246,13 +245,13 @@ def _get_rows_with_tag(buffer, tag):
     rows_containing_tag = []
     for i, line in enumerate(buffer):
         if tag in line:
-            rows_containing_tag.append(i + 1)  # lines are counted from 1
+            rows_containing_tag.append(i + 1)  # rows are counted from 1
 
     return rows_containing_tag
 
 
 def _get_rows_with_marks(buffer, valid_marks):
-    """Return a list of row indices for lines containing a mark.
+    """Return a list of row numbers for lines containing a mark.
 
     Parameters
     ----------
@@ -264,7 +263,7 @@ def _get_rows_with_marks(buffer, valid_marks):
     Returns
     -------
     list:
-        List of row indices.
+        List of row numbers.
 
     """
     rows_containing_marks = []
@@ -283,12 +282,12 @@ def _get_sorted_unique_cell_boundaries(cell_boundaries):
     Parameters
     ----------
     cell_boundaries : list
-        A list of indices for the cell boundaries.
+        A list of row numbers for the cell boundaries.
 
     Returns
     -------
     list:
-        A list of unique and sorted indices for the cell boundaries.
+        A list of unique and sorted row numbers for the cell boundaries.
 
     """
     cell_boundaries = list(cell_boundaries)
