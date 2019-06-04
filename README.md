@@ -348,9 +348,11 @@ current cell, and F7 to execute the current cell and jump to the next cell:
 autocmd FileType python nnoremap <buffer> <F5> :w<CR>:IPythonCellRun<CR>
 autocmd FileType python inoremap <buffer> <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
 
+" map <F6> to evaluate current cell without saving
 autocmd FileType python nnoremap <buffer> <F6> :IPythonCellExecuteCell<CR>
 autocmd FileType python inoremap <buffer> <F6> <C-o>:IPythonCellExecuteCell<CR>
 
+" map <F7> to evaluate current cell and jump to next cell without saving
 autocmd FileType python nnoremap <buffer> <F7> :IPythonCellExecuteCellJump<CR>
 autocmd FileType python inoremap <buffer> <F7> <C-o>:IPythonCellExecuteCellJump<CR>
 ~~~
