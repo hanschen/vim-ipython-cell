@@ -119,7 +119,10 @@ def _get_cell_boundaries():
                .format(delimiter))
         return
 
-    return cell_boundaries
+    # Include beginning of file as a cell boundary
+    cell_boundaries.append(1)
+
+    return sorted(set(cell_boundaries))
 
 
 def _get_current_cell_boundaries(current_row, cell_boundaries):
@@ -140,8 +143,6 @@ def _get_current_cell_boundaries(current_row, cell_boundaries):
         End row number for the current cell.
 
     """
-    cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
-
     next_cell_start = None
     for boundary in cell_boundaries:
         if boundary <= current_row:
@@ -176,8 +177,6 @@ def _get_next_cell(current_row, cell_boundaries):
         Start row number for the next cell.
 
     """
-    cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
-
     next_cell_start = None
     for boundary in cell_boundaries:
         if boundary > current_row:
@@ -211,8 +210,6 @@ def _get_prev_cell(current_row, cell_boundaries):
         Start row number for the current or previous cell.
 
     """
-    cell_boundaries = _get_sorted_unique_cell_boundaries(cell_boundaries)
-
     prev_cell_start = None
     for boundary in cell_boundaries:
         if boundary < current_row:
@@ -273,29 +270,6 @@ def _get_rows_with_marks(buffer, valid_marks):
             rows_containing_marks.append(mark_loc[0])
 
     return rows_containing_marks
-
-
-def _get_sorted_unique_cell_boundaries(cell_boundaries):
-    """Return a list of unique and sorted cell boundaries, including the first
-    line of the file as a boundary.
-
-    Parameters
-    ----------
-    cell_boundaries : list
-        A list of row numbers for the cell boundaries.
-
-    Returns
-    -------
-    list:
-        A list of unique and sorted row numbers for the cell boundaries.
-
-    """
-    cell_boundaries = list(cell_boundaries)
-
-    # Include beginning of file as a cell boundary
-    cell_boundaries.append(1)
-
-    return sorted(set(cell_boundaries))
 
 
 def _slimesend(string):
