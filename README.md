@@ -340,12 +340,19 @@ the mapping are defined only for Python files. You can also move these
 mappings to `~/.vim/ftplugin/python.vim` and drop `autocmd FileType python`.
 
 If you come from the MATLAB world, you may want e.g. F5 to save and run the
-script regardless if you are in insert or normal mode:
+script regardless if you are in insert or normal mode, F6 to execute the
+current cell, and F7 to execute the current cell and jump to the next cell:
 
 ~~~vim
 " map <F5> to save and run script
 autocmd FileType python nmap <buffer> <F5> :w<CR>:IPythonCellRun<CR>
 autocmd FileType python imap <buffer> <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
+
+autocmd FileType python nmap <buffer> <F6> :IPythonCellExecuteCell<CR>
+autocmd FileType python imap <buffer> <F6> <C-o>:IPythonCellExecuteCell<CR>
+
+autocmd FileType python nmap <buffer> <F7> :IPythonCellExecuteCellJump<CR>
+autocmd FileType python imap <buffer> <F7> <C-o>:IPythonCellExecuteCellJump<CR>
 ~~~
 
 
