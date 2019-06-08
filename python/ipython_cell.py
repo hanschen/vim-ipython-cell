@@ -14,14 +14,15 @@ def execute_cell():
     """Execute code within cell."""
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
-    cell_start, cell_end = _get_current_cell_boundaries(current_row,
-                                                        cell_boundaries)
+    start_row, end_row = _get_current_cell_boundaries(current_row,
+                                                      cell_boundaries)
 
     # Required for Python 2
-    if cell_end is None:
-        cell_end = len(vim.current.buffer)
+    if end_row is None:
+        end_row = len(vim.current.buffer)
 
-    cell = "\n".join(vim.current.buffer[cell_start-1:cell_end])
+    # start_row and end_row are 1-indexed, need to subtract 1
+    cell = "\n".join(vim.current.buffer[start_row-1:end_row])
     _copy_to_clipboard(cell)
     _slimesend("%paste -q")
 
@@ -30,18 +31,18 @@ def jump_next_cell():
     """Move cursor to the start of the next cell."""
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
-    next_cell_start = _get_next_cell(current_row, cell_boundaries)
-    if next_cell_start != current_row:
-        vim.current.window.cursor = (next_cell_start, 0)
+    next_cell_row = _get_next_cell(current_row, cell_boundaries)
+    if next_cell_row != current_row:
+        vim.current.window.cursor = (next_cell_row, 0)
 
 
 def jump_prev_cell():
     """Move cursor to the start of the current or previous cell."""
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
-    prev_cell_start = _get_prev_cell(current_row, cell_boundaries)
-    if prev_cell_start != current_row:
-        vim.current.window.cursor = (prev_cell_start, 0)
+    prev_cell_row = _get_prev_cell(current_row, cell_boundaries)
+    if prev_cell_row != current_row:
+        vim.current.window.cursor = (prev_cell_row, 0)
 
 
 def run(*args):
@@ -147,20 +148,20 @@ def _get_current_cell_boundaries(current_row, cell_boundaries):
         End row number for the current cell.
 
     """
-    next_cell_start = None
+    next_cell_row = None
     for boundary in cell_boundaries:
         if boundary <= current_row:
-            cell_start = boundary
+            start_row = boundary
         else:
-            next_cell_start = boundary
+            next_cell_row = boundary
             break
 
-    if next_cell_start is None:
-        cell_end = None  # end of file
+    if next_cell_row is None:
+        end_row = None  # end of file
     else:
-        cell_end = next_cell_start - 1
+        end_row = next_cell_row - 1
 
-    return cell_start, cell_end
+    return start_row, end_row
 
 
 def _get_next_cell(current_row, cell_boundaries):
@@ -181,16 +182,16 @@ def _get_next_cell(current_row, cell_boundaries):
         Start row number for the next cell.
 
     """
-    next_cell_start = None
+    next_cell_row = None
     for boundary in cell_boundaries:
         if boundary > current_row:
-            next_cell_start = boundary
+            next_cell_row = boundary
             break
 
-    if next_cell_start is None:
+    if next_cell_row is None:
         return current_row
     else:
-        return next_cell_start
+        return next_cell_row
 
 
 def _get_prev_cell(current_row, cell_boundaries):
@@ -214,17 +215,17 @@ def _get_prev_cell(current_row, cell_boundaries):
         Start row number for the current or previous cell.
 
     """
-    prev_cell_start = None
+    prev_cell_row = None
     for boundary in cell_boundaries:
         if boundary < current_row:
-            prev_cell_start = boundary
+            prev_cell_row = boundary
         else:
             break
 
-    if prev_cell_start is None:
+    if prev_cell_row is None:
         return current_row
     else:
-        return prev_cell_start
+        return prev_cell_row
 
 
 def _get_rows_with_tag(buffer, tag):
