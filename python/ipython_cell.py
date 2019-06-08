@@ -3,7 +3,11 @@ from __future__ import print_function
 from subprocess import Popen, PIPE
 import sys
 
-import vim
+try:
+    import vim
+except ImportError:
+    print("warning: importing ipython_cell outside vim, some functions will "
+          "not work")
 
 
 def execute_cell():
