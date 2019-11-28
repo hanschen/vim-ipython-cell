@@ -144,6 +144,14 @@ Jump to the previous cell header.
 
 Jump to the next cell header.
 
+    :IPythonCellPrevCommand
+
+Run previous command.
+
+    :IPythonCellRestart
+
+Restart IPython.
+
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
 
@@ -330,6 +338,12 @@ autocmd FileType python nnoremap <buffer> ]c :IPythonCellNextCell<CR>
 " map <Leader>h to send the current line or current selection to IPython
 autocmd FileType python nnoremap <buffer> <Leader>h <Plug>SlimeLineSend
 autocmd FileType python xnoremap <buffer> <Leader>h <Plug>SlimeRegionSend
+
+" map <Leader>p to run the previous command
+autocmd FileType python nnoremap <buffer> <Leader>p :IPythonCellPrevCommand<CR>
+
+" map <Leader>q to restart ipython
+autocmd FileType python nnoremap <buffer> <Leader>q :IPythonCellRestart<CR>
 
 ~~~
 

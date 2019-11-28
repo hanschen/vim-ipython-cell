@@ -45,6 +45,17 @@ def jump_prev_cell():
         vim.current.window.cursor = (prev_cell_row, 0)
 
 
+def previous_command():
+    """Run previous command."""
+    _slimesend("\x10")
+
+
+def restart_ipython():
+    """Quit ipython and start it again."""
+    _slimesend("exit")
+    _slimesend("\x10")
+
+
 def run(*args):
     """Run script."""
     opts = " ".join(args)

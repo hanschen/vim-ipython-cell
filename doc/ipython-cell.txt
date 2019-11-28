@@ -19,6 +19,8 @@ following to your .vimrc: >
     autocmd FileType python nmap <buffer> <Leader>C :IPythonCellExecuteCellJump<CR>
     autocmd FileType python nmap <buffer> <Leader>l :IPythonCellClear<CR>
     autocmd FileType python nmap <buffer> <Leader>x :IPythonCellClose<CR>
+    autocmd FileType python nmap <buffer> <Leader>p :IPythonCellPrevCommand<CR>
+    autocmd FileType python nmap <buffer> <Leader>q :IPythonCellRestart<CR>
 
 `<Leader>` is `\` (backslash) by default. The mappings above map `\r` to run
 the current script in IPython, `\R` to run and time the script, `\c` to
@@ -74,6 +76,12 @@ COMMANDS                                               *ipython-cell-commands*
 
 :IPythonCellNextCell                                    *:IPythonCellNextCell*
                                 Jump to the next cell header.
+
+:IPythonCellPrevCommand                              *:IPythonCellPrevCommand*
+                                Run previous command.
+
+:IPythonCellRestart                                      *:IPythonCellRestart*
+                                Restart IPython.
 
 ==============================================================================
 CONFIGURATION                                     *ipython-cell-configuration*
