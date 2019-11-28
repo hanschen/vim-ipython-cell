@@ -413,6 +413,12 @@ You can easily send arbitary commands to IPython using the `:SlimeSend1`
 command provided by vim-slime, e.g. `:SlimeSend1 %who`, and map these commands
 to key combinations.
 
+> Why does this plugin not work inside a virtual environment?
+
+If you use Neovim, make sure you have the [neovim] Python package installed.
+
+[neovim]: https://pypi.org/project/neovim/
+
 > Why isn't this plugin specific to Python by default? In other words, why do
 > I have to add all this extra stuff to make this plugin Python-specific?
 
