@@ -286,8 +286,8 @@ endif
 
 " Load plugins using vim-plug
 call plug#begin('~/.vim/plugged')
-Plug 'jpalardy/vim-slime' { 'for': 'python' }
-Plug 'hanschen/vim-ipython-cell' { 'for': 'python' }
+Plug 'jpalardy/vim-slime', { 'for': 'python' }
+Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 call plug#end()
 
 "------------------------------------------------------------------------------
