@@ -367,6 +367,7 @@ inoremap <F6> <C-o>:IPythonCellExecuteCell<CR>
 " map <F7> to evaluate current cell and jump to next cell without saving
 nnoremap <F7> :IPythonCellExecuteCellJump<CR>
 inoremap <F7> <C-o>:IPythonCellExecuteCellJump<CR>
+
 ~~~
 
 
