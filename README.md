@@ -280,10 +280,6 @@ Here's an example of how to configure your `.vimrc` to use this plugin. Adapt
 it to suit your needs.
 
 ~~~vim
-if has('autocmd')
-    filetype plugin indent on
-endif
-
 " Load plugins using vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
@@ -314,44 +310,46 @@ let g:ipython_cell_delimit_cells_by = 'tags'
 " Keyboard mappings. <Leader> is \ (backslash) by default
 
 " map <Leader>r to run script
-autocmd FileType python nnoremap <buffer> <Leader>r :IPythonCellRun<CR>
+nnoremap <Leader>r :IPythonCellRun<CR>
 
 " map <Leader>R to run script and time the execution
-autocmd FileType python nnoremap <buffer> <Leader>R :IPythonCellRunTime<CR>
+nnoremap <Leader>R :IPythonCellRunTime<CR>
 
 " map <Leader>c to execute the current cell
-autocmd FileType python nnoremap <buffer> <Leader>c :IPythonCellExecuteCell<CR>
+nnoremap <Leader>c :IPythonCellExecuteCell<CR>
 
 " map <Leader>C to execute the current cell and jump to the next cell
-autocmd FileType python nnoremap <buffer> <Leader>C :IPythonCellExecuteCellJump<CR>
+nnoremap <Leader>C :IPythonCellExecuteCellJump<CR>
 
 " map <Leader>l to clear IPython screen
-autocmd FileType python nnoremap <buffer> <Leader>l :IPythonCellClear<CR>
+nnoremap <Leader>l :IPythonCellClear<CR>
 
 " map <Leader>x to close all Matplotlib figure windows
-autocmd FileType python nnoremap <buffer> <Leader>x :IPythonCellClose<CR>
+nnoremap <Leader>x :IPythonCellClose<CR>
 
 " map [c and ]c to jump to the previous and next cell header
-autocmd FileType python nnoremap <buffer> [c :IPythonCellPrevCell<CR>
-autocmd FileType python nnoremap <buffer> ]c :IPythonCellNextCell<CR>
+nnoremap [c :IPythonCellPrevCell<CR>
+nnoremap ]c :IPythonCellNextCell<CR>
 
 " map <Leader>h to send the current line or current selection to IPython
-autocmd FileType python nnoremap <buffer> <Leader>h <Plug>SlimeLineSend
-autocmd FileType python xnoremap <buffer> <Leader>h <Plug>SlimeRegionSend
+nnoremap <Leader>h <Plug>SlimeLineSend
+xnoremap <Leader>h <Plug>SlimeRegionSend
 
 " map <Leader>p to run the previous command
-autocmd FileType python nnoremap <buffer> <Leader>p :IPythonCellPrevCommand<CR>
+nnoremap <Leader>p :IPythonCellPrevCommand<CR>
 
 " map <Leader>q to restart ipython
-autocmd FileType python nnoremap <buffer> <Leader>q :IPythonCellRestart<CR>
+nnoremap <Leader>q :IPythonCellRestart<CR>
 
 ~~~
 
 Note that the mappings as defined here work only in normal mode (see
-`:help mapping` in Vim for more information). The extra
-`autocmd FileType python` and `<buffer>` parts are there just to ensure that
-the mapping are defined only for Python files. You can also move these
-mappings to `~/.vim/ftplugin/python.vim` and drop `autocmd FileType python`.
+`:help mapping` in Vim for more information).
+
+Moreover, these mappings will be defined for all file types, not just Python
+files. If you want to define these mappings for only Python files, you can put
+the mappings in `~/.vim/after/ftplugin/python.vim` for Vim
+(or `~/.config/nvim/after/ftplugin/python.vim` for Neovim).
 
 If you come from the MATLAB world, you may want e.g. F5 to save and run the
 script regardless if you are in insert or normal mode, F6 to execute the
@@ -359,16 +357,16 @@ current cell, and F7 to execute the current cell and jump to the next cell:
 
 ~~~vim
 " map <F5> to save and run script
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:IPythonCellRun<CR>
-autocmd FileType python inoremap <buffer> <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
+nnoremap <F5> :w<CR>:IPythonCellRun<CR>
+inoremap <F5> <C-o>:w<CR><C-o>:IPythonCellRun<CR>
 
 " map <F6> to evaluate current cell without saving
-autocmd FileType python nnoremap <buffer> <F6> :IPythonCellExecuteCell<CR>
-autocmd FileType python inoremap <buffer> <F6> <C-o>:IPythonCellExecuteCell<CR>
+nnoremap <F6> :IPythonCellExecuteCell<CR>
+inoremap <F6> <C-o>:IPythonCellExecuteCell<CR>
 
 " map <F7> to evaluate current cell and jump to next cell without saving
-autocmd FileType python nnoremap <buffer> <F7> :IPythonCellExecuteCellJump<CR>
-autocmd FileType python inoremap <buffer> <F7> <C-o>:IPythonCellExecuteCellJump<CR>
+nnoremap <F7> :IPythonCellExecuteCellJump<CR>
+inoremap <F7> <C-o>:IPythonCellExecuteCellJump<CR>
 ~~~
 
 
