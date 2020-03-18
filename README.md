@@ -404,7 +404,7 @@ IPython. If you prefer to import `matplotlib.pyplot` differently, you can
 achieve the same thing using vim-slime, for example by adding the following to
 your .vimrc:
 
-    autocmd FileType python nnoremap <buffer> <Leader>x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
+    nnoremap <Leader>x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
 
 > How can I send other commands to IPython, e.g. '%who'?
 
