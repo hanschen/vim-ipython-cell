@@ -379,17 +379,20 @@ FAQ
 > The ``IPythonCellExecuteCell`` and ``IPythonCellExecuteCellJump`` commands do
 > not work, but other commands such as IPythonCellRun work. Why?
 
-The ``IPythonCellExecuteCell`` and ``IPythonCellExecuteCellJump`` commands
-require [xclip] or [xsel] to be installed. Make sure that at least on of these
-programs can be found in your ``PATH``. If you still have trouble, see the next
-question.
+If you use Linux, the ``IPythonCellExecuteCell`` and
+``IPythonCellExecuteCellJump`` commands require either [xclip] or [xsel] to be
+installed. Make sure that at least on of these programs can be found in your
+``PATH``. If you still have trouble, see the next question.
 
 [xclip]: https://github.com/astrand/xclip
 [xsel]: https://github.com/kfish/xsel
 
 > ``IPythonCellExecuteCell`` and ``IPythonCellExecuteCellJump`` do not execute
-> the correct code cell / I get an error about 'Can't open display', what do I
-> do?
+> the correct code cell, or I get an error about
+> 'can't open display',
+> 'could not open display',
+> 'could not connect to display',
+> or something similar, what do I do?
 
 Make sure your ``DISPLAY`` environment variable is correct, especially after
 re-attaching a screen or tmux session. In tmux you can update the ``DISPLAY``
