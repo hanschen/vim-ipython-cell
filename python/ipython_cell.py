@@ -84,6 +84,7 @@ def _copy_to_clipboard(string, prefer_program=None):
 
     """
     PROGRAMS = [
+        ["pbcopy"],
         ["xclip", "-i", "-selection", "clipboard"],
         ["xsel", "-i", "--clipboard"],
     ]
