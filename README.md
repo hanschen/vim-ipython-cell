@@ -24,8 +24,10 @@ ipython-cell requires Vim or Neovim to be compiled with Python 2 or Python 3
 support (`+python` or `+python3` when running `vim --version`). If both Python
 versions are found, the plugin will prefer Python 3.
 
-Additionally, the cell execution feature requires [xclip] or [xsel] to be
-installed (preferring the former).
+Additionally, the cell execution feature requires either [xclip] or [xsel] to
+be installed on Linux systems (preferring the former).
+On macOS the plugin will use pbcopy.
+Windows systems are currently not supported.
 
 ipython-cell depends on [vim-slime] to send the code to IPython, see
 [Installation](#installation) instructions below.
