@@ -120,10 +120,12 @@ FAQ                                                         *ipython-cell-faq*
 
 Q: The 'IPythonCellExecuteCell' and 'IPythonCellExecuteCellJump' commands ~
 do not work, but other commands such as IPythonCellRun work. Why? ~
-A: If you use Linux, the 'IPythonCellExecuteCell' and
-'IPythonCellExecuteCellJump' commands require xclip or xsel to be installed.
-Make sure that at least on of these programs can be found in your PATH If you
-still have trouble, see the next question.
+A: First, make sure you have Tkinter installed (otherwise you will get an
+error message) and a supported clipboard program, see README.
+Also make sure your `DISPLAY` variable is correct, see next question.
+If you cannot install the requirements but still want to use the cell execution
+feature, you can try the verbose versions 'IPythonCellExecuteCellVerbose' and
+'IPythonCellExecuteCellVerboseJump'.
 
 Q: 'IPythonCellExecuteCell' and 'IPythonCellExecuteCellJump' do not execute ~
 the correct code cell, or I get an error about 'can't open display', ~

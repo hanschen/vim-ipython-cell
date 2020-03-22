@@ -24,13 +24,16 @@ ipython-cell requires Vim or Neovim to be compiled with Python 2 or Python 3
 support (`+python` or `+python3` when running `vim --version`). If both Python
 versions are found, the plugin will prefer Python 3.
 
-Additionally, the cell execution feature requires either [xclip] or [xsel] to
-be installed on Linux systems (preferring the former).
-On macOS the plugin will use pbcopy.
-Windows systems are currently not supported.
-
 ipython-cell depends on [vim-slime] to send the code to IPython, see
 [Installation](#installation) instructions below.
+
+Additionally, the cell execution feature requires Tkinter and a
+[clipboard program](#supported-clipboard-programs) to be installed.
+On Linux, the plugin supports [xclip] or [xsel] (preferring the former).
+On macOS, the plugin will use pbcopy.
+Windows systems are currently not supported.
+There is also a verbose version of the cell execution feature that does not
+require a clipboard program, see [Usage](#usage).
 
 [xclip]: https://github.com/astrand/xclip
 [xsel]: https://github.com/kfish/xsel
@@ -117,18 +120,24 @@ You may want to avoid using this feature if your code contains sensitive data.
     :IPythonCellExecuteCell
 
 Execute the current code cell in IPython.
+Requires a [clipboard program](#supported-clipboard-programs)
 
     :IPythonCellExecuteCellJump
 
 Execute the current code cell in IPython, and jump to the next cell.
+Requires a [clipboard program](#supported-clipboard-programs)
 
     :IPythonCellExecuteCellVerbose
 
 Print and execute the current code cell in IPython.
+Verbose version of `IPythonCellExecuteCell` that works without a clipboard
+program.
 
     :IPythonCellExecuteCellVerboseJump
 
 Print and execute the current code cell in IPython, and jump to the next cell.
+Verbose version of `IPythonCellExecuteCellJump` that works without a clipboard
+program.
 
     :IPythonCellRun
 
@@ -381,29 +390,41 @@ inoremap <F7> <C-o>:IPythonCellExecuteCellJump<CR>
 ~~~
 
 
-FAQ
----
+Supported clipboard programs
+----------------------------
 
-> The ``IPythonCellExecuteCell`` and ``IPythonCellExecuteCellJump`` commands do
-> not work, but other commands such as IPythonCellRun work. Why?
+Some features of ipython-cell use one of the following clipboard programs:
 
-If you use Linux, the ``IPythonCellExecuteCell`` and
-``IPythonCellExecuteCellJump`` commands require either [xclip] or [xsel] to be
-installed. Make sure that at least on of these programs can be found in your
-``PATH``. If you still have trouble, see the next question.
+* Linux: [xclip] (preferred) or [xsel].
+* macOS: pbcopy (installed by default).
+* Windows: not supported.
 
 [xclip]: https://github.com/astrand/xclip
 [xsel]: https://github.com/kfish/xsel
 
-> ``IPythonCellExecuteCell`` and ``IPythonCellExecuteCellJump`` do not execute
-> the correct code cell, or I get an error about
+
+FAQ
+---
+
+> The `IPythonCellExecuteCell` and `IPythonCellExecuteCellJump` commands do
+> not work, but other commands such as IPythonCellRun work. Why?
+
+First, make sure you have Tkinter installed (otherwise you will get an error
+message) and a supported [clipboard program](#supported-clipboard-programs).
+Also make sure your `DISPLAY` variable is correct, see next question.
+If you cannot install the requirements but still want to use the cell execution
+feature, you can try the verbose versions `IPythonCellExecuteCellVerbose` and
+`IPythonCellExecuteCellVerboseJump`.
+
+> `IPythonCellExecuteCell` and `IPythonCellExecuteCellJump` do not execute the
+> correct code cell, or I get an error about
 > 'can't open display',
 > 'could not open display',
 > 'could not connect to display',
 > or something similar, what do I do?
 
-Make sure your ``DISPLAY`` environment variable is correct, especially after
-re-attaching a screen or tmux session. In tmux you can update the ``DISPLAY``
+Make sure your `DISPLAY` environment variable is correct, especially after
+re-attaching a screen or tmux session. In tmux you can update the `DISPLAY`
 variable with the following command:
 
     eval $(tmux showenv -s DISPLAY)
