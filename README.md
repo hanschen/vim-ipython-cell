@@ -120,7 +120,15 @@ Execute the current code cell in IPython.
 
     :IPythonCellExecuteCellJump
 
-Execute the current code cell in IPython and jump to the next cell.
+Execute the current code cell in IPython, and jump to the next cell.
+
+    :IPythonCellExecuteCellVerbose
+
+Print and execute the current code cell in IPython.
+
+    :IPythonCellExecuteCellVerboseJump
+
+Print and execute the current code cell in IPython, and jump to the next cell.
 
     :IPythonCellRun
 

@@ -47,12 +47,16 @@ function! IPythonCellClose()
     exec s:python_command "ipython_cell.close_all()"
 endfunction
 
-function! IPythonCellExecuteCell()
-    exec s:python_command "ipython_cell.execute_cell()"
+function! IPythonCellExecuteCell(...)
+    let arg1 = get(a:, 1, 0)
+    let arg2 = get(a:, 2, 0)
+    exec s:python_command "ipython_cell.execute_cell(" . arg1 . ")"
 endfunction
 
-function! IPythonCellExecuteCellJump()
-    exec s:python_command "ipython_cell.execute_cell()"
+function! IPythonCellExecuteCellJump(...)
+    let arg1 = get(a:, 1, 0)
+    let arg2 = get(a:, 2, 0)
+    exec s:python_command "ipython_cell.execute_cell(" . arg1 . ")"
     exec s:python_command "ipython_cell.jump_next_cell()"
 endfunction
 
@@ -80,6 +84,8 @@ command! -nargs=0 IPythonCellClear call IPythonCellClear()
 command! -nargs=0 IPythonCellClose call IPythonCellClose()
 command! -nargs=0 IPythonCellExecuteCell call IPythonCellExecuteCell()
 command! -nargs=0 IPythonCellExecuteCellJump call IPythonCellExecuteCellJump()
+command! -nargs=0 IPythonCellExecuteCellVerbose call IPythonCellExecuteCell(1)
+command! -nargs=0 IPythonCellExecuteCellVerboseJump call IPythonCellExecuteCellJump(1)
 command! -nargs=0 IPythonCellNextCell call IPythonCellNextCell()
 command! -nargs=0 IPythonCellPrevCell call IPythonCellPrevCell()
 command! -nargs=0 IPythonCellPrevCommand call IPythonCellPrevCommand()

@@ -50,38 +50,47 @@ You may want to avoid using this feature if your code contains sensitive data.
 COMMANDS                                               *ipython-cell-commands*
 
                                                              *:IPythonCellRun*
-:IPythonCellRun                 Run whole script in IPython.
+:IPythonCellRun                     Run whole script in IPython.
 
                                                          *:IPythonCellRunTime*
-:IPythonCellRunTime             Run whole script in IPython and time the
-                                execution.
+:IPythonCellRunTime                 Run whole script in IPython and time the
+                                    execution.
 
                                                      *:IPythonCellExecuteCell*
-:IPythonCellExecuteCell         Execute a single code cell in IPython.
+:IPythonCellExecuteCell             Execute a single code cell in IPython.
 
                                                  *:IPythonCellExecuteCellJump*
-:IPythonCellExecuteCellJump     Execute a single code cell in IPython and move
-                                cursor to the next cell.
+:IPythonCellExecuteCellJump         Execute a single code cell in IPython, and
+                                    move cursor to the next cell.
+
+                                              *:IPythonCellExecuteCellVerbose*
+:IPythonCellExecuteCellVerbose      Print and execute a single code cell in
+                                    IPython.
+
+                                          *:IPythonCellExecuteCellVerboseJump*
+:IPythonCellExecuteCellVerboseJump  Print and execute a single code cell in
+                                    IPython, and move cursor to the next cell.
 
                                                            *:IPythonCellClear*
-:IPythonCellClear               Clear IPython screen.
+:IPythonCellClear                   Clear IPython screen.
 
                                                            *:IPythonCellClose*
-:IPythonCellClose               Close all Matplotlib figure windows. This
-                                command assumes that the `matplotlib.pyplot`
-                                module is imported as `plt` in IPython.
+:IPythonCellClose                   Close all Matplotlib figure windows. This
+                                    command assumes that the
+                                    `matplotlib.pyplot` module is imported as
+                                    `plt` in IPython.
 
 :IPythonCellPrevCell                                    *:IPythonCellPrevCell*
-                                Jump to the previous cell header.
+                                    Jump to the previous cell header.
 
 :IPythonCellNextCell                                    *:IPythonCellNextCell*
-                                Jump to the next cell header.
+                                    Jump to the next cell header.
 
 :IPythonCellPrevCommand                              *:IPythonCellPrevCommand*
-                                Run previous command.
+                                    Run previous command.
 
 :IPythonCellRestart                                      *:IPythonCellRestart*
-                                Restart IPython.
+                                    Restart IPython.
 
 ==============================================================================
 CONFIGURATION                                     *ipython-cell-configuration*

@@ -14,8 +14,15 @@ CTRL_P = '\x10'
 CTRL_U = '\x15'
 
 
-def execute_cell():
-    """Execute code within cell."""
+def execute_cell(use_cpaste=False):
+    """Execute code within cell.
+
+    Parameters
+    ----------
+    use_cpaste : bool
+        Set to True to use %cpaste instead of %paste to send cell to ipython.
+
+    """
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
     start_row, end_row = _get_current_cell_boundaries(current_row,
@@ -27,11 +34,31 @@ def execute_cell():
 
     # start_row and end_row are 1-indexed, need to subtract 1
     cell = "\n".join(vim.current.buffer[start_row-1:end_row])
-    if cell:
-        _copy_to_clipboard(cell)
-        _slimesend("%paste -q")
+
+    if not use_cpaste:
+        if cell:
+            _copy_to_clipboard(cell)
+            _slimesend("%paste -q")
+        else:
+            _slimesend("# empty cell")
     else:
-        _slimesend("# empty cell")
+        try:
+            slime_python_ipython = vim.eval('g:slime_python_ipython')
+        except vim.error:
+            slime_python_ipython = False
+
+        if slime_python_ipython:
+            _slimesend(cell)
+        else:
+            _slimesend("%cpaste -q")
+            # Send 25 lines at a time to avoid potential issues when sending
+            # a large number of lines
+            remaining_chunks = cell.splitlines()
+            while remaining_chunks:
+                chunk = remaining_chunks[:25]
+                remaining_chunks[:25] = []
+                _slimesend("\n".join(chunk))
+            _slimesend("--")
 
 
 def jump_next_cell():
