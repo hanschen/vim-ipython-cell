@@ -291,6 +291,9 @@ def _get_rows_with_marks(buffer, valid_marks):
 
 def _slimesend(string):
     """Send ``string`` using vim-slime."""
+    if not string:
+        return
+
     try:
         vim.command('SlimeSend1 {}'.format(string))
     except vim.error:
