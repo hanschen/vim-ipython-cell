@@ -298,7 +298,7 @@ def _slimesend(string):
         return
 
     try:
-        vim.command('SlimeSend1 {}'.format(string))
+        vim.command('SlimeSend1 \x15{}'.format(string))
     except vim.error:
         _error("SlimeSend1 command not found, make sure vim-slime is "
                "installed")
