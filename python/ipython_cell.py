@@ -10,6 +10,10 @@ except ImportError:
           "not work")
 
 
+CTRL_P = '\x10'
+CTRL_U = '\x15'
+
+
 def execute_cell():
     """Execute code within cell."""
     current_row, _ = vim.current.window.cursor
@@ -50,13 +54,13 @@ def jump_prev_cell():
 
 def previous_command():
     """Run previous command."""
-    _slimesend("\x10")
+    _slimesend(CTRL_P)
 
 
 def restart_ipython():
     """Quit ipython and start it again."""
     _slimesend("exit")
-    _slimesend("\x10")
+    _slimesend(CTRL_P)
 
 
 def run(*args):
@@ -298,7 +302,7 @@ def _slimesend(string):
         return
 
     try:
-        vim.command('SlimeSend1 \x15{}'.format(string))
+        vim.command('SlimeSend1 ' + CTRL_U + '{}'.format(string))
     except vim.error:
         _error("SlimeSend1 command not found, make sure vim-slime is "
                "installed")
