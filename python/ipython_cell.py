@@ -304,5 +304,5 @@ def _slimesend(string):
     try:
         vim.command('SlimeSend1 ' + CTRL_U + '{}'.format(string))
     except vim.error:
-        _error("SlimeSend1 command not found, make sure vim-slime is "
+        _error("Could not execute SlimeSend1 command, make sure vim-slime is "
                "installed")
