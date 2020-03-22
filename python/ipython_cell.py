@@ -107,7 +107,7 @@ def close_all():
 
 
 def _copy_to_clipboard(string, prefer_program=None):
-    """Copy ``string`` to primary clipboard using xclip or xsel.
+    """Copy ``string`` to primary clipboard using pbcopy, xclip or xsel.
 
     Parameters
     ----------
