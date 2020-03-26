@@ -29,11 +29,11 @@ ipython-cell depends on [vim-slime] to send the code to IPython, see
 
 Additionally, the cell execution feature requires Tkinter and a
 [clipboard program](#supported-clipboard-programs) to be installed.
-On Linux, the plugin supports [xclip] or [xsel] (preferring the former).
+On Linux, the plugin supports [xclip] and [xsel] (preferring the former).
 On macOS, the plugin will use pbcopy.
 Windows systems are currently not supported.
 There is also a verbose version of the cell execution feature that does not
-require a clipboard program, see [Usage](#usage).
+require Tkinter or a clipboard program, see [Usage](#usage).
 
 [xclip]: https://github.com/astrand/xclip
 [xsel]: https://github.com/kfish/xsel
@@ -43,8 +43,8 @@ require a clipboard program, see [Usage](#usage).
 Installation
 ------------
 
-It is easiest to install ipython-cell using a plugin manager. I personally
-recommend [vim-plug]. See respective plugin manager's documentation for more
+It is easiest to install ipython-cell using a plugin manager (I personally
+recommend [vim-plug]). See respective plugin manager's documentation for more
 information about how to install plugins.
 
 
@@ -98,7 +98,7 @@ Usage
 -----
 
 ipython-cell sends code from Vim to IPython using [vim-slime]. For this to
-work, IPython must be running in a terminal multiplexer like GNU Screen or
+work, IPython has to be running in a terminal multiplexer like GNU Screen or
 tmux, or in a Vim or Neovim terminal. I personally use tmux, but you will find
 `screen` installed on most *nix systems.
 
