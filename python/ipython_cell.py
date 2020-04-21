@@ -67,7 +67,10 @@ def jump_next_cell():
     cell_boundaries = _get_cell_boundaries()
     next_cell_row = _get_next_cell(current_row, cell_boundaries)
     if next_cell_row != current_row:
-        vim.current.window.cursor = (next_cell_row, 0)
+        try:
+            vim.current.window.cursor = (next_cell_row, 0)
+        except vim.error:
+            vim.command("echo 'Cell header is outside the buffer boundaries'")
 
 
 def jump_prev_cell():
@@ -76,7 +79,10 @@ def jump_prev_cell():
     cell_boundaries = _get_cell_boundaries()
     prev_cell_row = _get_prev_cell(current_row, cell_boundaries)
     if prev_cell_row != current_row:
-        vim.current.window.cursor = (prev_cell_row, 0)
+        try:
+            vim.current.window.cursor = (prev_cell_row, 0)
+        except vim.error:
+            vim.command("echo 'Cell header is outside the buffer boundaries'")
 
 
 def previous_command():
@@ -317,7 +323,7 @@ def _get_rows_with_marks(buffer, valid_marks):
     rows_containing_marks = []
     for mark in valid_marks:
         mark_loc = buffer.mark(mark)
-        if mark_loc is not None:
+        if mark_loc is not None and mark_loc[0] != 0:
             rows_containing_marks.append(mark_loc[0])
 
     return rows_containing_marks
