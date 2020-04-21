@@ -79,7 +79,7 @@ endfunction
 command! -nargs=0 IPythonCellClear call IPythonCellClear()
 command! -nargs=0 IPythonCellClose call IPythonCellClose()
 command! -nargs=0 IPythonCellExecuteCell call IPythonCellExecuteCell()
-command! -nargs=0 IPythonCellExecuteCellJump call IPythonCellExecuteCell(1, 1)
+command! -nargs=0 IPythonCellExecuteCellJump call IPythonCellExecuteCell(0, 1)
 command! -nargs=0 IPythonCellExecuteCellVerbose call IPythonCellExecuteCell(1)
 command! -nargs=0 IPythonCellExecuteCellVerboseJump call IPythonCellExecuteCell(1, 1)
 command! -nargs=0 IPythonCellNextCell call IPythonCellNextCell()
