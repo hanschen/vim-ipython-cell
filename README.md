@@ -463,7 +463,7 @@ your .vimrc:
 
 > How can I send other commands to IPython, e.g. '%who'?
 
-You can easily send arbitary commands to IPython using the `:SlimeSend1`
+You can easily send arbitrary commands to IPython using the `:SlimeSend1`
 command provided by vim-slime, e.g. `:SlimeSend1 %who`, and map these commands
 to key combinations.
 
