@@ -174,6 +174,18 @@ Restart IPython.
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
 
+### Custom commands
+
+You may want to send other commands to IPython, such as `%debug` and `exit`.
+vim-slime makes it easy to send arbitrary text to IPython from Vim using the
+`SlimeSend1` command, for example
+
+    :SlimeSend1 %debug
+
+You can then bind these commands to key mappings, see
+[Example Vim Configuration](#example-vim-configuration) below.
+
+
 Defining code cells
 -------------------
 
@@ -357,8 +369,14 @@ xmap <Leader>h <Plug>SlimeRegionSend
 " map <Leader>p to run the previous command
 nnoremap <Leader>p :IPythonCellPrevCommand<CR>
 
-" map <Leader>q to restart ipython
-nnoremap <Leader>q :IPythonCellRestart<CR>
+" map <Leader>Q to restart ipython
+nnoremap <Leader>Q :IPythonCellRestart<CR>
+
+" map <Leader>d to start debug mode
+nnoremap <Leader>d :SlimeSend1 %debug<CR>
+
+" map <Leader>q to exit debug mode or IPython
+nnoremap <Leader>q :SlimeSend1 exit<CR>
 
 ~~~
 
