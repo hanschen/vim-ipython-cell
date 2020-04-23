@@ -171,6 +171,10 @@ Run previous command.
 
 Restart IPython.
 
+    :IPythonCellPDBQuit
+
+Send quit command which will quit the debugger if running.
+
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
 
@@ -359,6 +363,9 @@ nnoremap <Leader>p :IPythonCellPrevCommand<CR>
 
 " map <Leader>q to restart ipython
 nnoremap <Leader>q :IPythonCellRestart<CR>
+
+" map <Leader>e to send quit command
+nnoremap <Leader>e :IPythonCellPDBQuit<CR>
 
 ~~~
 

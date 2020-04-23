@@ -107,6 +107,11 @@ def clear():
     _slimesend("%clear")
 
 
+def quit():
+    """Send quit to exit debugger."""
+    _slimesend("quit")
+
+
 def close_all():
     """Close all figure windows."""
     _slimesend("plt.close('all')")
