@@ -204,7 +204,7 @@ The examples below show how code cell boundaries work.
 
 ### Code cells defined using tags
 
-Use `#%%`, `# %%`, `# <codecell>`, or `##` to define cell boundaries.
+Use `# %%`, `#%%`, `# <codecell>`, or `##` to define cell boundaries.
 
 ~~~
                                    _
