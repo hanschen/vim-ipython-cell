@@ -451,15 +451,14 @@ variable with the following command:
 
     eval $(tmux showenv -s DISPLAY)
 
-> Should I use `'marks'` or `'tags'` to define cells?
+> Should I use tags or marks to define cells?
 
-This depends on personal preference. I used to use `'tags'` because they are
-similar to MATLAB's `%%` code sections. `'tags'` are nice if you want the cells
-to be saved together with your files, and may be easier to start with. I
-switched to `'marks'` after discovering that I can show the marks in the
-left-most column. I find `'marks'` to be more flexible because you can add and
-change cells without changing the code, which is nice when your code is under
-version control.
+This depends on personal preference. Tags are similar to `%%` in MATLAB and
+`# %%` in e.g. Jupyter Notebooks and Spyder. They become a part of your code
+and can also be shared with others, making them ideal if you want more
+persistent cells. Marks, on the other hand, are more transient and can be
+changed without triggering changes in your code, which can be nice if you
+change your cells often and your code is under version control.
 
 > How do I show the marks in the left-most column?
 
