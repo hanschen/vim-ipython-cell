@@ -13,7 +13,7 @@ if !has("python") && !has("python3")
 endif
 
 let g:ipython_cell_delimit_cells_by = get(g:, 'ipython_cell_delimit_cells_by', 'tags')
-let g:ipython_cell_tag = get(g:, 'ipython_cell_tag', ['#%%', '# %%', '# <codecell>', '##'])
+let g:ipython_cell_tag = get(g:, 'ipython_cell_tag', ['# %%', '#%%', '# <codecell>', '##'])
 let g:ipython_cell_valid_marks = get(g:, 'ipython_cell_valid_marks', 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
 function! s:UsingPython3()

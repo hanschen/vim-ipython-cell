@@ -111,7 +111,7 @@ g:ipython_cell_valid_marks          Which marks to use to mark the boundary
                                                             *ipython-cell-tag*
 g:ipython_cell_tag                  String or list of strings to specify what
                                     kind of tags to use to mark the boundary
-                                    between cells (default `['#%%', '# %%',
+                                    between cells (default `['# %%', '#%%',
                                     '# <codecell>', '##']`). This option is
                                     used only if
                                     `g:ipython_cell_delimit_cells_by` is set
