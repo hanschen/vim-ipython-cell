@@ -302,7 +302,7 @@ Default: `'tags'`
     g:ipython_cell_tag
 
 If cells are delimited by tags, specify the format of the tags. Can be a string
-or a list of string to specify multiple formats.
+or a list of strings to specify multiple formats.
 Default: `['# %%', '#%%', '# <codecell>', '##']`
 
     g:ipython_cell_valid_marks
