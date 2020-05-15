@@ -251,29 +251,29 @@ You must therefore be careful when defining code cells inside statements.
 
 ### Code cells defined using tags
 
-Using `##` to define cell boundaries.
+Using `#%%`, `# %%`, `# <codecell>`, or `##` to define cell boundaries.
 
 ~~~
                                    _
 import numpy as np                  | cell 1
                                    _|
-## Setup                            | cell 2
+# %% Setup                          | cell 2
                                     |
 numbers = np.arange(10)             |
                                    _|
-## Print numbers                    | cell 3
+# %% Print numbers                  | cell 3
                                     |
 for n in numbers:                   |
     print(n)                        |
                                    _|
-    ## Odd or even                  | cell 4
+    # %% Odd or even                | cell 4
                                     |
     if n % 2 == 0:                  |
         print("Even")               |
     else:                           |
         print("Odd")                |
                                    _|
-## Print sum                        | cell 5
+# %% Print sum                      | cell 5
                                     |
 total = numbers.sum()               |
 print("Sum: {}".format(total))      |
@@ -295,8 +295,9 @@ Default: `'marks'`
 
     g:ipython_cell_tag
 
-If cells are delimited by tags, specify the format of the tags.
-Default: `'##'`
+If cells are delimited by tags, specify the format of the tags. Can be a string
+or a list of string to specify multiple formats.
+Default: `['#%%', '# %%', '# <codecell>', '##']`
 
     g:ipython_cell_valid_marks
 
@@ -335,7 +336,7 @@ let g:slime_dont_ask_default = 1
 "------------------------------------------------------------------------------
 " ipython-cell configuration
 "------------------------------------------------------------------------------
-" Use '##' to define cells instead of using marks
+" Use '# %%' to define cells instead of using marks
 let g:ipython_cell_delimit_cells_by = 'tags'
 
 " Keyboard mappings. <Leader> is \ (backslash) by default
