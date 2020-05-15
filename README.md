@@ -189,34 +189,42 @@ You can then bind these commands to key mappings, see
 Defining code cells
 -------------------
 
-Code cells are defined by either Vim marks or special text in the code,
-depending on if `g:ipython_cell_delimit_cells_by` is set to `'marks'` or
-`'tags'`, respectively. The default is to use Vim marks (see `:help mark` in
-Vim).
+Code cells are defined by either special text in the code or Vim marks,
+depending on if `g:ipython_cell_delimit_cells_by` is set to `'tags'` or
+`'marks'`, respectively. The default is to use tags.
 
 The examples below show how code cell boundaries work.
 
 
-### Code cells defined using marks
+### Code cells defined using tags
 
-Marks are depicted as letters in the left-most column.
+Use `#%%`, `# %%`, `# <codecell>`, or `##` to define cell boundaries.
 
 ~~~
                                    _
-  | import numpy as np              | cell 1
-  |                                _| 
-a | numbers = np.arange(10)         | cell 2
-  |                                 |
-  |                                _|
-b | for n in numbers:               | cell 3
-  |     print(n)                   _|
-c |     if n % 2 == 0:              | cell 4
-  |         print("Even")           |
-  |     else:                       |
-  |         print("Odd")            |
-  |                                _|
-d | total = numbers.sum()           | cell 5
-  | print("Sum: {}".format(total)) _|
+import numpy as np                  | cell 1
+                                   _|
+# %% Setup                          | cell 2
+                                    |
+numbers = np.arange(10)             |
+                                   _|
+# %% Print numbers                  | cell 3
+                                    |
+for n in numbers:                   |
+    print(n)                        |
+                                   _|
+    # %% Odd or even                | cell 4
+                                    |
+    if n % 2 == 0:                  |
+        print("Even")               |
+    else:                           |
+        print("Odd")                |
+                                   _|
+# %% Print sum                      | cell 5
+                                    |
+total = numbers.sum()               |
+print("Sum: {}".format(total))      |
+print("Done.")                     _|
 
 ~~~
 
@@ -249,35 +257,27 @@ for cell 4. The `for` statement is no longer included for cell 4.
 You must therefore be careful when defining code cells inside statements.
 
 
-### Code cells defined using tags
+### Code cells defined using marks
 
-Using `#%%`, `# %%`, `# <codecell>`, or `##` to define cell boundaries.
+Use Vim marks (see `:help mark`) to define cell boundaries.
+Here marks are depicted as letters in the left-most column.
 
 ~~~
                                    _
-import numpy as np                  | cell 1
-                                   _|
-# %% Setup                          | cell 2
-                                    |
-numbers = np.arange(10)             |
-                                   _|
-# %% Print numbers                  | cell 3
-                                    |
-for n in numbers:                   |
-    print(n)                        |
-                                   _|
-    # %% Odd or even                | cell 4
-                                    |
-    if n % 2 == 0:                  |
-        print("Even")               |
-    else:                           |
-        print("Odd")                |
-                                   _|
-# %% Print sum                      | cell 5
-                                    |
-total = numbers.sum()               |
-print("Sum: {}".format(total))      |
-print("Done.")                     _|
+  | import numpy as np              | cell 1
+  |                                _| 
+a | numbers = np.arange(10)         | cell 2
+  |                                 |
+  |                                _|
+b | for n in numbers:               | cell 3
+  |     print(n)                   _|
+c |     if n % 2 == 0:              | cell 4
+  |         print("Even")           |
+  |     else:                       |
+  |         print("Odd")            |
+  |                                _|
+d | total = numbers.sum()           | cell 5
+  | print("Sum: {}".format(total)) _|
 
 ~~~
 
@@ -290,8 +290,8 @@ Configuration
 
     g:ipython_cell_delimit_cells_by
 
-Specify if cells should be delimited by `'marks'` or `'tags'`.
-Default: `'marks'`
+Specify if cells should be delimited by `'tags'` or `'marks'`.
+Default: `'tags'`
 
     g:ipython_cell_tag
 
@@ -336,9 +336,6 @@ let g:slime_dont_ask_default = 1
 "------------------------------------------------------------------------------
 " ipython-cell configuration
 "------------------------------------------------------------------------------
-" Use '# %%' to define cells instead of using marks
-let g:ipython_cell_delimit_cells_by = 'tags'
-
 " Keyboard mappings. <Leader> is \ (backslash) by default
 
 " map <Leader>r to run script

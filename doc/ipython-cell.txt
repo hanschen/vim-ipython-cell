@@ -34,14 +34,14 @@ between code cells: >
     nmap [c :IPythonCellPrevCell<CR>
     nmap ]c :IPythonCellNextCell<CR>
 
-Code cells are by default defined by Vim marks (see |mark|). It is also
-possible to use special text in the code (referred to as tags) to mark the
-start of code cells by adding the following to your vimrc: >
+Code cells are by default defined by special text in the code, referred to as
+tags. By default the plugin will interpret lines containing `# %%`, `#%%`,
+`# <codecell>`, or `##` as code cell headers.
 
-    let g:ipython_cell_delimit_cells_by = 'tags'
+It is also possible to use Vim marks (see |mark|) as cell separators by adding
+the following to your vimrc: >
 
-In that case, ipython-cell will by default interpret any lines containing `##`
-as cell headers.
+    let g:ipython_cell_delimit_cells_by = 'marks'
 
 Note that the cell execution feature copies your code to the system clipboard.
 You may want to avoid using this feature if your code contains sensitive data.
@@ -99,9 +99,9 @@ The following configuration options allow you to specify how cells are
 defined.
 
                                                *ipython_cell_delimit_cells_by*
-g:ipython_cell_delimit_cells_by     Delimit cells by Vim marks (`'marks'`,
-                                    default) or a special tag in the code
-                                    (`'tags'`).
+g:ipython_cell_delimit_cells_by     Delimit cells by special tags in the code
+                                    (`'tags'`) or Vim marks (`'marks'`).
+                                    Default: `'tags'`
 
                                                     *ipython-cell-valid-marks*
 g:ipython_cell_valid_marks          Which marks to use to mark the boundary
