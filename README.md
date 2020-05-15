@@ -10,6 +10,12 @@ another code cell to visualize the data. This plugin allows you to change and
 re-run the visualization part of your code without having to reload the data
 each time.
 
+**New in v0.3:**
+The plugin now uses tags by defalt to mark cell boundaries. If you prefer the
+old default of using Vim marks, add the following to your `.vimrc`:
+
+    let g:ipython_cell_delimit_cells_by = 'marks'
+
 
 Demo
 ----
