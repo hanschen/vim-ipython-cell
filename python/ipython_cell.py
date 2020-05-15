@@ -280,15 +280,15 @@ def _get_prev_cell(current_row, cell_boundaries):
         return prev_cell_row
 
 
-def _get_rows_with_tag(buffer, tag):
-    """Return a list of row numbers for lines containing ``tag``.
+def _get_rows_with_tag(buffer, tags):
+    """Return a list of row numbers for lines containing tag in ``tags``.
 
     Parameters
     ----------
     buffer : iterable
         An iterable object that contains the lines of a buffer.
-    tag : str
-        Tag to search for.
+    tags : list or str
+        Tag(s) to search for.
 
     Returns
     -------
@@ -296,10 +296,14 @@ def _get_rows_with_tag(buffer, tag):
         List of row numbers.
 
     """
+    if not isinstance(tags, list):
+        tags = [tags]
+
     rows_containing_tag = []
     for i, line in enumerate(buffer):
-        if tag in line:
-            rows_containing_tag.append(i + 1)  # rows are counted from 1
+        for tag in tags:
+            if tag in line:
+                rows_containing_tag.append(i + 1)  # rows are counted from 1
 
     return rows_containing_tag
 
