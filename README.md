@@ -523,9 +523,12 @@ Related plugins
 * [vim-ipython] - Advanced two-way integration between Vim and IPython. I never
   got it to work as I want, i.e., don't show the code that's executed but show
   the output from the code, which is why I created this simpler plugin.
+* [nvim-ipy] - Similar to [vim-ipython], but refactored for Neovim and has some
+  basic support for cells.
 * [vim-tmux-navigator] - Seamless navigation between Vim splits and tmux panes.
 * [vim-signature] - Display marks in the left-hand column.
 
+[nvim-ipy]: https://github.com/bfredl/nvim-ipy
 [tslime\_ipython]: https://github.com/eldridgejm/tslime_ipython
 [vim-tmux-navigator]: https://github.com/christoomey/vim-tmux-navigator
 [vim-ipython]: https://github.com/ivanov/vim-ipython
