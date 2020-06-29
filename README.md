@@ -528,10 +528,10 @@ Related plugins
 * [vim-tmux-navigator] - Seamless navigation between Vim splits and tmux panes.
 * [vim-signature] - Display marks in the left-hand column.
 
-[nvim-ipy]: https://github.com/bfredl/nvim-ipy
 [tslime\_ipython]: https://github.com/eldridgejm/tslime_ipython
-[vim-tmux-navigator]: https://github.com/christoomey/vim-tmux-navigator
 [vim-ipython]: https://github.com/ivanov/vim-ipython
+[nvim-ipy]: https://github.com/bfredl/nvim-ipy
+[vim-tmux-navigator]: https://github.com/christoomey/vim-tmux-navigator
 [vim-signature]: https://github.com/kshenoy/vim-signature
 
 
