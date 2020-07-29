@@ -123,59 +123,20 @@ You may want to avoid using this feature if your code contains sensitive data.
 
 ### Commands
 
-    :IPythonCellExecuteCell
-
-Execute the current code cell in IPython.
-Requires a [clipboard program](#supported-clipboard-programs)
-
-    :IPythonCellExecuteCellJump
-
-Execute the current code cell in IPython, and jump to the next cell.
-Requires a [clipboard program](#supported-clipboard-programs)
-
-    :IPythonCellExecuteCellVerbose
-
-Print and execute the current code cell in IPython.
-Verbose version of `IPythonCellExecuteCell` that works without a clipboard
-program.
-
-    :IPythonCellExecuteCellVerboseJump
-
-Print and execute the current code cell in IPython, and jump to the next cell.
-Verbose version of `IPythonCellExecuteCellJump` that works without a clipboard
-program.
-
-    :IPythonCellRun
-
-Run the whole script in IPython.
-
-    :IPythonCellRunTime
-
-Run the whole script in IPython and time the execution.
-
-    :IPythonCellClear
-
-Clear IPython screen.
-
-    :IPythonCellClose
-
-Close all figure windows.
-
-    :IPythonCellPrevCell
-
-Jump to the previous cell header.
-
-    :IPythonCellNextCell
-
-Jump to the next cell header.
-
-    :IPythonCellPrevCommand
-
-Run previous command.
-
-    :IPythonCellRestart
-
-Restart IPython.
+| Command                               | Description                                                                                                                                                             |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `:IPythonCellExecuteCell`             | Execute the current code cell in IPython. Requires a [clipboard program](#supported-clipboard-programs)                                                                 |
+| `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell. Requires a [clipboard program](#supported-clipboard-programs)                                      |
+| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython. Verbose version of `IPythonCellExecuteCell` that works without a clipboard program.                                 |
+| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell. Verbose version of `IPythonCellExecuteCellJump` that works without a clipboard program.  |
+| `:IPythonCellRun`                     | Run the whole script in IPython.                                                                                                                                        |
+| `:IPythonCellRunTime`                 | Run the whole script in IPython and time the execution.                                                                                                                 |
+| `:IPythonCellClear`                   | Clear IPython screen.                                                                                                                                                   |
+| `:IPythonCellClose`                   | Close all figure windows.                                                                                                                                               |
+| `:IPythonCellPrevCell`                | Jump to the previous cell header.                                                                                                                                       |
+| `:IPythonCellNextCell`                | Jump to the next cell header.                                                                                                                                           |
+| `:IPythonCellPrevCommand`             | Run previous command.                                                                                                                                                   |
+| `:IPythonCellRestart`                 | Restart IPython.                                                                                                                                                        |
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
@@ -294,21 +255,11 @@ See note in the previous section about defining code cells inside statements
 Configuration
 -------------
 
-    g:ipython_cell_delimit_cells_by
-
-Specify if cells should be delimited by `'tags'` or `'marks'`.
-Default: `'tags'`
-
-    g:ipython_cell_tag
-
-If cells are delimited by tags, specify the format of the tags. Can be a string
-or a list of strings to specify multiple formats.
-Default: `['# %%', '#%%', '# <codecell>', '##']`
-
-    g:ipython_cell_valid_marks
-
-If cells are delimited by marks, specify which marks to use.
-Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`
+| Option                            | Description                                                                                                                       | Default                                                   |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `g:ipython_cell_delimit_cells_by` | Specify if cells should be delimited by `'tags'` or `'marks'`.                                                                    |  `'tags'`                                                 |
+| `g:ipython_cell_tag`              | If cells are delimited by tags, specify the format of the tags. Can be a string or a list of strings to specify multiple formats. | `['# %%', '#%%', '# <codecell>', '##']`                   |
+| `g:ipython_cell_valid_marks`      | If cells are delimited by marks, specify which marks to use.                                                                      | `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`  |
 
 
 Example Vim configuration
