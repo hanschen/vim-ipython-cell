@@ -123,20 +123,23 @@ You may want to avoid using this feature if your code contains sensitive data.
 
 ### Commands
 
-| Command                               | Description                                                                                                                                                             |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `:IPythonCellExecuteCell`             | Execute the current code cell in IPython. Requires a [clipboard program](#supported-clipboard-programs)                                                                 |
-| `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell. Requires a [clipboard program](#supported-clipboard-programs)                                      |
-| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython. Verbose version of `IPythonCellExecuteCell` that works without a clipboard program.                                 |
-| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell. Verbose version of `IPythonCellExecuteCellJump` that works without a clipboard program.  |
-| `:IPythonCellRun`                     | Run the whole script in IPython.                                                                                                                                        |
-| `:IPythonCellRunTime`                 | Run the whole script in IPython and time the execution.                                                                                                                 |
-| `:IPythonCellClear`                   | Clear IPython screen.                                                                                                                                                   |
-| `:IPythonCellClose`                   | Close all figure windows.                                                                                                                                               |
-| `:IPythonCellPrevCell`                | Jump to the previous cell header.                                                                                                                                       |
-| `:IPythonCellNextCell`                | Jump to the next cell header.                                                                                                                                           |
-| `:IPythonCellPrevCommand`             | Run previous command.                                                                                                                                                   |
-| `:IPythonCellRestart`                 | Restart IPython.                                                                                                                                                        |
+| Command                               | Description                                                                                 |
+| ------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `:IPythonCellExecuteCell`             | Execute the current code cell in IPython.<sup>*</sup>                                       |
+| `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell.<sup>*</sup>            |
+| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython.<sup>**</sup>                            |
+| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell.<sup>**</sup> |
+| `:IPythonCellRun`                     | Run the whole script in IPython.                                                            |
+| `:IPythonCellRunTime`                 | Run the whole script in IPython and time the execution.                                     |
+| `:IPythonCellClear`                   | Clear IPython screen.                                                                       |
+| `:IPythonCellClose`                   | Close all figure windows.                                                                   |
+| `:IPythonCellPrevCell`                | Jump to the previous cell header.                                                           |
+| `:IPythonCellNextCell`                | Jump to the next cell header.                                                               |
+| `:IPythonCellPrevCommand`             | Run previous command.                                                                       |
+| `:IPythonCellRestart`                 | Restart IPython.                                                                            |
+
+<sup>*</sup> Requires a [clipboard program](#supported-clipboard-programs).  
+<sup>**</sup> Works without a clipboard program.
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
