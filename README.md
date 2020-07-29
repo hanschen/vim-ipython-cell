@@ -258,11 +258,11 @@ See note in the previous section about defining code cells inside statements
 Configuration
 -------------
 
-| Option                            | Description                                                                                                                       | Default                                                   |
-| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| `g:ipython_cell_delimit_cells_by` | Specify if cells should be delimited by `'tags'` or `'marks'`.                                                                    |  `'tags'`                                                 |
-| `g:ipython_cell_tag`              | If cells are delimited by tags, specify the format of the tags. Can be a string or a list of strings to specify multiple formats. | `['# %%', '#%%', '# <codecell>', '##']`                   |
-| `g:ipython_cell_valid_marks`      | If cells are delimited by marks, specify which marks to use.                                                                      | `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`  |
+| Option                            | Description                                                                                                                                                                         |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `g:ipython_cell_delimit_cells_by` | Specify if cells should be delimited by `'tags'` or `'marks'`. Default: `'tags'`                                                                                                    |
+| `g:ipython_cell_tag`              | If cells are delimited by tags, specify the format of the tags. Can be a string or a list of strings to specify multiple formats. Default: `['# %%', '#%%', '# <codecell>', '##']`  |
+| `g:ipython_cell_valid_marks`      | If cells are delimited by marks, specify which marks to use. Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`                                                      |
 
 
 Example Vim configuration
