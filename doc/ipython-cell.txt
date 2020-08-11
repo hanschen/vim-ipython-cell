@@ -151,12 +151,12 @@ variable with the following command:
     eval $(tmux showenv -s DISPLAY)
 
 Q: Should I use marks or tags to define cells? ~
-A: This depends on personal preference. Tags are similar to `%%` in MATLAB ~
-and `# %%` in e.g. Jupyter Notebooks and Spyder. They become a part of your ~
-code and can also be shared with others, making them ideal if you want more ~
-persistent cells. Marks, on the other hand, are more transient and can be ~
-changed without triggering changes in your code, which can be nice if you ~
-change your cells often and your code is under version control. ~
+A: This depends on personal preference. Tags are similar to `%%` in MATLAB
+and `# %%` in e.g. Jupyter Notebooks and Spyder. They become a part of your
+code and can also be shared with others, making them ideal if you want more
+persistent cells. Marks, on the other hand, are more transient and can be
+changed without triggering changes in your code, which can be nice if you
+change your cells often and your code is under version control.
 
 Q: How do I show the marks in the left-most column? ~
 A: Use the vim-signature plugin:
