@@ -385,6 +385,20 @@ Some features of ipython-cell use one of the following clipboard programs:
 FAQ
 ---
 
+> I have installed the plugin but get 'Not an editor command'. Why?
+
+If the error persists after restarting Vim/Neovim, make sure that your editor
+has support for Python by running the following commands in the editor:
+
+    :echo has('python')
+    :echo has('python3')
+
+At least one of the commands should return `1`. If they both return `0`,
+you need to set up your editor with Python support. In the case of Neovim, that
+means installing the `pynvim` Python module, see [documentation].
+
+[documentation]: https://neovim.io/doc/user/provider.html#provider-python
+
 > The `IPythonCellExecuteCell` and `IPythonCellExecuteCellJump` commands do
 > not work, but other commands such as IPythonCellRun work. Why?
 
