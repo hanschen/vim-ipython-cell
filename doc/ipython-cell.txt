@@ -109,6 +109,12 @@ g:ipython_cell_tag                  String or list of strings to specify what
                                     between cells.
                                     Default: `['# %%', '#%%', '# <codecell>', '##']`)
 
+g:ipython_cell_regex                If `1`, tags specified by
+                                    `g:ipython_cell_tag` are interpreted as
+                                    regex patterns, otherwise they are
+                                    interpreted as literal strings.
+                                    Default: `0`
+
                                                     *ipython-cell-valid-marks*
 g:ipython_cell_valid_marks          String with marks to use to mark the
                                     boundary between cells. Used only if

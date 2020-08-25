@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import re
 from subprocess import Popen, PIPE
 import sys
 
@@ -170,7 +171,9 @@ def _get_cell_boundaries():
         cell_boundaries = _get_rows_with_marks(buffer, valid_marks)
     elif delimiter == 'tags':
         tag = vim.eval('g:ipython_cell_tag')
-        cell_boundaries = _get_rows_with_tag(buffer, tag)
+        regex_option = vim.eval('g:ipython_cell_regex').strip().lower()
+        use_regex = regex_option in ['1', 'y', 'yes', 't', 'true']
+        cell_boundaries = _get_rows_with_tag(buffer, tag, use_regex)
     else:
         _error("Invalid option value for g:ipython_cell_valid_marks: {}"
                .format(delimiter))
@@ -280,7 +283,7 @@ def _get_prev_cell(current_row, cell_boundaries):
         return prev_cell_row
 
 
-def _get_rows_with_tag(buffer, tags):
+def _get_rows_with_tag(buffer, tags, use_regex=False):
     """Return a list of row numbers for lines containing tag in ``tags``.
 
     Parameters
@@ -302,8 +305,15 @@ def _get_rows_with_tag(buffer, tags):
     rows_containing_tag = []
     for i, line in enumerate(buffer):
         for tag in tags:
-            if tag in line:
+            if not use_regex:
+                tag_found = tag in line
+            else:
+                match = re.search(tag, line)
+                tag_found = match is not None
+
+            if tag_found:
                 rows_containing_tag.append(i + 1)  # rows are counted from 1
+                break
 
     return rows_containing_tag
 
