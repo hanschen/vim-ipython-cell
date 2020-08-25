@@ -107,7 +107,7 @@ g:ipython_cell_delimit_cells_by     Delimit cells by special tags in the code
 g:ipython_cell_tag                  String or list of strings to specify what
                                     kind of tags to use to mark the boundary
                                     between cells.
-                                    Default: `['# %%', '#%%', '# <codecell>', '##']`)
+                                    Default: `['# %%', '#%%', '# <codecell>', '##']`
 
 g:ipython_cell_regex                If `1`, tags specified by
                                     `g:ipython_cell_tag` are interpreted as
