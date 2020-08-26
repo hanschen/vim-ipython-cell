@@ -372,6 +372,17 @@ inoremap <F7> <C-o>:IPythonCellExecuteCellJump<CR>
 
 ~~~
 
+If you use the [percent format] for cells and don't want e.g. `# %% [markdown]`
+to be interpreted as a cell header, you can use regex:
+
+~~~vim
+let g:ipython_cell_regex = 1
+let g:ipython_cell_tag = '# %%( [^[].*)?$'
+
+~~~
+
+[percent format]: https://jupytext.readthedocs.io/en/latest/formats.html#the-percent-format
+
 
 Supported clipboard programs
 ----------------------------
