@@ -262,8 +262,11 @@ Configuration
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `g:ipython_cell_delimit_cells_by` | Specify if cells should be delimited by `'tags'` or `'marks'`. Default: `'tags'`                                                                                                    |
 | `g:ipython_cell_tag`              | If cells are delimited by tags, specify the format of the tags. Can be a string or a list of strings to specify multiple formats. Default: `['# %%', '#%%', '# <codecell>', '##']`  |
-| `g:ipython_cell_regex`            | If `1`, tags specified by `g:ipython_cell_tag` are interpreted as regex patterns, otherwise they are interpreted as literal strings. Default: `0`                                   |
+| `g:ipython_cell_regex`            | If `1`, tags specified by `g:ipython_cell_tag` are interpreted as [Python regex patterns], otherwise they are interpreted as literal strings. Default: `0`                          |
 | `g:ipython_cell_valid_marks`      | If cells are delimited by marks, specify which marks to use. Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`                                                      |
+
+
+[Python regex patterns]: https://docs.python.org/3/library/re.html#regular-expression-syntax
 
 
 Example Vim configuration
