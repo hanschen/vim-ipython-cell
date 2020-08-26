@@ -377,7 +377,7 @@ to be interpreted as a cell header, you can use regex:
 
 ~~~vim
 let g:ipython_cell_regex = 1
-let g:ipython_cell_tag = '# %%( [^[].*)?$'
+let g:ipython_cell_tag = '# %%( [^[].*)?'
 
 ~~~
 
