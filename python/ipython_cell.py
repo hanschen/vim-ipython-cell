@@ -28,13 +28,16 @@ def execute_cell(use_cpaste=False):
     cell_boundaries = _get_cell_boundaries()
     start_row, end_row = _get_current_cell_boundaries(current_row,
                                                       cell_boundaries)
-
     # Required for Python 2
     if end_row is None:
         end_row = len(vim.current.buffer)
 
-    # start_row and end_row are 1-indexed, need to subtract 1
-    cell = "\n".join(vim.current.buffer[start_row-1:end_row])
+    if vim.eval('g:ipython_cell_delimit_cells_by') == 'marks':
+        # start_row and end_row are 1-indexed, need to subtract 1
+        cell = "\n".join(vim.current.buffer[start_row-1:end_row])
+    else:
+        # but we don't want to send the tag over:
+        cell = "\n".join(vim.current.buffer[start_row:end_row])
 
     if not use_cpaste:
         if cell:
