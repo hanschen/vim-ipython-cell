@@ -124,6 +124,26 @@ def close_all():
 
 
 def _copy_to_clipboard(string, prefer_program=None):
+    """Copy ``string`` to primary clipboard.
+
+    If the +clipboard feature flag in Vim is present, the function will use Vim
+    to copy the string, otherwise it will attempt to use an external program.
+
+    Parameters
+    ----------
+    string : str
+        String to copy to clipboard.
+    prefer_program : None or str
+        Which external program to use to copy to clipboard if +clipboard is
+        absent.
+
+    """
+    copy_successful = _copy_to_clipboard_internal(string)
+    if not copy_successful:
+        _copy_to_clipboard_external(string, prefer_program)
+
+
+def _copy_to_clipboard_external(string, prefer_program=None):
     """Copy ``string`` to primary clipboard using pbcopy, xclip or xsel.
 
     Parameters
@@ -164,6 +184,18 @@ def _copy_to_clipboard(string, prefer_program=None):
 
     byte = string.encode()
     p.communicate(input=byte)
+
+
+def _copy_to_clipboard_internal(string):
+    """Copy ``string`` to primary clipboard using Vim.
+
+    Return True if the copy is successful, otherwise return False.
+    """
+    if vim.eval("has('clipboard')") == '1':
+        vim.command('let @+=' + _sanitize(string))
+        return True
+    else:
+        return False
 
 
 def _error(*args, **kwargs):
@@ -360,6 +392,10 @@ def _get_rows_with_marks(buffer, valid_marks):
             rows_containing_marks.append(mark_loc[0])
 
     return rows_containing_marks
+
+
+def _sanitize(string):
+    return "'" + re.sub(re.compile("'"), "''", string) + "'"
 
 
 def _slimesend(string):
