@@ -25,19 +25,26 @@ def execute_cell(use_cpaste=False):
 
     """
     current_row, _ = vim.current.window.cursor
-    cell_boundaries = _get_cell_boundaries()
+    cell_boundaries = _get_cell_boundaries(auto_include_first_line=False)
+
+    # Include first line of buffer if necessary
+    first_line_contains_cell_header = 1 in cell_boundaries
+    if not first_line_contains_cell_header:
+        cell_boundaries.insert(0, 1)
+
     start_row, end_row = _get_current_cell_boundaries(current_row,
                                                       cell_boundaries)
     # Required for Python 2
     if end_row is None:
         end_row = len(vim.current.buffer)
 
-    if vim.eval('g:ipython_cell_delimit_cells_by') == 'marks':
-        # start_row and end_row are 1-indexed, need to subtract 1
-        cell = "\n".join(vim.current.buffer[start_row-1:end_row])
-    else:
-        # but we don't want to send the tag over:
-        cell = "\n".join(vim.current.buffer[start_row:end_row])
+    # Do not send the tag over
+    if vim.eval('g:ipython_cell_delimit_cells_by') == 'tags':
+        if first_line_contains_cell_header or start_row != 1:
+            start_row += 1
+
+    # start_row and end_row are 1-indexed, need to subtract 1
+    cell = "\n".join(vim.current.buffer[start_row-1:end_row])
 
     if not use_cpaste:
         if cell:
@@ -164,8 +171,16 @@ def _error(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def _get_cell_boundaries():
-    """Return a list of rows (1-indexed) for all cell boundaries."""
+def _get_cell_boundaries(auto_include_first_line=True):
+    """Return a list of rows (1-indexed) for all cell boundaries.
+
+    Parameters
+    ----------
+    auto_include_first_line : bool
+        If True (default), include first line of the buffer automatically in
+        the returned list even if it does not contain a cell header.
+
+    """
     buffer = vim.current.buffer
     delimiter = vim.eval('g:ipython_cell_delimit_cells_by').strip()
 
@@ -182,8 +197,9 @@ def _get_cell_boundaries():
                .format(delimiter))
         return
 
-    # Include beginning of file as a cell boundary
-    cell_boundaries.append(1)
+    if auto_include_first_line:
+        # Include beginning of buffer as a cell boundary
+        cell_boundaries.append(1)
 
     return sorted(set(cell_boundaries))
 
