@@ -10,6 +10,12 @@ another code cell to visualize the data. This plugin allows you to change and
 re-run the visualization part of your code without having to reload the data
 each time.
 
+The major difference between ipython-cell and other plugins (such as vim-slime
+and nvim-ipy) is that this plugin has 'non-verbose' commands that do not show
+the code that is run. This makes it easier to read the output in IPython.
+Additionally, ipython-cell provides some convenience commands to jump between
+cells and to work with IPython, see [Commands](#commands) below.
+
 
 Demo
 ----
