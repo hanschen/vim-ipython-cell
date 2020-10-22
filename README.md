@@ -124,8 +124,8 @@ contains sensitive data.
 | ------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `:IPythonCellExecuteCell`             | Execute the current code cell in IPython<sup>1</sup>                                        |
 | `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell<sup>1</sup>             |
-| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython<sup>2</sup>)                             |
-| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell<sup>2</sup>)  |
+| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython<sup>2</sup>                              |
+| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell<sup>2</sup>   |
 | `:IPythonCellRun`                     | Run the whole script in IPython.                                                            |
 | `:IPythonCellRunTime`                 | Run the whole script in IPython and time the execution.                                     |
 | `:IPythonCellClear`                   | Clear IPython screen.                                                                       |
