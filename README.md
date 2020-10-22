@@ -135,7 +135,7 @@ contains sensitive data.
 | `:IPythonCellPrevCommand`             | Run previous command.                                                                       |
 | `:IPythonCellRestart`                 | Restart IPython.                                                                            |
 
-<sup>1</sup> Non-verbose version, requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).
+<sup>1</sup> Non-verbose version, requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  
 <sup>2</sup> Verbose version, works without Tkinter and clipboard support.
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
