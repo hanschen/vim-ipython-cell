@@ -33,16 +33,12 @@ versions are found, the plugin will prefer Python 3.
 ipython-cell depends on [vim-slime] to send the code to IPython, see
 [Installation](#installation) instructions below.
 
-Additionally, the cell execution feature requires Tkinter and a
-[clipboard program](#supported-clipboard-programs) to be installed.
-On Linux, the plugin supports [xclip] and [xsel] (preferring the former).
-On macOS, the plugin will use pbcopy.
-Windows systems are currently not supported.
+Additionally, the 'non-verbose' cell execution feature requires Tkinter to be
+installed and either `+clipboard` support in Vim (see `vim --version`), or an
+external [clipboard program](#supported-clipboard-programs) to be installed.
 There is also a verbose version of the cell execution feature that does not
-require Tkinter or a clipboard program, see [Usage](#usage).
+require Tkinter or clipboard support, see [Usage](#usage).
 
-[xclip]: https://github.com/astrand/xclip
-[xsel]: https://github.com/kfish/xsel
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
 
@@ -117,18 +113,19 @@ commands listed below, which I recommend that you bind to key combinations of
 your likings. The [Example Vim Configuration](#example-vim-configuration) shows
 some examples of how this can be done.
 
-Note that the cell execution feature copies your code to the system clipboard.
-You may want to avoid using this feature if your code contains sensitive data.
+Note that the 'non-verbose' cell execution feature copies your code to the
+system clipboard. You may want to avoid using this feature if your code
+contains sensitive data.
 
 
 ### Commands
 
 | Command                               | Description                                                                                 |
 | ------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `:IPythonCellExecuteCell`             | Execute the current code cell in IPython.<sup>*</sup>                                       |
-| `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell.<sup>*</sup>            |
-| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython.<sup>**</sup>                            |
-| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell.<sup>**</sup> |
+| `:IPythonCellExecuteCell`             | Execute the current code cell in IPython<sup>1</sup>                                        |
+| `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell<sup>1</sup>             |
+| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython<sup>2</sup>)                             |
+| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell<sup>2</sup>)  |
 | `:IPythonCellRun`                     | Run the whole script in IPython.                                                            |
 | `:IPythonCellRunTime`                 | Run the whole script in IPython and time the execution.                                     |
 | `:IPythonCellClear`                   | Clear IPython screen.                                                                       |
@@ -138,8 +135,8 @@ You may want to avoid using this feature if your code contains sensitive data.
 | `:IPythonCellPrevCommand`             | Run previous command.                                                                       |
 | `:IPythonCellRestart`                 | Restart IPython.                                                                            |
 
-<sup>*</sup> Requires a [clipboard program](#supported-clipboard-programs).  
-<sup>**</sup> Works without a clipboard program.
+<sup>1</sup> Non-verbose version, requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).
+<sup>2</sup> Verbose version, works without Tkinter and clipboard support.
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
