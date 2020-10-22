@@ -384,7 +384,8 @@ let g:ipython_cell_tag = '# %%( [^[].*)?'
 Supported clipboard programs
 ----------------------------
 
-Some features of ipython-cell use one of the following clipboard programs:
+If your Vim installation does not have `+clipboard` support, some features of
+ipython-cell will attempt to use one of the following clipboard programs:
 
 * Linux: [xclip] (preferred) or [xsel].
 * macOS: pbcopy (installed by default).
