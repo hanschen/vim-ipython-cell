@@ -46,10 +46,14 @@ def execute_cell(use_cpaste=False):
     # start_row and end_row are 1-indexed, need to subtract 1
     cell = "\n".join(vim.current.buffer[start_row-1:end_row])
 
+    langauge = vim.eval('g:ipython_language')
     if not use_cpaste:
         if cell:
             _copy_to_clipboard(cell)
-            _slimesend("%paste -q")
+            if langauge == "Python":
+                _slimesend("%paste -q")
+            else:
+                _slimesend("include_string(Main, clipboard())")
         else:
             _slimesend("# empty cell")
     else:
@@ -61,7 +65,10 @@ def execute_cell(use_cpaste=False):
         if slime_python_ipython:
             _slimesend(cell)
         else:
-            _slimesend("%cpaste -q")
+            if langauge == "Python":
+                _slimesend("%paste -q")
+            else:
+                _slimesend("include_string(Main, clipboard())")
             # Send 25 lines at a time to avoid potential issues when sending
             # a large number of lines
             remaining_chunks = cell.splitlines()
