@@ -49,7 +49,8 @@ def execute_cell(use_cpaste=False):
     if not use_cpaste:
         if cell:
             _copy_to_clipboard(cell)
-            _slimesend("%paste -q")
+            paste_command = vim.eval('g:ipython_cell_cell_command')
+            _slimesend(paste_command)
         else:
             _slimesend("# empty cell")
     else:
@@ -109,8 +110,11 @@ def restart_ipython():
 
 def run(*args):
     """Run script."""
-    opts = " ".join(args)
-    _slimesend("%run {} {}".format(opts, vim.current.buffer.name))
+    options = " ".join(args)
+    run_command = vim.eval('g:ipython_cell_run_command')
+    run_command = run_command.format(options=options,
+                                     filepath=vim.current.buffer.name)
+    _slimesend(run_command)
 
 
 def clear():

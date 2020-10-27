@@ -122,6 +122,17 @@ g:ipython_cell_valid_marks          String with marks to use to mark the
                                     to  `'marks'`.
                                     Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`
 
+g:ipython_cell_cell_command         Command to run for executing cells.
+                                    Default: `'%paste -q'`
+
+g:ipython_cell_run_command`         Command to run for executing scripts.
+                                    Supports placeholders `{options}` for
+                                    flags passed to the `IPythonCellRun`
+                                    function, such as `-t` for
+                                    IPythonCellRunTime, and `{filepath}` for
+                                    the path to the current buffer.
+                                    Default: `'%run {options} {filepath}'`
+
 ==============================================================================
 FAQ                                                         *ipython-cell-faq*
 

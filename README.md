@@ -3,6 +3,8 @@ ipython-cell
 
 Seamlessly run Python code from Vim in IPython, including executing individual
 code cells similar to Jupyter notebooks and MATLAB.
+This plugin also supports [other languages and REPLs](#other-repls) such as
+Julia.
 
 ipython-cell is especially suited for data exploration and visualization using
 Python. You can for example define a code cell that loads your input data, and
@@ -122,21 +124,22 @@ contains sensitive data.
 
 | Command                               | Description                                                                                 |
 | ------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `:IPythonCellExecuteCell`             | Execute the current code cell in IPython<sup>1</sup>                                        |
-| `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell<sup>1</sup>             |
-| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython<sup>2</sup>                              |
-| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell<sup>2</sup>   |
-| `:IPythonCellRun`                     | Run the whole script in IPython.                                                            |
-| `:IPythonCellRunTime`                 | Run the whole script in IPython and time the execution.                                     |
-| `:IPythonCellClear`                   | Clear IPython screen.                                                                       |
-| `:IPythonCellClose`                   | Close all figure windows.                                                                   |
-| `:IPythonCellPrevCell`                | Jump to the previous cell header.                                                           |
-| `:IPythonCellNextCell`                | Jump to the next cell header.                                                               |
-| `:IPythonCellPrevCommand`             | Run previous command.                                                                       |
-| `:IPythonCellRestart`                 | Restart IPython.                                                                            |
+| `:IPythonCellExecuteCell`             | Execute the current code cell in IPython<sup>1,2</sup>                                      |
+| `:IPythonCellExecuteCellJump`         | Execute the current code cell in IPython, and jump to the next cell<sup>1,2</sup>           |
+| `:IPythonCellExecuteCellVerbose`      | Print and execute the current code cell in IPython<sup>3</sup>                              |
+| `:IPythonCellExecuteCellVerboseJump`  | Print and execute the current code cell in IPython, and jump to the next cell<sup>3</sup>   |
+| `:IPythonCellRun`                     | Run the whole script in IPython<sup>1</sup>                                                 |
+| `:IPythonCellRunTime`                 | Run the whole script in IPython and time the execution                                      |
+| `:IPythonCellClear`                   | Clear IPython screen                                                                        |
+| `:IPythonCellClose`                   | Close all figure windows                                                                    |
+| `:IPythonCellPrevCell`                | Jump to the previous cell header                                                            |
+| `:IPythonCellNextCell`                | Jump to the next cell header                                                                |
+| `:IPythonCellPrevCommand`             | Run previous command                                                                        |
+| `:IPythonCellRestart`                 | Restart IPython                                                                             |
 
-<sup>1</sup> Non-verbose version, requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  
-<sup>2</sup> Verbose version, works without Tkinter and clipboard support.
+<sup>1</sup> Can be [configured for other REPLs](#other-repls).  
+<sup>2</sup> Non-verbose version, requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  
+<sup>3</sup> Verbose version, works without Tkinter and clipboard support.
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
 
@@ -261,7 +264,10 @@ Configuration
 | `g:ipython_cell_tag`              | If cells are delimited by tags, specify the format of the tags. Can be a string or a list of strings to specify multiple formats. Default: `['# %%', '#%%', '# <codecell>', '##']`  |
 | `g:ipython_cell_regex`            | If `1`, tags specified by `g:ipython_cell_tag` are interpreted as [Python regex patterns], otherwise they are interpreted as literal strings. Default: `0`                          |
 | `g:ipython_cell_valid_marks`      | If cells are delimited by marks, specify which marks to use. Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`                                                      |
+| `g:ipython_cell_cell_command`     | Command to run for executing cells. Default: `'%paste -q'`                                                                                                                            |
+| `g:ipython_cell_run_command`      | Command to run for executing scripts. Default: `'%run {options} {filepath}`<sup>1</sup>                                                                                             |
 
+<sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
 
 [Python regex patterns]: https://docs.python.org/3/library/re.html#regular-expression-syntax
 
@@ -379,6 +385,19 @@ let g:ipython_cell_tag = '# %%( [^[].*)?'
 ~~~
 
 [percent format]: https://jupytext.readthedocs.io/en/latest/formats.html#the-percent-format
+
+
+### Other REPLs
+
+ipython-cell can also be configured to support other languages and REPLs.
+For example, to make `IPythonCellRun` and `IPythonCellExecuteCell` work with
+Julia, add the following to your `.vimrc`:
+
+~~~vim
+let g:ipython_cell_run_command = 'include("{filepath}")'
+let g:ipython_cell_cell_command = 'include_string(Main, clipboard())'
+
+~~~
 
 
 Supported clipboard programs
