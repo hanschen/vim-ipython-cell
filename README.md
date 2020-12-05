@@ -356,6 +356,9 @@ files. If you want to define these mappings for only Python files, you can put
 the mappings in `~/.vim/after/ftplugin/python.vim` for Vim
 (or `~/.config/nvim/after/ftplugin/python.vim` for Neovim).
 
+
+### MATLAB-like key bindings
+
 If you come from the MATLAB world, you may want e.g. F5 to save and run the
 script regardless if you are in insert or normal mode, F6 to execute the
 current cell, and F7 to execute the current cell and jump to the next cell:
@@ -374,6 +377,9 @@ nnoremap <F7> :IPythonCellExecuteCellJump<CR>
 inoremap <F7> <C-o>:IPythonCellExecuteCellJump<CR>
 
 ~~~
+
+
+### Use the `percent` format
 
 If you use the [percent format] for cells and don't want e.g. `# %% [markdown]`
 to be interpreted as a cell header, you can use regex:
