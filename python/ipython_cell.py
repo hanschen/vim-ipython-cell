@@ -113,7 +113,7 @@ def run(*args):
     options = " ".join(args)
     run_command = vim.eval('g:ipython_cell_run_command')
     run_command = run_command.format(options=options,
-                                     filepath=vim.current.buffer.name)
+                                     filepath=(r"'{}'").format(vim.current.buffer.name))
     _slimesend(run_command)
 
 
