@@ -131,7 +131,7 @@ g:ipython_cell_run_command`         Command to run for executing scripts.
                                     function, such as `-t` for
                                     IPythonCellRunTime, and `{filepath}` for
                                     the path to the current buffer.
-                                    Default: `'%run {options} {filepath}'`
+                                    Default: `'%run {options} "{filepath}"'`
 
 ==============================================================================
 FAQ                                                         *ipython-cell-faq*

@@ -265,7 +265,7 @@ Configuration
 | `g:ipython_cell_regex`            | If `1`, tags specified by `g:ipython_cell_tag` are interpreted as [Python regex patterns], otherwise they are interpreted as literal strings. Default: `0`                          |
 | `g:ipython_cell_valid_marks`      | If cells are delimited by marks, specify which marks to use. Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`                                                      |
 | `g:ipython_cell_cell_command`     | Command to run for executing cells. Default: `'%paste -q'`                                                                                                                            |
-| `g:ipython_cell_run_command`      | Command to run for executing scripts. Default: `'%run {options} {filepath}`<sup>1</sup>                                                                                             |
+| `g:ipython_cell_run_command`      | Command to run for executing scripts. Default: `'%run {options} "{filepath}"`<sup>1</sup>                                                                                           |
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
 
