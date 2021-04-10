@@ -133,6 +133,11 @@ g:ipython_cell_run_command`         Command to run for executing scripts.
                                     the path to the current buffer.
                                     Default: `'%run {options} "{filepath}"'`
 
+g:ipython_cell_prefer_external_copy Set to `1` to prefer using an external
+                                    program to copy to system clipboard rather
+                                    than relying on Vim/Neovim yank.
+                                    Default: `0`
+
 ==============================================================================
 FAQ                                                         *ipython-cell-faq*
 
@@ -196,6 +201,14 @@ Q: How can I send other commands to IPython, e.g. '%who'? ~
 A: You can easily send arbitary commands to IPython using the `:SlimeSend1`
 command provided by vim-slime, e.g. `:SlimeSend1 %who`, and map these commands
 to key combinations.
+
+Q: The `IPythonCellExecuteCell` command does not work, it seems to run the ~
+wrong cell. ~
+A: Try to add the following to your .vimrc: >
+
+    let g:ipython_cell_prefer_external_copy = 1
+
+Make sure you have a supported clipboard program installed (see README).
 
 Q: Why isn't this plugin specific to Python by default? In other words, why ~
 do I have to add all this extra stuff to make this plugin Python-specific? ~

@@ -18,6 +18,7 @@ let g:ipython_cell_regex = get(g:, 'ipython_cell_regex', 0)
 let g:ipython_cell_valid_marks = get(g:, 'ipython_cell_valid_marks', 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 let g:ipython_cell_run_command = get(g:, 'ipython_cell_run_command', '%run {options} "{filepath}"')
 let g:ipython_cell_cell_command = get(g:, 'ipython_cell_cell_command', '%paste -q')
+let g:ipython_cell_prefer_external_copy = get(g:, 'ipython_cell_prefer_external_copy', 0)
 
 function! s:UsingPython3()
   if has('python3')

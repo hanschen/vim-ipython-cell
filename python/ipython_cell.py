@@ -142,9 +142,12 @@ def _copy_to_clipboard(string, prefer_program=None):
         absent.
 
     """
-    copy_successful = _copy_to_clipboard_internal(string)
-    if not copy_successful:
+    if vim.eval('g:ipython_cell_prefer_external_copy') != '0':
         _copy_to_clipboard_external(string, prefer_program)
+    else:
+        copy_successful = _copy_to_clipboard_internal(string)
+        if not copy_successful:
+            _copy_to_clipboard_external(string, prefer_program)
 
 
 def _copy_to_clipboard_external(string, prefer_program=None):

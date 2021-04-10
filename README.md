@@ -258,14 +258,15 @@ See note in the previous section about defining code cells inside statements
 Configuration
 -------------
 
-| Option                            | Description                                                                                                                                                                         |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `g:ipython_cell_delimit_cells_by` | Specify if cells should be delimited by `'tags'` or `'marks'`. Default: `'tags'`                                                                                                    |
-| `g:ipython_cell_tag`              | If cells are delimited by tags, specify the format of the tags. Can be a string or a list of strings to specify multiple formats. Default: `['# %%', '#%%', '# <codecell>', '##']`  |
-| `g:ipython_cell_regex`            | If `1`, tags specified by `g:ipython_cell_tag` are interpreted as [Python regex patterns], otherwise they are interpreted as literal strings. Default: `0`                          |
-| `g:ipython_cell_valid_marks`      | If cells are delimited by marks, specify which marks to use. Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`                                                      |
-| `g:ipython_cell_cell_command`     | Command to run for executing cells. Default: `'%paste -q'`                                                                                                                          |
-| `g:ipython_cell_run_command`      | Command to run for executing scripts. Default: `'%run {options} "{filepath}"`<sup>1</sup>                                                                                           |
+| Option                                | Description                                                                                                                                                                         |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `g:ipython_cell_delimit_cells_by`     | Specify if cells should be delimited by `'tags'` or `'marks'`. Default: `'tags'`                                                                                                    |
+| `g:ipython_cell_tag`                  | If cells are delimited by tags, specify the format of the tags. Can be a string or a list of strings to specify multiple formats. Default: `['# %%', '#%%', '# <codecell>', '##']`  |
+| `g:ipython_cell_regex`                | If `1`, tags specified by `g:ipython_cell_tag` are interpreted as [Python regex patterns], otherwise they are interpreted as literal strings. Default: `0`                          |
+| `g:ipython_cell_valid_marks`          | If cells are delimited by marks, specify which marks to use. Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`                                                      |
+| `g:ipython_cell_cell_command`         | Command to run for executing cells. Default: `'%paste -q'`                                                                                                                          |
+| `g:ipython_cell_run_command`          | Command to run for executing scripts. Default: `'%run {options} "{filepath}"`<sup>1</sup>                                                                                           |
+| `g:ipython_cell_prefer_external_copy` | Set to `1` to prefer using an external program to copy to system clipboard rather than relying on Vim/Neovim yank. Default: `0`                                                     |
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
 
@@ -509,6 +510,16 @@ to key combinations.
 If you use Neovim, make sure you have the [neovim] Python package installed.
 
 [neovim]: https://pypi.org/project/neovim/
+
+> The `IPythonCellExecuteCell` command does not work, it seems to run the wrong
+> cell.
+
+Try to add the following to your configuration file:
+
+    let g:ipython_cell_prefer_external_copy = 1
+
+Make sure you have a [supported clipboard program](#supported-clipboard-programs).  
+installed.
 
 > Why isn't this plugin specific to Python by default? In other words, why do
 > I have to add all this extra stuff to make this plugin Python-specific?
