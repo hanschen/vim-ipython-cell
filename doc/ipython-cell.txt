@@ -109,6 +109,7 @@ g:ipython_cell_tag                  String or list of strings to specify what
                                     between cells.
                                     Default: `['# %%', '#%%', '# <codecell>', '##']`
 
+                                                          *ipython-cell-regex*
 g:ipython_cell_regex                If `1`, tags specified by
                                     `g:ipython_cell_tag` are interpreted as
                                     Python regex patterns, otherwise they are
@@ -122,9 +123,11 @@ g:ipython_cell_valid_marks          String with marks to use to mark the
                                     to  `'marks'`.
                                     Default: `'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'`
 
+                                                   *ipython-cell-cell-command*
 g:ipython_cell_cell_command         Command to run for executing cells.
                                     Default: `'%paste -q'`
 
+                                                    *ipython-cell-run-command*
 g:ipython_cell_run_command`         Command to run for executing scripts.
                                     Supports placeholders `{options}` for
                                     flags passed to the `IPythonCellRun`
@@ -133,6 +136,7 @@ g:ipython_cell_run_command`         Command to run for executing scripts.
                                     the path to the current buffer.
                                     Default: `'%run {options} "{filepath}"'`
 
+                                           *ipython-cell-prefer-external-copy*
 g:ipython_cell_prefer_external_copy Set to `1` to prefer using an external
                                     program to copy to system clipboard rather
                                     than relying on Vim/Neovim yank.
