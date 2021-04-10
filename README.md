@@ -518,7 +518,7 @@ Try to add the following to your configuration file:
 
     let g:ipython_cell_prefer_external_copy = 1
 
-Make sure you have a [supported clipboard program](#supported-clipboard-programs).  
+Make sure you have a [supported clipboard program](#supported-clipboard-programs)
 installed.
 
 > Why isn't this plugin specific to Python by default? In other words, why do
