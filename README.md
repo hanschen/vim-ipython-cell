@@ -409,7 +409,7 @@ let g:ipython_cell_cell_command = 'include_string(Main, clipboard())'
 
 ### More tips
 
-For more configuration tips, see [the wiki].
+For more configuration and usage tips, see [the wiki].
 
 [the wiki]: https://github.com/hanschen/vim-ipython-cell/wiki
 
