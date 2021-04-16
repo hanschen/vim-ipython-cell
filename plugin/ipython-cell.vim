@@ -19,6 +19,7 @@ let g:ipython_cell_valid_marks = get(g:, 'ipython_cell_valid_marks', 'abcdefghij
 let g:ipython_cell_run_command = get(g:, 'ipython_cell_run_command', '%run {options} "{filepath}"')
 let g:ipython_cell_cell_command = get(g:, 'ipython_cell_cell_command', '%paste -q')
 let g:ipython_cell_prefer_external_copy = get(g:, 'ipython_cell_prefer_external_copy', 0)
+let g:ipython_cell_highlight_cells = get(g:, 'ipython_cell_highlight_cells', 1)
 
 function! s:UsingPython3()
   if has('python3')
@@ -92,3 +93,11 @@ command! -nargs=0 IPythonCellPrevCommand call IPythonCellPrevCommand()
 command! -nargs=0 IPythonCellRestart call IPythonCellRestart()
 command! -nargs=0 IPythonCellRun call IPythonCellRun()
 command! -nargs=0 IPythonCellRunTime call IPythonCellRun('-t')
+
+if g:ipython_cell_highlight_cells != 0
+    highlight default link IPythonCell Folded
+    augroup highlight_python_cells
+        autocmd!
+        autocmd VimEnter,WinEnter * match IPythonCell /# %%.*\|#%%.*\|# <codecell>.*\|##.*/
+    augroup END
+endif

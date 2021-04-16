@@ -142,6 +142,15 @@ g:ipython_cell_prefer_external_copy Set to `1` to prefer using an external
                                     than relying on Vim/Neovim yank.
                                     Default: `0`
 
+                                                *ipython-cell-highlight-cells*
+g:ipython_cell_highlight_cells       Set to `0` to disable highlighting of
+                                     cell headers defined using tags.
+                                     Default: `1`
+
+                                                *ipython-cell-highlight-group*
+By default, cell headers defined using tags are highlighted using the
+`IPythonCell` highlight group.
+
 ==============================================================================
 FAQ                                                         *ipython-cell-faq*
 
