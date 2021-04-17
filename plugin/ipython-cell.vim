@@ -98,6 +98,6 @@ if g:ipython_cell_highlight_cells != 0
     highlight default link IPythonCell Folded
     augroup highlight_python_cells
         autocmd!
-        autocmd VimEnter,WinEnter * match IPythonCell /# %%.*\|#%%.*\|# <codecell>.*\|##.*/
+        autocmd VimEnter,WinEnter * match IPythonCell /\s*# %%.*\|\s*#%%.*\|\s*# <codecell>.*\|\s*##.*/
     augroup END
 endif
