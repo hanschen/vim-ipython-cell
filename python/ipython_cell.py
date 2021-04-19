@@ -11,6 +11,8 @@ except ImportError:
           "not work")
 
 
+CTRL_N = '\x0e'
+CTRL_O = '\x0f'
 CTRL_P = '\x10'
 CTRL_U = '\x15'
 
@@ -42,9 +44,18 @@ def execute_cell(use_cpaste=False):
     if (vim.eval('g:ipython_cell_delimit_cells_by') == 'tags'
             and vim.eval('g:ipython_cell_send_cell_headers') != '0'):
         if start_row == 1 and not first_line_contains_cell_header:
-            _slimesend("# cell 0")
+            cell_header = "# cell 0"
         else:
-            _slimesend(vim.current.buffer[start_row-1])
+            cell_header = vim.current.buffer[start_row-1]
+        _slimesend0(CTRL_U)
+        _slimesend0(cell_header)
+        _slimesend0(CTRL_O)
+        _slimesend0(CTRL_N)
+
+        if not use_cpaste:
+            # Create a new line to account for Ctrl-U
+            _slimesend0(CTRL_O)
+            _slimesend0(CTRL_N)
 
     # Do not send the tag over
     if vim.eval('g:ipython_cell_delimit_cells_by') == 'tags':
@@ -422,4 +433,18 @@ def _slimesend(string):
         vim.command('SlimeSend1 ' + CTRL_U + '{}'.format(string))
     except vim.error:
         _error("Could not execute SlimeSend1 command, make sure vim-slime is "
+               "installed")
+
+
+def _slimesend0(string):
+    """Similar to _slimesend, but use SlimeSend0 (do not include carriage
+    return) instead of SlimeSend1, and do not send Ctrl-U.
+    """
+    if not string:
+        return
+
+    try:
+        vim.command('SlimeSend0 "{}"'.format(string))
+    except vim.error:
+        _error("Could not execute SlimeSend0 command, make sure vim-slime is "
                "installed")
