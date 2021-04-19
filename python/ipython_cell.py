@@ -38,6 +38,14 @@ def execute_cell(use_cpaste=False):
     if end_row is None:
         end_row = len(vim.current.buffer)
 
+    # Send tags?
+    if (vim.eval('g:ipython_cell_delimit_cells_by') == 'tags'
+            and vim.eval('g:ipython_cell_send_cell_headers') != '0'):
+        if start_row == 1 and not first_line_contains_cell_header:
+            _slimesend("# cell 0")
+        else:
+            _slimesend(vim.current.buffer[start_row-1])
+
     # Do not send the tag over
     if vim.eval('g:ipython_cell_delimit_cells_by') == 'tags':
         if first_line_contains_cell_header or start_row != 1:
