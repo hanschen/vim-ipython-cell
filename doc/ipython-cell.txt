@@ -147,6 +147,13 @@ g:ipython_cell_highlight_cells       Set to `0` to disable highlighting of
                                      cell headers defined using tags.
                                      Default: `1`
 
+                                             *ipython-cell-highlight-cells-ft*
+g:ipython_cell_highlight_cells_ft    A list of filetypes for which cell
+                                     headers will be highlighted if
+                                     `g:ipython_cell_highlight_cells` is
+                                     enabled.
+                                     Default: `['python']`
+
                                               *ipython-cell-send-cell-headers*
 g:ipython_cell_send_cell_headers     If cells are delimited by tags,
                                      separately send the cell header before

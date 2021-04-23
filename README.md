@@ -268,6 +268,7 @@ Configuration
 | `g:ipython_cell_run_command`          | Command to run for executing scripts. Default: `'%run {options} "{filepath}"`<sup>1</sup>                                                                                           |
 | `g:ipython_cell_prefer_external_copy` | Set to `1` to prefer using an external program to copy to system clipboard rather than relying on Vim/Neovim yank. Default: `0`                                                     |
 | `g:ipython_cell_highlight_cells`      | Set to `0` to disable highlighting of cell headers defined using tags. Default: `1`                                                                                                 |
+| `g:ipython_cell_highlight_cells_ft`   | A list of filetypes for which cell headers will be highlighted if `g:ipython_cell_highlight_cells` is enabled. Default: `['python']`                                                |
 | `g:ipython_cell_send_cell_headers`    | If cells are delimited by tags, separately send the cell header before the cell contents. Default: `0`                                                                              |
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.

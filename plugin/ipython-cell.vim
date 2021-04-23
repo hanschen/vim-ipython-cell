@@ -20,6 +20,7 @@ let g:ipython_cell_run_command = get(g:, 'ipython_cell_run_command', '%run {opti
 let g:ipython_cell_cell_command = get(g:, 'ipython_cell_cell_command', '%paste -q')
 let g:ipython_cell_prefer_external_copy = get(g:, 'ipython_cell_prefer_external_copy', 0)
 let g:ipython_cell_highlight_cells = get(g:, 'ipython_cell_highlight_cells', 1)
+let g:ipython_cell_highlight_cells_ft = get(g:, 'ipython_cell_highlight_cells_ft', ['python'])
 let g:ipython_cell_send_cell_headers = get(g:, 'ipython_cell_send_cell_headers', 0)
 
 function! s:UsingPython3()
@@ -95,10 +96,25 @@ command! -nargs=0 IPythonCellRestart call IPythonCellRestart()
 command! -nargs=0 IPythonCellRun call IPythonCellRun()
 command! -nargs=0 IPythonCellRunTime call IPythonCellRun('-t')
 
-if g:ipython_cell_highlight_cells != 0
-    highlight default link IPythonCell Folded
-    augroup highlight_python_cells
-        autocmd!
-        autocmd VimEnter,WinEnter * match IPythonCell /\s*# %%.*\|\s*#%%.*\|\s*# <codecell>.*\|\s*##.*/
-    augroup END
-endif
+highlight default link IPythonCell Folded
+function! UpdateCellHighlight()
+    if g:ipython_cell_highlight_cells == 0
+        return
+    endif
+
+    if index(g:ipython_cell_highlight_cells_ft, &filetype) >= 0
+        if !exists('w:ipython_cell_match')
+            let w:ipython_cell_match=matchadd('IPythonCell', '\s*# %%.*\|\s*#%%.*\|\s*# <codecell>.*\|\s*##.*')
+        endif
+    else
+        if exists('w:ipython_cell_match')
+            call matchdelete(w:ipython_cell_match)
+            unlet w:ipython_cell_match
+        endif
+    endif
+endfunction
+
+augroup highlight_python_cells
+    autocmd!
+    autocmd BufEnter,BufWinEnter,WinEnter * call UpdateCellHighlight()
+augroup END
