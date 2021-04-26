@@ -135,6 +135,9 @@ contains sensitive data.
 | `:IPythonCellPrevCell`                | Jump to the previous cell header                                                            |
 | `:IPythonCellNextCell`                | Jump to the next cell header                                                                |
 | `:IPythonCellPrevCommand`             | Run previous command                                                                        |
+| `:IPythonCellEditLine`                | Send current line without executing it for editing                                          |
+| `:IPythonCellEditRegion`              | Send selected region without executing it for editing                                       |
+| `:IPythonCellPrevCommand`             | Run previous command                                                                        |
 | `:IPythonCellRestart`                 | Restart IPython                                                                             |
 
 <sup>1</sup> Can be [configured for other REPLs](#other-repls).  
@@ -340,6 +343,12 @@ xmap <Leader>h <Plug>SlimeRegionSend
 
 " map <Leader>p to run the previous command
 nnoremap <Leader>p :IPythonCellPrevCommand<CR>
+
+" map <Leader>e to send current line for editing
+nnoremap <Leader>e :IPythonCellEditLine<CR>
+
+" map <Leader>e to send current selection for editing
+vnoremap <Leader>e :<C-U>IPythonCellEditRegion<CR>
 
 " map <Leader>Q to restart ipython
 nnoremap <Leader>Q :IPythonCellRestart<CR>

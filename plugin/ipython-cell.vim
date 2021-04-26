@@ -118,3 +118,40 @@ augroup highlight_python_cells
     autocmd!
     autocmd BufEnter,BufWinEnter,WinEnter * call UpdateCellHighlight()
 augroup END
+
+function! VisualSelection()
+    " By DarkWiiPlayer 2017 https://stackoverflow.com/a/47051271
+    if mode()=="v"
+        let [line_start, column_start] = getpos("v")[1:2]
+        let [line_end, column_end] = getpos(".")[1:2]
+    else
+        let [line_start, column_start] = getpos("'<")[1:2]
+        let [line_end, column_end] = getpos("'>")[1:2]
+    end
+    if (line2byte(line_start)+column_start) > (line2byte(line_end)+column_end)
+        let [line_start, column_start, line_end, column_end] =
+        \   [line_end, column_end, line_start, column_start]
+    end
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+            return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - 1]
+    let lines[0] = lines[0][column_start - 1:]
+    return lines
+endfunction
+
+function! IPythonCellEditLine()
+    execute 'SlimeSend0 "' . getline(".") . '"'
+endfunc
+
+function! IPythonCellEditRegion()
+    let lines=VisualSelection()
+    for line in lines[0:-2]
+        execute 'SlimeSend0 "' . line . '\n"'
+    endfor
+    execute 'SlimeSend0 "' . lines[-1] . '"'
+endfunc
+
+command! -nargs=0 IPythonCellEditLine call IPythonCellEditLine()
+command! -nargs=0 IPythonCellEditRegion call IPythonCellEditRegion()
