@@ -344,10 +344,10 @@ xmap <Leader>h <Plug>SlimeRegionSend
 " map <Leader>p to run the previous command
 nnoremap <Leader>p :IPythonCellPrevCommand<CR>
 
-" map <Leader>e to send current line for editing
+" map <Leader>e to send current line for editing in normal mode
 nnoremap <Leader>e :IPythonCellEditLine<CR>
 
-" map <Leader>e to send current selection for editing
+" map <Leader>e to send current selection for editing in visual mode
 vnoremap <Leader>e :<C-U>IPythonCellEditRegion<CR>
 
 " map <Leader>Q to restart ipython
