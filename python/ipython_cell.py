@@ -117,10 +117,11 @@ def jump_prev_cell():
 
 
 def insert_cell_below():
+    insert_tag = vim.eval('g:ipython_insert_cell_tag')
+
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
-    _, end_row = _get_current_cell_boundaries(current_row,
-                                                      cell_boundaries)
+    _, end_row = _get_current_cell_boundaries(current_row, cell_boundaries)
 
     # Required for Python 2
     if end_row is None:
@@ -134,31 +135,35 @@ def insert_cell_below():
             vim.command("echo 'Cell header is outside the buffer boundaries'")
 
     # Insert tag bellow
-    insert_tag = vim.eval('g:ipython_insert_cell_tag')
-    vim.command("normal!o")
-    vim.command("normal!o" + insert_tag)
+    if vim.current.line != '':
+        vim.command("normal!o")
+    current_row, _ = vim.current.cursor
+    if current_row != 1:
+        vim.command("normal!o")
+    vim.command("normal!i" + insert_tag)
     vim.command("normal!o")
 
 
 def insert_cell_above():
-    current_row, _ = vim.current.window.cursor
-    cell_boundaries = _get_cell_boundaries()
-    start_row, _ = _get_current_cell_boundaries(current_row,
-                                                      cell_boundaries)
-
-    header_row = start_row - 1
-    # Jump cursor to end_row
-    if header_row != current_row:
-        try:
-            vim.current.window.cursor = (header_row, 0)
-        except vim.error:
-            vim.command("echo 'Cell header is outside the buffer boundaries'")
-
-    # Insert tag above
     insert_tag = vim.eval('g:ipython_insert_cell_tag')
+
+    current_row, _ = vim.window.cursor
+    cell_boundaries = _get_cell_boundaries()
+    start_row, _ = _get_current_cell_boundaries(current_row, cell_boundaries)
+
+    # If the cursor not at the header of the current cell,
+    # we move the cursor to the header
+    if current_row != start_row:
+        jump_prev_cell()
     vim.command("normal!O")
-    vim.command("normal!O" + insert_tag)
-    vim.command("normal!o")
+    vim.command("normal!O")
+    vim.command("normal!i" + insert_tag)
+    current_row, _ = vim.window.cursor
+    if current_row != 1:
+        vim.command("normal!o")
+    else:
+        vim.command("normal!O")
+        vim.command("normal!O")
 
 
 def previous_command():
