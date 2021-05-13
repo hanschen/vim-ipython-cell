@@ -154,7 +154,11 @@ def insert_cell_above():
     # If the cursor not at the header of the current cell,
     # we move the cursor to the header
     if current_row != start_row:
-        jump_prev_cell()
+        try:
+            vim.current.window.cursor = (start_row, 0)
+        except vim.error:
+            vim.command("echo 'Cell header is outside the buffer boundaries'")
+
     vim.command("normal!O")
     vim.command("normal!O")
     vim.command("normal!i" + insert_tag)
