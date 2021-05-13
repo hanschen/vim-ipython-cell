@@ -147,7 +147,7 @@ def insert_cell_below():
 def insert_cell_above():
     insert_tag = vim.eval('g:ipython_insert_cell_tag')
 
-    current_row, _ = vim.window.cursor
+    current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
     start_row, _ = _get_current_cell_boundaries(current_row, cell_boundaries)
 
@@ -158,7 +158,7 @@ def insert_cell_above():
     vim.command("normal!O")
     vim.command("normal!O")
     vim.command("normal!i" + insert_tag)
-    current_row, _ = vim.window.cursor
+    current_row, _ = vim.current.window.cursor
     if current_row != 1:
         vim.command("normal!o")
     else:
