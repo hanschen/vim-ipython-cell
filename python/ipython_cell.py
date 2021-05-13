@@ -117,7 +117,7 @@ def jump_prev_cell():
 
 
 def insert_cell_below():
-    insert_tag = vim.eval('g:ipython_insert_cell_tag')
+    insert_tag = vim.eval('g:ipython_cell_insert_tag')
 
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
@@ -145,7 +145,7 @@ def insert_cell_below():
 
 
 def insert_cell_above():
-    insert_tag = vim.eval('g:ipython_insert_cell_tag')
+    insert_tag = vim.eval('g:ipython_cell_insert_tag')
 
     current_row, _ = vim.current.window.cursor
     cell_boundaries = _get_cell_boundaries()
