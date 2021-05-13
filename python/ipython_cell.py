@@ -137,7 +137,7 @@ def insert_cell_below():
     # Insert tag bellow
     if vim.current.line != '':
         vim.command("normal!o")
-    current_row, _ = vim.current.cursor
+    current_row, _ = vim.current.window.cursor
     if current_row != 1:
         vim.command("normal!o")
     vim.command("normal!i" + insert_tag)
