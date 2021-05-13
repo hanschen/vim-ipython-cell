@@ -116,6 +116,51 @@ def jump_prev_cell():
             vim.command("echo 'Cell header is outside the buffer boundaries'")
 
 
+def insert_cell_below():
+    current_row, _ = vim.current.window.cursor
+    cell_boundaries = _get_cell_boundaries()
+    _, end_row = _get_current_cell_boundaries(current_row,
+                                                      cell_boundaries)
+
+    # Required for Python 2
+    if end_row is None:
+        end_row = len(vim.current.buffer)
+
+    # Jump cursor to end_row
+    if end_row != current_row:
+        try:
+            vim.current.window.cursor = (end_row, 0)
+        except vim.error:
+            vim.command("echo 'Cell header is outside the buffer boundaries'")
+
+    # Insert tag bellow
+    insert_tag = vim.eval('g:ipython_insert_cell_tag')
+    vim.command("normal!o")
+    vim.command("normal!o" + insert_tag)
+    vim.command("normal!o")
+
+
+def insert_cell_above():
+    current_row, _ = vim.current.window.cursor
+    cell_boundaries = _get_cell_boundaries()
+    start_row, _ = _get_current_cell_boundaries(current_row,
+                                                      cell_boundaries)
+
+    header_row = start_row - 1
+    # Jump cursor to end_row
+    if header_row != current_row:
+        try:
+            vim.current.window.cursor = (header_row, 0)
+        except vim.error:
+            vim.command("echo 'Cell header is outside the buffer boundaries'")
+
+    # Insert tag above
+    insert_tag = vim.eval('g:ipython_insert_cell_tag')
+    vim.command("normal!O")
+    vim.command("normal!O" + insert_tag)
+    vim.command("normal!o")
+
+
 def previous_command():
     """Run previous command."""
     _slimesend(CTRL_P)
