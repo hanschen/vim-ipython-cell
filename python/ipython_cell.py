@@ -140,7 +140,9 @@ def insert_cell_below():
     current_row, _ = vim.current.window.cursor
     if current_row != 1:
         vim.command("normal!o")
-    vim.command("normal!O")
+        current_row += 1
+    if current_row != len(vim.current.buffer):
+        vim.command("normal!O")
     vim.command("normal!i" + insert_tag)
 
 
