@@ -14,6 +14,7 @@ endif
 
 let g:ipython_cell_delimit_cells_by = get(g:, 'ipython_cell_delimit_cells_by', 'tags')
 let g:ipython_cell_tag = get(g:, 'ipython_cell_tag', ['# %%', '#%%', '# <codecell>', '##'])
+let g:ipython_cell_insert_tag = get(g:, 'ipython_cell_insert_tag', '# %% ')
 let g:ipython_cell_regex = get(g:, 'ipython_cell_regex', 0)
 let g:ipython_cell_valid_marks = get(g:, 'ipython_cell_valid_marks', 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 let g:ipython_cell_run_command = get(g:, 'ipython_cell_run_command', '%run {options} "{filepath}"')
@@ -83,6 +84,14 @@ function! IPythonCellRun(...)
     exec s:python_command "ipython_cell.run('" . join(a:000, ',') . "')"
 endfunction
 
+function! IPythonCellInsertBelow(...)
+    exec s:python_command "ipython_cell.insert_cell_below()"
+endfunction
+
+function! IPythonCellInsertAbove(...)
+    exec s:python_command "ipython_cell.insert_cell_above()"
+endfunction
+
 command! -nargs=0 IPythonCellClear call IPythonCellClear()
 command! -nargs=0 IPythonCellClose call IPythonCellClose()
 command! -nargs=0 IPythonCellExecuteCell call IPythonCellExecuteCell()
@@ -95,6 +104,8 @@ command! -nargs=0 IPythonCellPrevCommand call IPythonCellPrevCommand()
 command! -nargs=0 IPythonCellRestart call IPythonCellRestart()
 command! -nargs=0 IPythonCellRun call IPythonCellRun()
 command! -nargs=0 IPythonCellRunTime call IPythonCellRun('-t')
+command! -nargs=0 IPythonCellInsertBelow call IPythonCellInsertBelow()
+command! -nargs=0 IPythonCellInsertAbove call IPythonCellInsertAbove()
 
 highlight default link IPythonCell Folded
 function! UpdateCellHighlight()
