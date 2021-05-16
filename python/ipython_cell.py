@@ -141,7 +141,6 @@ def insert_cell_below():
     if current_row != 1:
         vim.command("normal!o")
     vim.command("normal!i" + insert_tag)
-    vim.command("normal!o")
 
 
 def insert_cell_above():
