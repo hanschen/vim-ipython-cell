@@ -148,7 +148,13 @@ def insert_cell_above():
     insert_tag = vim.eval('g:ipython_cell_insert_tag')
 
     current_row, _ = vim.current.window.cursor
-    cell_boundaries = _get_cell_boundaries()
+    cell_boundaries = _get_cell_boundaries(auto_include_first_line=False)
+
+    # Include first line of buffer if necessary
+    first_line_contains_cell_header = 1 in cell_boundaries
+    if not first_line_contains_cell_header:
+        cell_boundaries.insert(0, 1)
+
     start_row, _ = _get_current_cell_boundaries(current_row, cell_boundaries)
 
     # If the cursor not at the header of the current cell,
@@ -159,15 +165,15 @@ def insert_cell_above():
         except vim.error:
             vim.command("echo 'Cell header is outside the buffer boundaries'")
 
+    # If the start_row is the first line and not contains header
+    # We instert a cell header for the current cell
+    if start_row == 1 and not first_line_contains_cell_header:
+        vim.command("normal!O")
+        vim.command("normal!i" + insert_tag)
+
     vim.command("normal!O")
     vim.command("normal!O")
     vim.command("normal!i" + insert_tag)
-    current_row, _ = vim.current.window.cursor
-    if current_row != 1:
-        vim.command("normal!o")
-    else:
-        vim.command("normal!O")
-        vim.command("normal!O")
 
 
 def previous_command():
