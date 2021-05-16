@@ -170,10 +170,10 @@ def insert_cell_above():
     if start_row == 1 and not first_line_contains_cell_header:
         vim.command("normal!O")
         vim.command("normal!i" + insert_tag)
-
-    vim.command("normal!O")
-    vim.command("normal!O")
-    vim.command("normal!i" + insert_tag)
+    else:
+        vim.command("normal!O")
+        vim.command("normal!O")
+        vim.command("normal!i" + insert_tag)
 
 
 def previous_command():
