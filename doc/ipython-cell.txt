@@ -91,6 +91,12 @@ COMMANDS                                               *ipython-cell-commands*
 
 :IPythonCellRestart                                      *:IPythonCellRestart*
                                     Restart IPython.
+:IPythonCellInsertAbove                              *:IPythonCellInsertAbove*
+                                    Insert a cell header tag above the current
+                                    cell.
+:IPythonCellInsertBelow                              *:IPythonCellInsertBelow*
+                                    Insert a cell header tag below the current
+                                    cell.
 
 ==============================================================================
 CONFIGURATION                                     *ipython-cell-configuration*
@@ -159,6 +165,12 @@ g:ipython_cell_send_cell_headers     If cells are delimited by tags,
                                      separately send the cell header before
                                      the cell contents.
                                      Default: `0`
+
+                                                     *ipython-cell-insert-tag*
+g:ipython_cell_insert_tag            The cell tag inserted by
+                                     `IPythonCellInsertAbove` and
+                                     `IPythonCellInsertBelow`.
+                                     Default: `# %% `
 
                                                 *ipython-cell-highlight-group*
 By default, cell headers defined using tags are highlighted using the

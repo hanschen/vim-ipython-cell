@@ -136,6 +136,8 @@ contains sensitive data.
 | `:IPythonCellNextCell`                | Jump to the next cell header                                                                |
 | `:IPythonCellPrevCommand`             | Run previous command                                                                        |
 | `:IPythonCellRestart`                 | Restart IPython                                                                             |
+| `:IPythonCellInsertAbove`             | Insert a cell header tag above the current cell                                             |
+| `:IPythonCellInsertBelow`             | Insert a cell header tag below the current cell                                             |
 
 <sup>1</sup> Can be [configured for other REPLs](#other-repls).  
 <sup>2</sup> Non-verbose version, requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  
@@ -270,6 +272,7 @@ Configuration
 | `g:ipython_cell_highlight_cells`      | Set to `0` to disable highlighting of cell headers defined using tags. Default: `1`                                                                                                 |
 | `g:ipython_cell_highlight_cells_ft`   | A list of filetypes for which cell headers will be highlighted if `g:ipython_cell_highlight_cells` is enabled. Default: `['python']`                                                |
 | `g:ipython_cell_send_cell_headers`    | If cells are delimited by tags, separately send the cell header before the cell contents. Default: `0`                                                                              |
+| `g:ipython_cell_insert_tag`           | The cell tag inserted by `IPythonCellInsertAbove` and `IPythonCellInsertBelow`. Default: `# %% `                                                                                    |
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
 
@@ -350,10 +353,18 @@ nnoremap <Leader>d :SlimeSend1 %debug<CR>
 " map <Leader>q to exit debug mode or IPython
 nnoremap <Leader>q :SlimeSend1 exit<CR>
 
+" map <F9> and <F10> to insert a cell header tag above/below and enter insert mode
+nmap <F9> :IPythonCellInsertAbove<CR>a
+nmap <F10> :IPythonCellInsertBelow<CR>a
+
+" also make <F9> and <F10> work in insert mode
+imap <F9> <C-o>:IPythonCellInsertAbove<CR>
+imap <F10> <C-o>:IPythonCellInsertBelow<CR>
+
 ~~~
 
-Note that the mappings as defined here work only in normal mode (see
-`:help mapping` in Vim for more information).
+Note that the mappings as defined here work only in normal mode unless
+otherwise noted (see `:help mapping` in Vim for more information).
 
 Moreover, these mappings will be defined for all file types, not just Python
 files. If you want to define these mappings for only Python files, you can put
