@@ -114,7 +114,7 @@ command! -nargs=0 IPythonCellToMarkdown call IPythonCellToMarkdown()
 
 let s:ipython_cell_match_patterns = []
 for tag in g:ipython_cell_tag
-  add(s:ipython_cell_match_patterns, '\s*'. tag . '.*')
+  call add(s:ipython_cell_match_patterns, '\s*'. tag . '.*')
 endfor
 
 let g:ipython_cell_match_pattern = join(s:ipython_cell_match_patterns, '\|')
