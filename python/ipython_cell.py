@@ -203,7 +203,9 @@ def to_markdown():
     if vim.current.line != '':
         vim.command("normal!o")
 
-    vim.command('normal!O')
+    current_row, _ = vim.current.window.cursor
+    if current_row != len(vim.current.buffer):
+        vim.command('normal!O')
     vim.command('normal!i"""')
 
     # We move the cursor to the header
