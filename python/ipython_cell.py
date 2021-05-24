@@ -208,11 +208,10 @@ def to_markdown():
     vim.command(f"echo 'Current line after move to start: {vim.current.line}'")
 
     # We move the cursor to the header
-    if current_row != start_row:
-        try:
-            vim.current.window.cursor = (start_row, 0)
-        except vim.error:
-            vim.command("echo 'Cell is outside the buffer boundaries'")
+    try:
+        vim.current.window.cursor = (start_row, 0)
+    except vim.error:
+        vim.command("echo 'Cell is outside the buffer boundaries'")
 
     vim.command(f"echo 'Start idx: {start_row}, text: {vim.current.buffer[start_row-1]}'")
     vim.command(f"echo 'Current line after move to start: {vim.current.line}'")
