@@ -177,6 +177,44 @@ def insert_cell_above():
         vim.command("normal!O")
         vim.command("normal!i" + insert_tag)
 
+def to_markdown():
+    insert_tag = vim.eval('g:ipython_cell_insert_tag')
+
+    current_row, _ = vim.current.window.cursor
+    cell_boundaries = _get_cell_boundaries(auto_include_first_line=False)
+
+    # Include first line of buffer if necessary
+    first_line_contains_cell_header = 1 in cell_boundaries
+    if not first_line_contains_cell_header:
+        cell_boundaries.insert(0, 1)
+
+    start_row, end_row = _get_current_cell_boundaries(current_row, cell_boundaries)
+
+    # Switch to end_row first as start_row will not change after insert """ line
+    if current_row != end_row:
+        try:
+            vim.current.window.cursor = (end_row, 0)
+        except vim.error:
+            vim.command("echo 'Cell is outside the buffer boundaries'")
+    vim.command('normal!o"""')
+
+    # We move the cursor to the header
+    if current_row != start_row:
+        try:
+            vim.current.window.cursor = (start_row, 0)
+        except vim.error:
+            vim.command("echo 'Cell header is outside the buffer boundaries'")
+
+    # If the start_row is the first line and not contains header
+    # We instert a cell header for the current cell
+    if start_row == 1 and not first_line_contains_cell_header:
+        vim.command("normal!O")
+        vim.command("normal!i" + insert_tag)
+
+    # Now we at the header row
+    vim.command('normal!A [markdown]')
+    vim.command('normal!o"""')
+    vim.command('normal!o')
 
 def previous_command():
     """Run previous command."""
