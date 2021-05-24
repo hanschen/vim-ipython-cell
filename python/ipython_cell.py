@@ -205,12 +205,17 @@ def to_markdown():
     vim.command('normal!O')
     vim.command('normal!i"""')
 
+    vim.command("Current line after end insert: ", vim.current.line)
+
     # We move the cursor to the header
     if current_row != start_row:
         try:
             vim.current.window.cursor = (start_row, 0)
         except vim.error:
             vim.command("echo 'Cell is outside the buffer boundaries'")
+
+    vim.command(f"Start idx: {start_row}, text: {vim.current.buffer[start_row-1]}")
+    vim.command("Current line after move to start: ", vim.current.line)
 
     # If the start_row is the first line and not contains header
     # We instert a cell header for the current cell
