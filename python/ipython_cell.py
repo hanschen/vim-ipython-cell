@@ -196,7 +196,12 @@ def to_markdown():
             vim.current.window.cursor = (end_row, 0)
         except vim.error:
             vim.command("echo 'Cell is outside the buffer boundaries'")
-    vim.command('normal!o"""')
+
+    if vim.current.line != '':
+        vim.command("normal!o")
+
+    vim.command('normal!O')
+    vim.command('normal!i"""')
 
     # We move the cursor to the header
     if current_row != start_row:
@@ -213,8 +218,9 @@ def to_markdown():
 
     # Now we at the header row
     vim.command('normal!A [markdown]')
-    vim.command('normal!o"""')
     vim.command('normal!o')
+    vim.command('normal!i"""')
+    vim.command('normal!j')
 
 def previous_command():
     """Run previous command."""
