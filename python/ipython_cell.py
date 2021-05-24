@@ -189,6 +189,8 @@ def to_markdown():
         cell_boundaries.insert(0, 1)
 
     start_row, end_row = _get_current_cell_boundaries(current_row, cell_boundaries)
+    vim.command("echo 'start_row: " + start_row + ", end_row: ", "end_row", "'")
+    vim.command("echo 'start_row text: " + vim.current.buffer[start_row-1] + ", end_row text: " + vim.current.buffer[end_row - 1] + "'")
 
     # Switch to end_row first as start_row will not change after insert """ line
     if current_row != end_row:
@@ -208,7 +210,7 @@ def to_markdown():
         try:
             vim.current.window.cursor = (start_row, 0)
         except vim.error:
-            vim.command("echo 'Cell header is outside the buffer boundaries'")
+            vim.command("echo 'Cell is outside the buffer boundaries'")
 
     # If the start_row is the first line and not contains header
     # We instert a cell header for the current cell
