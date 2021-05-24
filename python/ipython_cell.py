@@ -189,7 +189,7 @@ def to_markdown():
         cell_boundaries.insert(0, 1)
 
     start_row, end_row = _get_current_cell_boundaries(current_row, cell_boundaries)
-    vim.command("echo 'start_row: " + start_row + ", end_row: ", "end_row", "'")
+    vim.command("echo 'start_row: " + str(start_row) + ", end_row: " + str(end_row) + "'")
     vim.command("echo 'start_row text: " + vim.current.buffer[start_row-1] + ", end_row text: " + vim.current.buffer[end_row - 1] + "'")
 
     # Switch to end_row first as start_row will not change after insert """ line
