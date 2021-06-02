@@ -138,6 +138,7 @@ contains sensitive data.
 | `:IPythonCellRestart`                 | Restart IPython                                                                             |
 | `:IPythonCellInsertAbove`             | Insert a cell header tag above the current cell                                             |
 | `:IPythonCellInsertBelow`             | Insert a cell header tag below the current cell                                             |
+| `:IPythonCellToMarkdown`              | Convert current code cell into a markdown cell                                              |
 
 <sup>1</sup> Can be [configured for other REPLs](#other-repls).  
 <sup>2</sup> Non-verbose version, requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  

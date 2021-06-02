@@ -97,6 +97,9 @@ COMMANDS                                               *ipython-cell-commands*
 :IPythonCellInsertBelow                              *:IPythonCellInsertBelow*
                                     Insert a cell header tag below the current
                                     cell.
+:IPythonCellToMarkdown                                *:IPythonCellToMarkdown*
+                                    Convert current code cell into a markdown
+                                    cell.
 
 ==============================================================================
 CONFIGURATION                                     *ipython-cell-configuration*
