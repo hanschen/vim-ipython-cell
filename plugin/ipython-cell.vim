@@ -92,6 +92,10 @@ function! IPythonCellInsertAbove(...)
     exec s:python_command "ipython_cell.insert_cell_above()"
 endfunction
 
+function! IPythonCellToMarkdown(...)
+    exec s:python_command "ipython_cell.to_markdown()"
+endfunction
+
 command! -nargs=0 IPythonCellClear call IPythonCellClear()
 command! -nargs=0 IPythonCellClose call IPythonCellClose()
 command! -nargs=0 IPythonCellExecuteCell call IPythonCellExecuteCell()
@@ -106,6 +110,14 @@ command! -nargs=0 IPythonCellRun call IPythonCellRun()
 command! -nargs=0 IPythonCellRunTime call IPythonCellRun('-t')
 command! -nargs=0 IPythonCellInsertBelow call IPythonCellInsertBelow()
 command! -nargs=0 IPythonCellInsertAbove call IPythonCellInsertAbove()
+command! -nargs=0 IPythonCellToMarkdown call IPythonCellToMarkdown()
+
+let s:ipython_cell_match_patterns = []
+for tag in g:ipython_cell_tag
+  call add(s:ipython_cell_match_patterns, '\s*'. tag . '.*')
+endfor
+
+let g:ipython_cell_match_pattern = join(s:ipython_cell_match_patterns, '\|')
 
 highlight default link IPythonCell Folded
 function! UpdateCellHighlight()
@@ -115,7 +127,7 @@ function! UpdateCellHighlight()
 
     if index(g:ipython_cell_highlight_cells_ft, &filetype) >= 0
         if !exists('w:ipython_cell_match')
-            let w:ipython_cell_match=matchadd('IPythonCell', '\s*# %%.*\|\s*#%%.*\|\s*# <codecell>.*\|\s*##.*')
+            let w:ipython_cell_match=matchadd('IPythonCell', g:ipython_cell_match_pattern)
         endif
     else
         if exists('w:ipython_cell_match')
