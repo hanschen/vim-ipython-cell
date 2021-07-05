@@ -141,7 +141,7 @@ contains sensitive data.
 | `:IPythonCellToMarkdown`              | Convert current code cell into a markdown cell                                              |
 
 <sup>1</sup> Can be [configured for other REPLs](#other-repls).  
-<sup>2</sup> Non-verbose version (using (`%paste`), requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  
+<sup>2</sup> Non-verbose version (using `%paste`), requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  
 <sup>3</sup> Verbose version (using `%cpaste`), works without Tkinter and clipboard support.
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
