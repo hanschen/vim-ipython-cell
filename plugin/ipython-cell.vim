@@ -113,7 +113,13 @@ command! -nargs=0 IPythonCellInsertAbove call IPythonCellInsertAbove()
 command! -nargs=0 IPythonCellToMarkdown call IPythonCellToMarkdown()
 
 let s:ipython_cell_match_patterns = []
-for tag in g:ipython_cell_tag
+if type(g:ipython_cell_tag) == v:t_string
+    let s:ipython_cell_tag_list = [g:ipython_cell_tag]
+else
+    let s:ipython_cell_tag_list = g:ipython_cell_tag
+endif
+
+for tag in s:ipython_cell_tag_list
   call add(s:ipython_cell_match_patterns, '\s*'. tag . '.*')
 endfor
 
