@@ -23,6 +23,7 @@ let g:ipython_cell_prefer_external_copy = get(g:, 'ipython_cell_prefer_external_
 let g:ipython_cell_highlight_cells = get(g:, 'ipython_cell_highlight_cells', 1)
 let g:ipython_cell_highlight_cells_ft = get(g:, 'ipython_cell_highlight_cells_ft', ['python'])
 let g:ipython_cell_send_cell_headers = get(g:, 'ipython_cell_send_cell_headers', 0)
+let g:ipython_cell_send_ctrl_u = get(g:, 'ipython_cell_send_ctrl_u', 1)
 
 function! s:UsingPython3()
   if has('python3')

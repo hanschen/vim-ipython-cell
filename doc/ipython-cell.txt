@@ -175,6 +175,12 @@ g:ipython_cell_insert_tag            The cell tag inserted by
                                      `IPythonCellInsertBelow`.
                                      Default: `# %% `
 
+                                                    *ipython-cell-send-ctrl-u*
+g:ipython_cell_send_ctrl_u           Send Ctrl-U to clear the line before
+                                     sending commands to IPython. Set to `0`
+                                     if this is not supported by your shell.
+                                     Default: `1`
+
                                                 *ipython-cell-highlight-group*
 By default, cell headers defined using tags are highlighted using the
 `IPythonCell` highlight group.
@@ -263,6 +269,13 @@ Q: Why is this plugin written in Python instead of pure Vimscript? ~
 A: Because I feel more comfortable with Python and don't have the motivation
 to learn Vimscript for this plugin. If someone implements a pure Vimscript
 version, I would be happy to consider to merge it.
+
+Q: I get an error (e.g. SyntaxError) because the plugin inserts `^U` before ~
+the command, what should I do? ~
+
+Try to add the following to your configuration file:
+
+    let g:ipython_cell_send_ctrl_u = 0
 
 ==============================================================================
 ABOUT                                                     *ipython-cell-about*

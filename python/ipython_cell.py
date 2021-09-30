@@ -47,7 +47,8 @@ def execute_cell(use_cpaste=False):
             cell_header = "# cell 0"
         else:
             cell_header = vim.current.buffer[start_row-1]
-        _slimesend0(CTRL_U)
+        if vim.eval('g:ipython_cell_send_ctrl_u') != '0':
+            _slimesend0(CTRL_U)
         _slimesend0(cell_header)
         _slimesend0(CTRL_O)
         _slimesend0(CTRL_N)
@@ -539,8 +540,13 @@ def _slimesend(string):
     if not string:
         return
 
+    if vim.eval('g:ipython_cell_send_ctrl_u') != '0':
+        lineclear = CTRL_U
+    else:
+        lineclear = ""
+
     try:
-        vim.command('SlimeSend1 ' + CTRL_U + '{}'.format(string))
+        vim.command('SlimeSend1 ' + lineclear + '{}'.format(string))
     except vim.error:
         _error("Could not execute SlimeSend1 command, make sure vim-slime is "
                "installed")

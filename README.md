@@ -274,6 +274,7 @@ Configuration
 | `g:ipython_cell_highlight_cells_ft`   | A list of filetypes for which cell headers will be highlighted if `g:ipython_cell_highlight_cells` is enabled. Default: `['python']`                                                |
 | `g:ipython_cell_send_cell_headers`    | If cells are delimited by tags, separately send the cell header before the cell contents. Default: `0`                                                                              |
 | `g:ipython_cell_insert_tag`           | The cell tag inserted by `IPythonCellInsertAbove` and `IPythonCellInsertBelow`. Default: `# %% `                                                                                    |
+| `g:ipython_cell_send_ctrl_u`          | Send Ctrl-U to clear the line before sending commands to IPython. Set to `0` if this is not supported by your shell. Default: `1`                                                   |
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
 
@@ -561,6 +562,13 @@ to use this plugin for other filetypes, they can easily do so.
 Because I feel more comfortable with Python and don't have the motivation to
 learn Vimscript for this plugin. If someone implements a pure Vimscript
 version, I would be happy to consider to merge it.
+
+> I get an error (e.g. SyntaxError) because the plugin inserts `^U` before the
+> command, what should I do?
+
+Try to add the following to your configuration file:
+
+    let g:ipython_cell_send_ctrl_u = 0
 
 
 Related plugins
