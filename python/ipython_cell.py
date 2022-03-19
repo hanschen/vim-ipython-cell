@@ -53,8 +53,9 @@ def execute_cell(use_cpaste=False):
         _slimesend0(CTRL_O)
         _slimesend0(CTRL_N)
 
-        if not use_cpaste:
-            # Create a new line to account for Ctrl-U
+        if not use_cpaste and vim.eval('g:ipython_cell_send_ctrl_u') != '0':
+            # Create a new line to account for Ctrl-U that is sent with the
+            # cell content
             _slimesend0(CTRL_O)
             _slimesend0(CTRL_N)
 
