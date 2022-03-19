@@ -179,6 +179,7 @@ def insert_cell_above():
         vim.command("normal!O")
         vim.command("normal!i" + insert_tag)
 
+
 def to_markdown():
     insert_tag = vim.eval('g:ipython_cell_insert_tag')
 
@@ -190,12 +191,14 @@ def to_markdown():
     if not first_line_contains_cell_header:
         cell_boundaries.insert(0, 1)
 
-    start_row, end_row = _get_current_cell_boundaries(current_row, cell_boundaries)
+    start_row, end_row = _get_current_cell_boundaries(current_row,
+                                                      cell_boundaries)
 
     if end_row is None:
         end_row = len(vim.current.buffer)
 
-    # Switch to end_row first as start_row will not change after insert """ line
+    # Switch to end_row first as start_row will not change after insert """
+    # line
     if current_row != end_row:
         try:
             vim.current.window.cursor = (end_row, 0)
@@ -227,6 +230,7 @@ def to_markdown():
     vim.command('normal!o')
     vim.command('normal!i"""')
     vim.command('normal!j')
+
 
 def previous_command():
     """Run previous command."""
