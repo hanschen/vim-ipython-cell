@@ -62,14 +62,22 @@ def execute_cell(use_cpaste=False):
 
     # start_row and end_row are 1-indexed, need to subtract 1
     cell = "\n".join(vim.current.buffer[start_row-1:end_row])
+    cell_is_empty = not cell
+
+    if vim.eval('g:ipython_cell_update_file_variable') != '0':
+        f = vim.eval("expand('%:p')")
+        # Make sure the indentation is the same as the first line of the cell
+        first_row = vim.current.buffer[start_row-1]
+        indentation = re.match(r"[\t ]*", first_row).group()
+        cell = indentation + "__file__ = '{}'\n".format(f) + cell
 
     if not use_cpaste:
-        if cell:
+        if cell_is_empty:
+            _slimesend("# empty cell")
+        else:
             _copy_to_clipboard(cell)
             paste_command = vim.eval('g:ipython_cell_cell_command')
             _slimesend(paste_command)
-        else:
-            _slimesend("# empty cell")
     else:
         try:
             slime_python_ipython = vim.eval('g:slime_python_ipython')

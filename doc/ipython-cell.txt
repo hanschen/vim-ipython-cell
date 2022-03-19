@@ -187,6 +187,11 @@ g:ipython_cell_send_ctrl_u           Send Ctrl-U to clear the line before
                                      sending commands to IPython.
                                      Default: `0`
 
+                                           *ipython-cell-update-file-variable*
+g:ipython_cell_update_file_variable  Set to `1` to update the `__file__`
+                                     variable in IPython when running cells.
+                                     Default: `0`
+
                                                 *ipython-cell-highlight-group*
 By default, cell headers defined using tags are highlighted using the
 `IPythonCell` highlight group.

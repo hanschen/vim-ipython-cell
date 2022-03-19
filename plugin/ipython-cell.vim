@@ -25,6 +25,7 @@ let g:ipython_cell_highlight_cells_ft = get(g:, 'ipython_cell_highlight_cells_ft
 let g:ipython_cell_send_cell_headers = get(g:, 'ipython_cell_send_cell_headers', 0)
 let g:ipython_cell_send_ctrl_c = get(g:, 'ipython_cell_send_ctrl_c', 1)
 let g:ipython_cell_send_ctrl_u = get(g:, 'ipython_cell_send_ctrl_u', 0)
+let g:ipython_cell_update_file_variable = get(g:, 'ipython_cell_update_file_variable', 0)
 
 function! s:UsingPython3()
   if has('python3')
