@@ -18,6 +18,13 @@ the code that is run. This makes it easier to read the output in IPython.
 Additionally, ipython-cell provides some convenience commands to jump between
 cells and to work with IPython, see [Commands](#commands) below.
 
+**New in 0.5:**
+ipython-cell now defaults to sending `i` + Ctrl-C (instead of Ctrl-U) to clear
+the prompt before running cells and other commands. See Issue [#35][i35] for
+more information.
+
+[i35]: https://github.com/hanschen/vim-ipython-cell/issues/35
+
 
 Demo
 ----
@@ -274,7 +281,8 @@ Configuration
 | `g:ipython_cell_highlight_cells_ft`   | A list of filetypes for which cell headers will be highlighted if `g:ipython_cell_highlight_cells` is enabled. Default: `['python']`                                                |
 | `g:ipython_cell_send_cell_headers`    | If cells are delimited by tags, separately send the cell header before the cell contents. Default: `0`                                                                              |
 | `g:ipython_cell_insert_tag`           | The cell tag inserted by `IPythonCellInsertAbove` and `IPythonCellInsertBelow`. Default: `# %% `                                                                                    |
-| `g:ipython_cell_send_ctrl_u`          | Send Ctrl-U to clear the line before sending commands to IPython. Set to `0` if this is not supported by your shell. Default: `1`                                                   |
+| `g:ipython_cell_send_ctrl_c`          | Send `i` and Ctrl-C to enter insert mode and clear the prompt before sending commands to IPython. Set to `0` if this is not supported by your shell. Default: `1`                   |
+| `g:ipython_cell_send_ctrl_u`          | Send Ctrl-U to clear the line before sending commands to IPython. Default: `0`                                                                                                      |
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
 

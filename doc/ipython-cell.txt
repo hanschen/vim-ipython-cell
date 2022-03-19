@@ -175,11 +175,17 @@ g:ipython_cell_insert_tag            The cell tag inserted by
                                      `IPythonCellInsertBelow`.
                                      Default: `# %% `
 
+                                                    *ipython-cell-send-ctrl-c*
+g:ipython_cell_send_ctrl_c           Send `i` and Ctrl-C to enter insert mode
+                                     and clear the prompt before sending
+                                     commands to IPython. Set to `0` if this
+                                     is not supported by your shell.
+                                     Default: `1`
+
                                                     *ipython-cell-send-ctrl-u*
 g:ipython_cell_send_ctrl_u           Send Ctrl-U to clear the line before
-                                     sending commands to IPython. Set to `0`
-                                     if this is not supported by your shell.
-                                     Default: `1`
+                                     sending commands to IPython.
+                                     Default: `0`
 
                                                 *ipython-cell-highlight-group*
 By default, cell headers defined using tags are highlighted using the

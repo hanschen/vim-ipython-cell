@@ -11,6 +11,7 @@ except ImportError:
           "not work")
 
 
+CTRL_C = '\x03'
 CTRL_N = '\x0e'
 CTRL_O = '\x0f'
 CTRL_P = '\x10'
@@ -265,6 +266,10 @@ def close_all():
 def _clear_prompt():
     if vim.eval('g:ipython_cell_send_ctrl_u') != '0':
         _slimesend0(CTRL_U)
+
+    if vim.eval('g:ipython_cell_send_ctrl_c') != '0':
+        _slimesend0("i")  # enter insert mode
+        _slimesend0(CTRL_C)
 
 
 def _copy_to_clipboard(string, prefer_program=None):
