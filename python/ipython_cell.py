@@ -40,6 +40,8 @@ def execute_cell(use_cpaste=False):
     if end_row is None:
         end_row = len(vim.current.buffer)
 
+    _clear_prompt()
+
     # Send tags?
     if (vim.eval('g:ipython_cell_delimit_cells_by') == 'tags'
             and vim.eval('g:ipython_cell_send_cell_headers') != '0'):
@@ -47,17 +49,10 @@ def execute_cell(use_cpaste=False):
             cell_header = "# cell 0"
         else:
             cell_header = vim.current.buffer[start_row-1]
-        if vim.eval('g:ipython_cell_send_ctrl_u') != '0':
-            _slimesend0(CTRL_U)
+
         _slimesend0(cell_header)
         _slimesend0(CTRL_O)
         _slimesend0(CTRL_N)
-
-        if not use_cpaste and vim.eval('g:ipython_cell_send_ctrl_u') != '0':
-            # Create a new line to account for Ctrl-U that is sent with the
-            # cell content
-            _slimesend0(CTRL_O)
-            _slimesend0(CTRL_N)
 
     # Do not send the tag over
     if vim.eval('g:ipython_cell_delimit_cells_by') == 'tags':
@@ -234,11 +229,13 @@ def to_markdown():
 
 def previous_command():
     """Run previous command."""
+    _clear_prompt()
     _slimesend(CTRL_P)
 
 
 def restart_ipython():
     """Quit ipython and start it again."""
+    _clear_prompt()
     _slimesend("exit")
     _slimesend(CTRL_P)
 
@@ -249,17 +246,25 @@ def run(*args):
     run_command = vim.eval('g:ipython_cell_run_command')
     run_command = run_command.format(options=options,
                                      filepath=vim.current.buffer.name)
+    _clear_prompt()
     _slimesend(run_command)
 
 
 def clear():
     """Clear screen."""
+    _clear_prompt()
     _slimesend("%clear")
 
 
 def close_all():
     """Close all figure windows."""
+    _clear_prompt()
     _slimesend("plt.close('all')")
+
+
+def _clear_prompt():
+    if vim.eval('g:ipython_cell_send_ctrl_u') != '0':
+        _slimesend0(CTRL_U)
 
 
 def _copy_to_clipboard(string, prefer_program=None):
@@ -545,13 +550,8 @@ def _slimesend(string):
     if not string:
         return
 
-    if vim.eval('g:ipython_cell_send_ctrl_u') != '0':
-        lineclear = CTRL_U
-    else:
-        lineclear = ""
-
     try:
-        vim.command('SlimeSend1 ' + lineclear + '{}'.format(string))
+        vim.command('SlimeSend1 {}'.format(string))
     except vim.error:
         _error("Could not execute SlimeSend1 command, make sure vim-slime is "
                "installed")
@@ -559,7 +559,7 @@ def _slimesend(string):
 
 def _slimesend0(string):
     """Similar to _slimesend, but use SlimeSend0 (do not include carriage
-    return) instead of SlimeSend1, and do not send Ctrl-U.
+    return) instead of SlimeSend1.
     """
     if not string:
         return
