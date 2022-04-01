@@ -159,7 +159,7 @@ let g:slime_python_ipython = 1
 ~~~
 
 in your config to avoid potential issues with indentation.
-See [the vim-slime documentation] for more information.
+See the [vim-slime documentation] for more information.
 
 [vim-slime]: https://github.com/jpalardy/vim-slime
 [vim-slime documentation]: https://github.com/jpalardy/vim-slime/blob/main/ftplugin/python/README.md
