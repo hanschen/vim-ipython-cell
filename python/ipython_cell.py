@@ -85,6 +85,10 @@ def execute_cell(use_cpaste=False):
             slime_python_ipython = False
 
         if slime_python_ipython:
+            # Add a newline at the start of the cell to avoid problems if there
+            # is a global indentation level, see Issue #37 on GitHub
+            cell = "\n" + cell
+
             _slimesend(cell)
         else:
             _slimesend("%cpaste -q")
