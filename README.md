@@ -154,7 +154,9 @@ contains sensitive data.
 For the `IPythonCellExecuteCellVerbose` and `IPythonCellExecuteCellVerboseJump`
 commands, you likely want to set
 
+~~~vim
     let g:slime_python_ipython = 1
+~~~
 
 in your config to avoid potential issues with indentation.
 See [the vim-slime documentation] for more information.
