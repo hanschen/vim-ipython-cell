@@ -151,7 +151,16 @@ contains sensitive data.
 <sup>2</sup> Non-verbose version (using `%paste`), requires Tkinter and `+clipboard` support or a [clipboard program](#supported-clipboard-programs).  
 <sup>3</sup> Verbose version (using `%cpaste`), works without Tkinter and clipboard support.
 
+For the `IPythonCellExecuteCellVerbose` and `IPythonCellExecuteCellVerboseJump`
+commands, you likely want to set
+
+    let g:slime_python_ipython = 1
+
+in your config to avoid potential issues with indentation.
+See [the vim-slime documentation] for more information.
+
 [vim-slime]: https://github.com/jpalardy/vim-slime
+[vim-slime documentation]: https://github.com/jpalardy/vim-slime/blob/main/ftplugin/python/README.md
 
 
 ### Custom commands
