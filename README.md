@@ -155,7 +155,7 @@ For the `IPythonCellExecuteCellVerbose` and `IPythonCellExecuteCellVerboseJump`
 commands, you likely want to set
 
 ~~~vim
-    let g:slime_python_ipython = 1
+let g:slime_python_ipython = 1
 ~~~
 
 in your config to avoid potential issues with indentation.
