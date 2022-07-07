@@ -12,6 +12,7 @@ if !has("python") && !has("python3")
     finish
 endif
 
+let g:ipython_cell_shell_prev_cmd = get(g:, 'ipython_cell_shell_prev_cmd', '')
 let g:ipython_cell_delimit_cells_by = get(g:, 'ipython_cell_delimit_cells_by', 'tags')
 let g:ipython_cell_tag = get(g:, 'ipython_cell_tag', ['# %%', '#%%', '# <codecell>', '##'])
 let g:ipython_cell_insert_tag = get(g:, 'ipython_cell_insert_tag', '# %% ')
@@ -80,7 +81,7 @@ function! IPythonCellPrevCommand()
 endfunction
 
 function! IPythonCellRestart()
-    exec s:python_command "ipython_cell.restart_ipython()"
+    exec s:python_command "ipython_cell.restart_ipython('".g:ipython_cell_shell_prev_cmd."')"
 endfunction
 
 function! IPythonCellRun(...)

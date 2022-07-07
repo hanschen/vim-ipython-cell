@@ -192,6 +192,13 @@ g:ipython_cell_update_file_variable  Set to `1` to update the `__file__`
                                      variable in IPython when running cells.
                                      Default: `0`
 
+                                                 *ipython-cell-shell-prev_cmd*
+g:ipython_cell_shell_prev_cmd        The preferred way to get the previous
+                                     command in your shell. As the variable
+                                     value, you can provide `'!!'`, `'fc -e:
+                                     -1'`, or `''`. The latter corresponds to
+                                     `Ctrl-P`. Default: `Ctrl-P`
+
                                                 *ipython-cell-highlight-group*
 By default, cell headers defined using tags are highlighted using the
 `IPythonCell` highlight group.
@@ -284,9 +291,16 @@ version, I would be happy to consider to merge it.
 Q: I get an error (e.g. SyntaxError) because the plugin inserts `^U` before ~
 the command, what should I do? ~
 
-Try to add the following to your configuration file:
+A:Try to add the following to your configuration file:
 
     let g:ipython_cell_send_ctrl_u = 0
+
+Q: The restart command `IPythonCellRestart` does not work. It terminates an
+IPython session instead of restarting the kernel.
+
+A: Try to add the following to your configuration file:
+
+    let g:ipython_cell_shell_prev_cmd = '!!'
 
 ==============================================================================
 ABOUT                                                     *ipython-cell-about*
