@@ -195,9 +195,11 @@ g:ipython_cell_update_file_variable  Set to `1` to update the `__file__`
                                                  *ipython-cell-shell-prev_cmd*
 g:ipython_cell_shell_prev_cmd        The preferred way to get the previous
                                      command in your shell. As the variable
-                                     value, you can provide `'!!'`, `'fc -e:
-                                     -1'`, or `''`. The latter corresponds to
-                                     `Ctrl-P`. Default: `Ctrl-P`
+                                     value, you can provide `'!!'`, `'fc -e: -1'`,
+                                     or `<C-p>` (case-insensitive). The latter
+                                     corresponds to sending to the console the
+                                     ASCII char `\x10`.
+                                     Default: `'!!'`
 
                                                 *ipython-cell-highlight-group*
 By default, cell headers defined using tags are highlighted using the
@@ -298,9 +300,13 @@ A:Try to add the following to your configuration file:
 Q: The restart command `IPythonCellRestart` does not work. It terminates an
 IPython session instead of restarting the kernel.
 
-A: Try to add the following to your configuration file:
+A: Try to change the way you get the previous command in your shell. For
+example,
 
-    let g:ipython_cell_shell_prev_cmd = '!!'
+    "" Substitute '<C-p>' for '!!'.
+    let g:ipython_cell_shell_prev_cmd = '<C-p>'
+    "" The following is also valid:
+    " let g:ipython_cell_shell_prev_cmd = '<Ctrl-P>'
 
 ==============================================================================
 ABOUT                                                     *ipython-cell-about*
