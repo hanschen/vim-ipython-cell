@@ -246,11 +246,14 @@ def previous_command():
     _slimesend(CTRL_P)
 
 
-def restart_ipython():
+def restart_ipython(shell_prev_cmd):
     """Quit ipython and start it again."""
+    if shell_prev_cmd.upper() in ('<C-P>', '<CTRL-P>'):
+        shell_prev_cmd = CTRL_P
+
     _clear_prompt()
     _slimesend("exit")
-    _slimesend(CTRL_P)
+    _slimesend(shell_prev_cmd)
 
 
 def run(*args):

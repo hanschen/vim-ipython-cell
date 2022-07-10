@@ -302,6 +302,8 @@ Configuration
 | `g:ipython_cell_send_ctrl_c`          | Send `i` and Ctrl-C to enter insert mode and clear the prompt before sending commands to IPython. Set to `0` if this is not supported by your shell. Default: `1`                   |
 | `g:ipython_cell_send_ctrl_u`          | Send Ctrl-U to clear the line before sending commands to IPython. Default: `0`                                                                                                      |
 | `g:ipython_cell_update_file_variable` | Set to `1` to update the `__file__` variable in IPython when running cells. Default: `0`                                                                                            |
+| `g:ipython_cell_shell_prev_cmd`       | The preferred way to get the previous command in your shell. As the variable value, you can provide `'!!'`, `'fc -e: -1'`, or `'<C-p>'` (case-insensitive). The latter corresponds to sending to the console [`\x10`](https://condor.depaul.edu/sjost/lsp121/documents/ascii-npr.htm). Default: `'!!'` |
+
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
 
@@ -334,6 +336,7 @@ let g:slime_python_ipython = 1
 let g:slime_default_config = {
             \ 'socket_name': get(split($TMUX, ','), 0),
             \ 'target_pane': '{top-right}' }
+
 let g:slime_dont_ask_default = 1
 
 "------------------------------------------------------------------------------
@@ -596,6 +599,16 @@ version, I would be happy to consider to merge it.
 Try to add the following to your configuration file:
 
     let g:ipython_cell_send_ctrl_u = 0
+
+> The restart command `IPythonCellRestart` does not work. It terminates an
+> IPython session instead of restarting the kernel.
+
+Try to change the way you get the previous command in your shell. For example,
+
+    "" Substitute '<C-p>' for '!!'.
+    let g:ipython_cell_shell_prev_cmd = '<C-p>'
+    "" The following is also valid:
+    " let g:ipython_cell_shell_prev_cmd = '<Ctrl-P>'
 
 
 Related plugins

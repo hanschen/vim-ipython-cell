@@ -26,6 +26,7 @@ let g:ipython_cell_send_cell_headers = get(g:, 'ipython_cell_send_cell_headers',
 let g:ipython_cell_send_ctrl_c = get(g:, 'ipython_cell_send_ctrl_c', 1)
 let g:ipython_cell_send_ctrl_u = get(g:, 'ipython_cell_send_ctrl_u', 0)
 let g:ipython_cell_update_file_variable = get(g:, 'ipython_cell_update_file_variable', 0)
+let g:ipython_cell_shell_prev_cmd = get(g:, 'ipython_cell_shell_prev_cmd', '!!')
 
 function! s:UsingPython3()
   if has('python3')
@@ -80,7 +81,7 @@ function! IPythonCellPrevCommand()
 endfunction
 
 function! IPythonCellRestart()
-    exec s:python_command "ipython_cell.restart_ipython()"
+    exec s:python_command "ipython_cell.restart_ipython('" . g:ipython_cell_shell_prev_cmd . "')"
 endfunction
 
 function! IPythonCellRun(...)
