@@ -302,10 +302,11 @@ Configuration
 | `g:ipython_cell_send_ctrl_c`          | Send `i` and Ctrl-C to enter insert mode and clear the prompt before sending commands to IPython. Set to `0` if this is not supported by your shell. Default: `1`                   |
 | `g:ipython_cell_send_ctrl_u`          | Send Ctrl-U to clear the line before sending commands to IPython. Default: `0`                                                                                                      |
 | `g:ipython_cell_update_file_variable` | Set to `1` to update the `__file__` variable in IPython when running cells. Default: `0`                                                                                            |
-| `g:ipython_cell_shell_prev_cmd`       | The preferred way to get the previous command in your shell. As the variable value, you can provide `'!!'`, `'fc -e: -1'`, or `'<C-p>'` (case-insensitive). The latter corresponds to sending to the console [`\x10`](https://condor.depaul.edu/sjost/lsp121/documents/ascii-npr.htm). Default: `'!!'` |
+| `g:ipython_cell_shell_prev_cmd`       | The preferred way to get the previous command in your shell, for example `'!!'`, `'fc -e: -1'`, or `'<C-p>'`<sup>2</sup>. Default: `'!!'`                                           |
 
 
 <sup>1</sup> `{options}` will be replaced by the command options, such as `-t` for `IPythonRunTime`. `{filepath}` will be replaced by the path of the current buffer.
+<sup>2</sup> `<C-p>` (or `<Ctrl-P>`; case-insensitive) will be replaced by the ANSI escape sequence corresponding to Ctrl-P.
 
 [Python regex patterns]: https://docs.python.org/3/library/re.html#regular-expression-syntax
 

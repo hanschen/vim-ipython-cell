@@ -194,11 +194,11 @@ g:ipython_cell_update_file_variable  Set to `1` to update the `__file__`
 
                                                  *ipython-cell-shell-prev_cmd*
 g:ipython_cell_shell_prev_cmd        The preferred way to get the previous
-                                     command in your shell. As the variable
-                                     value, you can provide `'!!'`, `'fc -e: -1'`,
-                                     or `<C-p>` (case-insensitive). The latter
-                                     corresponds to sending to the console the
-                                     ASCII char `\x10`.
+                                     command in your shell, for example `'!!'`,
+                                     `'fc -e: -1'`, or `'<C-p>'`. `'<C-p>'`
+                                     (or `'<Ctrl-P>'`; case-insensitive) will
+                                     be replaced by the ANSI escape sequence
+                                     corresponding to Ctrl-P.
                                      Default: `'!!'`
 
                                                 *ipython-cell-highlight-group*
