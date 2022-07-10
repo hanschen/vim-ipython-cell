@@ -248,8 +248,8 @@ def previous_command():
 
 def restart_ipython(shell_prev_cmd):
     """Quit ipython and start it again."""
-    if shell_prev_cmd.upper() in ('<C-P>', '<CTRL-P>'):
-        shell_prev_cmd = CTRL_P
+    ctrl_p = re.compile('<c-p>|<ctrl-p>', re.IGNORECASE)
+    shell_prev_cmd = ctrl_p.sub(CTRL_P, shell_prev_cmd)
 
     _clear_prompt()
     _slimesend("exit")
