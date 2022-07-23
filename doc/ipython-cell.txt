@@ -220,6 +220,19 @@ you need to set up your editor with Python support. In the case of Neovim, that
 means installing the `pynvim` Python module, see
 https://neovim.io/doc/user/provider.html#provider-python
 
+Q: Why does this plugin not work inside a virtual environment?
+A: If you use Neovim, make sure you have the pynvim Python package installed
+for your Python provider:
+
+    pip install pynvim
+
+To avoid having to install pynvim for every virtual environment, you can use
+the `g:python3_host_prog` variable to set a specific interpreter path, e.g.:
+
+    let g:python3_host_prog = '/usr/bin/python'
+
+pynvim: https://pypi.org/project/pynvim/
+
 Q: The 'IPythonCellExecuteCell' and 'IPythonCellExecuteCellJump' commands ~
 do not work, but other commands such as IPythonCellRun work. Why? ~
 A: First, make sure you have Tkinter installed (otherwise you will get an

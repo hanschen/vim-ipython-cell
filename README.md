@@ -502,6 +502,20 @@ means installing the `pynvim` Python module, see [documentation].
 
 [documentation]: https://neovim.io/doc/user/provider.html#provider-python
 
+> Why does this plugin not work inside a virtual environment?
+
+If you use Neovim, make sure you have the [pynvim] Python package installed for
+your Python provider:
+
+    pip install pynvim
+
+To avoid having to install pynvim for every virtual environment, you can use
+the `g:python3_host_prog` variable to set a specific interpreter path, e.g.:
+
+    let g:python3_host_prog = '/usr/bin/python'
+
+[pynvim]: https://pypi.org/project/pynvim/
+
 > The `IPythonCellExecuteCell` and `IPythonCellExecuteCellJump` commands do
 > not work, but other commands such as IPythonCellRun work. Why?
 
@@ -561,12 +575,6 @@ your .vimrc:
 You can easily send arbitrary commands to IPython using the `:SlimeSend1`
 command provided by vim-slime, e.g. `:SlimeSend1 %who`, and map these commands
 to key combinations.
-
-> Why does this plugin not work inside a virtual environment?
-
-If you use Neovim, make sure you have the [neovim] Python package installed.
-
-[neovim]: https://pypi.org/project/neovim/
 
 > The `IPythonCellExecuteCell` command does not work, it seems to run the wrong
 > cell.
