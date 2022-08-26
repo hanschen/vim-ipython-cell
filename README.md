@@ -452,6 +452,15 @@ let g:ipython_cell_cell_command = 'include_string(Main, clipboard())'
 
 ~~~
 
+If you use Windows, you may have to change the first line to
+
+~~~vim
+let g:ipython_cell_run_command = 'include(raw"{filepath}")'
+
+~~~
+
+to deal with `\` path separators.
+
 
 ### Change highlight for code cell headers
 
