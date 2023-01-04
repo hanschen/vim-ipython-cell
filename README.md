@@ -18,19 +18,12 @@ the code that is run. This makes it easier to read the output in IPython.
 Additionally, ipython-cell provides some convenience commands to jump between
 cells and to work with IPython, see [Commands](#commands) below.
 
-**Error in IPython 8.2.0:**
-If you get an error message like
-`ERROR! Session/line number was not unique in database. History logging moved to new session <some number>`,
-it is due to a [bug] in IPython 8.2.0.
-You can downgrade to IPython 8.1.1 until the issue has been fixed.
-
 **New in 0.5:**
 ipython-cell now defaults to sending `i` + Ctrl-C (instead of Ctrl-U) to clear
 the prompt before running cells and other commands. See Issue [#35][i35] for
 more information.
 
 [i35]: https://github.com/hanschen/vim-ipython-cell/issues/35
-[bug]: https://github.com/ipython/ipython/issues/13622
 
 
 Demo
@@ -548,6 +541,12 @@ variable with the following command:
 
     eval $(tmux showenv -s DISPLAY)
 
+> I get an error message saying `ERROR! Session/line number was not unique in
+> database. History logging moved to new session <some number>`, why?
+
+This is due to a [bug] in IPython. Upgrading to IPython 8.8.0 or newer or
+downgrading to IPython 8.1.1 should fix the issue.
+
 > Should I use tags or marks to define cells?
 
 This depends on personal preference. Tags are similar to `%%` in MATLAB and
@@ -626,6 +625,8 @@ Try to change the way you get the previous command in your shell. For example,
     let g:ipython_cell_shell_prev_cmd = '<C-p>'
     "" The following is also valid:
     " let g:ipython_cell_shell_prev_cmd = '<Ctrl-P>'
+
+[bug]: https://github.com/ipython/ipython/issues/13622
 
 
 Related plugins
