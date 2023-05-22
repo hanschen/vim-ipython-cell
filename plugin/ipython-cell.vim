@@ -116,8 +116,10 @@ command! -nargs=0 IPythonCellInsertBelow call IPythonCellInsertBelow()
 command! -nargs=0 IPythonCellInsertAbove call IPythonCellInsertAbove()
 command! -nargs=0 IPythonCellToMarkdown call IPythonCellToMarkdown()
 
+let s:t_string = type('')
+
 let s:ipython_cell_match_patterns = []
-if type(g:ipython_cell_tag) == v:t_string
+if type(g:ipython_cell_tag) == s:t_string
     let s:ipython_cell_tag_list = [g:ipython_cell_tag]
 else
     let s:ipython_cell_tag_list = g:ipython_cell_tag
