@@ -24,13 +24,6 @@ the code that is run. This makes it easier to read the output in IPython.
 Additionally, ipython-cell provides some convenience commands to jump between
 cells and to work with IPython, see [Commands](#commands) below.
 
-**New in 0.5:**
-ipython-cell now defaults to sending `i` + Ctrl-C (instead of Ctrl-U) to clear
-the prompt before running cells and other commands. See Issue [#35][i35] for
-more information.
-
-[i35]: https://github.com/hanschen/vim-ipython-cell/issues/35
-
 
 Demo
 ----
