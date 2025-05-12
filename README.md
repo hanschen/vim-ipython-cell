@@ -6,6 +6,12 @@ code cells similar to Jupyter notebooks and MATLAB.
 This plugin also supports [other languages and REPLs](#other-repls) such as
 Julia.
 
+> [!NOTE]  
+> **Project status:**
+> This project is considered mature and stable,
+> and no additional feature development is planned.
+> Issues and Pull requests are still welcomed.
+
 ipython-cell is especially suited for data exploration and visualization using
 Python. You can for example define a code cell that loads your input data, and
 another code cell to visualize the data. This plugin allows you to change and
